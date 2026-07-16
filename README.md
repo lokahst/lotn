@@ -1,109 +1,127 @@
-# ⚔️ Legends of the North (LotN)
+# Legends of the North (LOTN)
 
-> *"Hey, you... you're finally awake."*
+> *Hey you, youre finally awake!*
 
-There's a reason community servers exist.
+Yeah. RPG plugin. Heavily Skyrim-inspired as you may guessed already. Hours of development and it is still in Early version, huh?
+Well... making RPG plugin is really hard thing to do. There is just so many functions (that are cool).
 
-So I decided to make an RPG plugin.
+So if you want to see how this works. Check this long description (warning: I'm not good at making descriptions).
 
-If you recognized the first line, you've probably already guessed the inspiration: **The Elder Scrolls V: Skyrim**.
+## Some Features ―――――――――――
 
-If you've played Skyrim, you know.
+### Naming your character
+At the start of the game, chose a name for your character. It can be your Minecraft name or completely
+different one. Choose wisely because it cannot be changed.
 
-If you haven't...
+### Individual skill leveling
+Level your weapons depending on how often you use them and upgrade skills that adds more damage to them.
 
-Think of it as Minecraft but with a lot more RPG.
+### Perk & Skill trees
+Level anything youre working with. Your armor, to protect you better. Your weapons to deal more damage. Or
+your fishing to catch more rare fish which you can sell for more later.
 
----
+### Upgrading Health, Stamina, Magicka
+Plugin uses HSM to make it even more RPG-like. You can upgrade your health to fall from higher places or to fight longer.
+You can upgrade stamina, to run longer and protect yourself with shield. For Magicka there is nothing much yet.
 
-## 🌍 What is LotN?
+### And even more..
 
-Legends of the North adds RPG mechanics inspired by Skyrim while still trying to feel like Minecraft. No quests forcing you to save game nor legendary dragons flying over you.
+## Combat ――――――――――――――――――
 
-Just exploration, progression, combat, and becoming ridiculously overpowered... until the mobs remind you you're not.
+### Main combat
+You can upgrade anything you use to attack and kill your enemies.
 
----
+From one-handed damage, archery, or shield blocking.
 
-## ❤️ Health • ⚡ Stamina • 🔷 Magicka (HSM)
+Each skill have its own sub-tree where upgrading is even more detailed.
 
-Level up and spend your points however you like.
+## Enchantments ――――――――――――
 
-❤️ **Health**
-> More hearts. More surviving.
+### What are they?
+Items like armor or weapons that randomly drops from mob when you kill it.
 
-⚡ **Stamina**
-> Run longer. Fight harder (no).
+But its rare. So you should kill a lot of them.
 
-🔷 **Magicka**
-> Currently just exists.
+But once you get it you can disenchant it. But you will loose that item, sadly.
 
-It'll become useful...
+### Disenchant & Learn effect
+You can disenchant those items in grindstone and learn its effects.
 
-Eventually.
+Then you can just enchant your own weapon or armor to get stronger.
 
----
+### What enchants?
+    1. Flame:
+            - Hit your enemies with weapon and set them on fire
+            - Fire will add additional damage
+    2. Frostbite:
+            - Slow down your enemies when they're too fast
+    3. Block:
+            - Use this enchantment on your shield to be able to block more damage
+    4. Vitality:
+            - Passively regenerates health
+    5. Fortitude:
+            - More knockback resistance
 
-## 📈 Level Up
+## Alchemy ―――――――――――――――――
 
-Every level gives you a point.
+### Travel and pick up
+Travel around world and pick up any flower you see, kill creepers to get gunpowder, or use seeds if you have any.
 
-❤️ More Health?
+### Make potions
+You can either use them to learn their effect (so.. "recipees" for potions) which is small chance.
 
-⚡ More Stamina?
+Or you can literaly guess and use 3 of your collected items and maybe you get lucky and create an Healing Potion
 
-🔷 More Magicka?
+## Fast Traveling ――――――――――
 
-Your choice.
+### Set it up
+Set up to 3 Travel Points at your home, in cave, and in village. 
 
-Just remember...
+And really.. anywhere.
 
-As **you** become stronger the mobs do too.
+### Once its set
+You can teleport when you're not under attack.
 
-Luckily, they're usually all armor and no skill.
+And if you dont like the travel point? 
+Just remove it and make a new one somewhere else!
 
----
+## Adventures ――――――――――――――
 
-## ✨ Current Features
+You like adventures? You can go fishing. 
 
-- 📈 Skyrim-inspired leveling system *(Level 1-100)*
-- ❤️ Upgradable HSM
-- 🌳 RPG Skill Trees
-- ⚔️ Unlock combat skills
-- 🎣 Fishing that's actually worth doing
-- 🔮 Collect enchantments from defeated enemies
-- 🛠️ Learn enchantments permanently by disenchanting equipment
-- 💰 Vault economy support
-- 🌍 Designed to enhance vanilla instead of replacing it
+Just go catch some fish and you can make some coin for yourself. 
 
----
+And if you get lucky, you can catch Legendary fish which is really rare and nice find.
 
-## 🚧 Early Access
+## Main Quest ――――――――――――――
 
-LotN is still in active development and it will take months to complete.
+### Reach level 80 (this will change in future)
+But dont ask admins to help you. You're by yourself. 
 
-Some ideas are still just ideas.
+Once a help is needed to gain even 1xp, your entire progress get lost. You can start from 0 though.
 
-Some bugs are probably evolving into features as you're reading this.
+## Requirements ――――――――――――
 
-But every update gets the plugin closer to the RPG experience I've wanted Minecraft to have for years.
+Use supported version. Use `PlaceholderAPI` and `Vault`.
+Do not report problems if you forgot to install any of these plugins.
 
----
+This is `Early Access` plugin.
 
-#x ❤️ Join the journey
+## Some details from me ―――
 
-You could wait until version **1.0**.
+I'm not really good at writing descriptions of something. I see the same section hundreds times a day, and now I have to explain it
+to someone who never played this game. 
 
-Or...
+There is many many functions I havent mentioned like:
+- Weight system
+- Temperature system
+- Calendar
+- Sub-Quests
+- Codex/Fishdex
+- Holograms
 
-You could be one of the people who watched it grow from the beginning.
+Literaly many things. 
 
-The choice is yours.
+But you can try it. You can give me some feedback as well on my [discord](https://lokahst.github.io/discord).
 
----
-
-## 🌐 Links
-
-- Website - [lokahst.github.io](https://lokahst.github.io)
-- Github - [@lokahst](https://github.com/lokahst)
-- Discord - [mdqR356q6V](https://lokahst.github.io/discord)
-- Instagram - [@lokahst](https://www.instagram.com/lokahst)
+So... Will you give it a try?

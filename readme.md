@@ -1,4 +1,4 @@
-![Legends of the Nort](background)
+![Legends of the North](https://github.com/lokahst/lotn/raw/main/showcase/background.png)
 
 # Legends of the North
 
@@ -22,7 +22,7 @@ You can play it as part of a normal survival server. You still mine, build, expl
 - **24 default quests**, including repeatable tasks and a main quest
 - **Shouts, fast travel, fishing, Fishdex, Codex, achievements, temperature, weight, injuries**, and more
 
-![Main GUI](Guimain)
+![Main GUI](https://github.com/lokahst/lotn/raw/main/showcase/gui_main.png)
 
 ## Make a character
 
@@ -32,7 +32,7 @@ Choose a character name, then pick one of five races: **Breton, High Elf, Wood E
 
 Your character begins at level 1 with Health, Stamina, Magicka, and carry capacity. Every character level gives you another point to spend on one of the three main vitals.
 
-![Creating a character](gui_start) XXXXXXXXXXXX
+![Creating a character](https://github.com/lokahst/lotn/raw/main/showcase/gui_start.gif)
 
 ## Skills level through use
 
@@ -50,7 +50,7 @@ The same rule applies across the plugin:
 
 Each skill has its own level cap and unlocks one perk at every level. You can focus on combat, crafting, exploration, trading, or become terrifyingly committed to fishing. Nobody can stop you. That is the danger of *free will*.
 
-![Skill tree](gif_skill)
+![Skill tree](https://github.com/lokahst/lotn/raw/main/showcase/gui_skill.gif)
 
 ## Combat is more than vanilla damage
 
@@ -70,7 +70,7 @@ Place a supported item in the first slot and its upgrade material in the second.
 
 Higher-quality weapons deal more damage, while improved armor gains more Armor Rating. Better gear also becomes heavier, because apparently carrying Legendary armor should have at least one downside.
 
-![Equipment tempering]()
+![Equipment tempering](https://github.com/lokahst/lotn/raw/main/showcase/tempering.gif)
 
 ## Find and learn enchantments
 
@@ -89,7 +89,7 @@ Enchanting has five unlockable tiers and eight effect families, including:
 
 Higher Enchanting levels unlock stronger tiers and improve the chance of finding equipment with multiple effects.
 
-![Enchantments]()
+![Enchantments](https://github.com/lokahst/lotn/raw/main/showcase/Enchants.gif)
 
 ## Experiment with alchemy
 
@@ -101,7 +101,7 @@ Potions can restore or regenerate Health, Stamina, and Magicka; improve combat, 
 
 As Alchemy improves, mixtures become faster to brew, stronger, longer-lasting, and more efficient.
 
-![Alchemy workbench](alchemy)
+![Alchemy workbench](https://github.com/lokahst/lotn/raw/main/showcase/alchemy.gif)
 
 ## Unlock and use shouts
 
@@ -109,14 +109,14 @@ Several Skyrim-inspired shouts with their words, costs, cooldowns, and effects.
 
 Use **Unrelenting Force** to throw enemies back, **Whirlwind Sprint** to launch yourself forward, **Fire Breath** to burn targets, **Aura Whisper** to reveal nearby mobs, **Become Ethereal** to avoid damage, and more.
 
-![Using a shout](shouts_example)
+![Using a shout](https://github.com/lokahst/lotn/raw/main/showcase/shouts_example.gif)
 
 ## Explore, travel, and survive
 
 Visiting new biomes and dimensions adds discoveries to your Codex and grants progression. The Wayfaring skill unlocks up to **three Fast Travel Points**, which can be used to travel quickly. Use fast travel when you're not in combat to get back home
 from adventure.
 
-![Fast Travel](Fast_travel)
+![Fast Travel](https://github.com/lokahst/lotn/raw/main/showcase/fast_travel.gif)
 
 Survival also includes optional systems for:
 
@@ -130,7 +130,7 @@ The default setup contains **24 quests**. Players can track quests through the j
 
 There are adventure quests, repeatable jobs, and a main quest to defeat the Ender Dragon.
 
-![journal](quest)
+![journal](https://github.com/lokahst/lotn/raw/main/showcase/quest.gif)
 
 ## Fishing that is actually useful
 
@@ -140,7 +140,7 @@ Catches range from **Common** to **Mythic**. Rare fish are worth more money and 
 
 Fish can be sold directly through the Fish Exchange when Vault and an economy plugin are installed.
 
-![Fishdex](fishing)
+![Fishdex](https://github.com/lokahst/lotn/raw/main/showcase/fishing.gif)
 
 ## Built for servers
 

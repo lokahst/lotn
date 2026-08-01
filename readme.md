@@ -155,13 +155,13 @@ Player systems are opened through `/lotn`. Administrators use `/lotnea` for Exte
 - A Vault-compatible economy plugin (e.g. **EssentialsX**)
 - **PlaceholderAPI** is optional and only needed for LotN placeholders
 
-## Current state
+### Current state
 
 LotN has reached its first stable releases, but development is still active. New content, balance changes, fixes, and configuration improvements will continue. Existing systems may still be adjusted when something is clearly broken or useless.
 
 Bug reports and feedback are welcome, especially while the plugin is still growing.
 
-## Links
+### Links
 
 - [Full Wiki](https://wiki.lokahst.dev)
 - [Discord](https://lokahst.dev/discord)

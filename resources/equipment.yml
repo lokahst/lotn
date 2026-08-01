@@ -1,0 +1,832 @@
+﻿# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 7
+debug: false
+
+armor:
+  reduction-scaling: 250.0
+  maximum-reduction: 0.70
+  mitigated-causes:
+    - ENTITY_ATTACK
+    - ENTITY_SWEEP_ATTACK
+    - PROJECTILE
+    - ENTITY_EXPLOSION
+    - BLOCK_EXPLOSION
+  unmitigated-causes:
+    - VOID
+    - KILL
+    - SONIC_BOOM
+
+quality:
+  levels:
+    0:
+      name: "Normal"
+      base-percentage: 0.00
+      material-cost: 0
+    1:
+      name: "Fine"
+      base-percentage: 0.04
+      material-cost: 1
+    2:
+      name: "Superior"
+      base-percentage: 0.08
+      material-cost: 1
+    3:
+      name: "Exquisite"
+      base-percentage: 0.13
+      material-cost: 2
+    4:
+      name: "Flawless"
+      base-percentage: 0.19
+      material-cost: 2
+    5:
+      name: "Epic"
+      base-percentage: 0.26
+      material-cost: 3
+    6:
+      name: "Legendary"
+      base-percentage: 0.35
+      material-cost: 4
+
+tempering:
+  enabled: true
+  armor-weight-increase-per-quality-rank: 0.025
+  formula:
+    smithing-bonus-per-level: 0.005
+    minimum-increase: 0.005
+    maximum-bonus: 0.75
+  wooden:
+    maximum-quality-rank: 1
+    maximum-bonus: 0.08
+  smithing-xp:
+    base: 6.0
+    material-tier-multiplier: 0.35
+    quality-rank-multiplier: 0.30
+    material-cost-multiplier: 0.25
+  migration:
+    legacy-rank-percentages:
+      0: 0.00
+      1: 0.04
+      2: 0.08
+      3: 0.12
+      4: 0.16
+      5: 0.20
+  messages:
+    disabled: "Tempering is disabled."
+    unsupported: "That equipment is not supported."
+    stacked: "Temper one item at a time."
+    legendary: "This item is already Legendary."
+    wood-maximum: "Wooden equipment cannot be tempered beyond {quality}."
+    maximum: "This item is already at its maximum quality ({quality})."
+    unavailable: "You cannot temper equipment right now."
+    category: "Only weapons and armor can be upgraded."
+    material-family: "{material} equipment cannot be upgraded."
+    skill: "Requires Smithing {required}."
+    material: "Requires {amount} {material}."
+    amount: "Not enough material; requires {amount} {material}."
+    unsafe-click: "Take tempered items with a normal empty-cursor click."
+    cursor: "Empty your cursor before taking the tempered item."
+    result-changed: "The anvil result changed. Reinsert the items and try again."
+    success: "Tempered equipment to &6{quality}&7 (&b+{percentage}%&7)."
+  sounds:
+    success:
+      name: "block.anvil.use"
+      volume: 0.8
+      pitch: 1.15
+
+definitions:
+  WOODEN_SWORD:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 4
+    attack-speed: 1.6
+    weight: 2.0
+    material-tier: 0
+    material-family: wood
+    tempering-material: LEATHER
+    relevant-skill: one_handed
+    maximum-quality-rank: 1
+  STONE_SWORD:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 5
+    attack-speed: 1.6
+    weight: 3.0
+    material-tier: 1
+    material-family: stone
+    temperable: false
+    tempering-material: COBBLESTONE
+    relevant-skill: one_handed
+    maximum-quality-rank: 0
+  COPPER_SWORD:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 5
+    attack-speed: 1.6
+    weight: 4.0
+    material-tier: 2
+    material-family: copper
+    tempering-material: COPPER_INGOT
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  IRON_SWORD:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 6
+    attack-speed: 1.6
+    weight: 5.0
+    material-tier: 2
+    material-family: iron
+    tempering-material: IRON_INGOT
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  GOLDEN_SWORD:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 4
+    attack-speed: 1.6
+    weight: 4.0
+    material-tier: 2
+    material-family: gold
+    tempering-material: GOLD_INGOT
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  DIAMOND_SWORD:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 7
+    attack-speed: 1.6
+    weight: 4.0
+    material-tier: 3
+    material-family: diamond
+    tempering-material: DIAMOND
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  NETHERITE_SWORD:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 8
+    attack-speed: 1.6
+    weight: 7.0
+    material-tier: 4
+    material-family: netherite
+    tempering-material: NETHERITE_INGOT
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+
+  WOODEN_AXE:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 7
+    attack-speed: 0.8
+    weight: 3.0
+    material-tier: 0
+    material-family: wood
+    tempering-material: LEATHER
+    relevant-skill: one_handed
+    maximum-quality-rank: 1
+  STONE_AXE:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 9
+    attack-speed: 0.8
+    weight: 5.0
+    material-tier: 1
+    material-family: stone
+    temperable: false
+    tempering-material: COBBLESTONE
+    relevant-skill: one_handed
+    maximum-quality-rank: 0
+  COPPER_AXE:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 8
+    attack-speed: 0.9
+    weight: 6.0
+    material-tier: 2
+    material-family: copper
+    tempering-material: COPPER_INGOT
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  IRON_AXE:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 9
+    attack-speed: 0.9
+    weight: 7.0
+    material-tier: 2
+    material-family: iron
+    tempering-material: IRON_INGOT
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  GOLDEN_AXE:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 7
+    attack-speed: 1.0
+    weight: 6.0
+    material-tier: 2
+    material-family: gold
+    tempering-material: GOLD_INGOT
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  DIAMOND_AXE:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 9
+    attack-speed: 1.0
+    weight: 6.0
+    material-tier: 3
+    material-family: diamond
+    tempering-material: DIAMOND
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  NETHERITE_AXE:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 10
+    attack-speed: 1.0
+    weight: 9.0
+    material-tier: 4
+    material-family: netherite
+    tempering-material: NETHERITE_INGOT
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  MACE:
+    kind: WEAPON
+    category: one_handed
+    base-damage: 6
+    attack-speed: 0.6
+    weight: 16.0
+    material-tier: 3
+    material-family: mace
+    tempering-material: BREEZE_ROD
+    relevant-skill: one_handed
+    maximum-quality-rank: 6
+  BOW:
+    kind: WEAPON
+    category: bow
+    base-damage: 6
+    attack-speed: 1.0
+    weight: 3.0
+    material-tier: 0
+    material-family: bow
+    tempering-material: STRING
+    relevant-skill: archery
+    maximum-quality-rank: 6
+  CROSSBOW:
+    kind: WEAPON
+    category: crossbow
+    base-damage: 9
+    attack-speed: 0.75
+    weight: 8.0
+    material-tier: 2
+    material-family: crossbow
+    tempering-material: IRON_INGOT
+    relevant-skill: archery
+    maximum-quality-rank: 6
+  TRIDENT:
+    kind: WEAPON
+    category: spear
+    base-damage: 9
+    attack-speed: 1.1
+    weight: 8.0
+    material-tier: 3
+    material-family: prismarine
+    tempering-material: PRISMARINE_SHARD
+    relevant-skill: ""
+    maximum-quality-rank: 6
+  WOODEN_SPEAR:
+    kind: WEAPON
+    category: spear
+    base-damage: 4
+    attack-speed: 1.2
+    weight: 2.5
+    material-tier: 0
+    material-family: wood
+    tempering-material: LEATHER
+    relevant-skill: ""
+    maximum-quality-rank: 1
+  STONE_SPEAR:
+    kind: WEAPON
+    category: spear
+    base-damage: 5
+    attack-speed: 1.2
+    weight: 4.0
+    material-tier: 1
+    material-family: stone
+    temperable: false
+    tempering-material: COBBLESTONE
+    relevant-skill: ""
+    maximum-quality-rank: 0
+  COPPER_SPEAR:
+    kind: WEAPON
+    category: spear
+    base-damage: 6
+    attack-speed: 1.2
+    weight: 5.0
+    material-tier: 2
+    material-family: copper
+    tempering-material: COPPER_INGOT
+    relevant-skill: ""
+    maximum-quality-rank: 6
+  IRON_SPEAR:
+    kind: WEAPON
+    category: spear
+    base-damage: 7
+    attack-speed: 1.2
+    weight: 6.0
+    material-tier: 2
+    material-family: iron
+    tempering-material: IRON_INGOT
+    relevant-skill: ""
+    maximum-quality-rank: 6
+  GOLDEN_SPEAR:
+    kind: WEAPON
+    category: spear
+    base-damage: 5
+    attack-speed: 1.3
+    weight: 4.5
+    material-tier: 2
+    material-family: gold
+    tempering-material: GOLD_INGOT
+    relevant-skill: ""
+    maximum-quality-rank: 6
+  DIAMOND_SPEAR:
+    kind: WEAPON
+    category: spear
+    base-damage: 8
+    attack-speed: 1.2
+    weight: 6.5
+    material-tier: 3
+    material-family: diamond
+    tempering-material: DIAMOND
+    relevant-skill: ""
+    maximum-quality-rank: 6
+  NETHERITE_SPEAR:
+    kind: WEAPON
+    category: spear
+    base-damage: 9
+    attack-speed: 1.2
+    weight: 9.0
+    material-tier: 4
+    material-family: netherite
+    tempering-material: NETHERITE_INGOT
+    relevant-skill: ""
+    maximum-quality-rank: 6
+
+  WOODEN_PICKAXE:
+    kind: TOOL
+    category: pickaxe
+    weight: 3.0
+    material-tier: 0
+    material-family: wood
+    tempering-material: LEATHER
+    relevant-skill: smithing
+    maximum-quality-rank: 1
+  STONE_PICKAXE:
+    kind: TOOL
+    category: pickaxe
+    weight: 5.0
+    material-tier: 1
+    material-family: stone
+    temperable: false
+    tempering-material: COBBLESTONE
+    relevant-skill: smithing
+    maximum-quality-rank: 0
+  COPPER_PICKAXE:
+    kind: TOOL
+    category: pickaxe
+    weight: 6.0
+    material-tier: 2
+    material-family: copper
+    tempering-material: COPPER_INGOT
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+  IRON_PICKAXE:
+    kind: TOOL
+    category: pickaxe
+    weight: 7.0
+    material-tier: 2
+    material-family: iron
+    tempering-material: IRON_INGOT
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+  GOLDEN_PICKAXE:
+    kind: TOOL
+    category: pickaxe
+    weight: 6.0
+    material-tier: 2
+    material-family: gold
+    tempering-material: GOLD_INGOT
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+  DIAMOND_PICKAXE:
+    kind: TOOL
+    category: pickaxe
+    weight: 6.0
+    material-tier: 3
+    material-family: diamond
+    tempering-material: DIAMOND
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+  NETHERITE_PICKAXE:
+    kind: TOOL
+    category: pickaxe
+    weight: 9.0
+    material-tier: 4
+    material-family: netherite
+    tempering-material: NETHERITE_INGOT
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+  WOODEN_HOE:
+    kind: TOOL
+    category: hoe
+    weight: 2.0
+    material-tier: 0
+    material-family: wood
+    tempering-material: LEATHER
+    relevant-skill: smithing
+    maximum-quality-rank: 1
+  STONE_HOE:
+    kind: TOOL
+    category: hoe
+    weight: 3.0
+    material-tier: 1
+    material-family: stone
+    temperable: false
+    tempering-material: COBBLESTONE
+    relevant-skill: smithing
+    maximum-quality-rank: 0
+  COPPER_HOE:
+    kind: TOOL
+    category: hoe
+    weight: 3.0
+    material-tier: 2
+    material-family: copper
+    tempering-material: COPPER_INGOT
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+  IRON_HOE:
+    kind: TOOL
+    category: hoe
+    weight: 4.0
+    material-tier: 2
+    material-family: iron
+    tempering-material: IRON_INGOT
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+  GOLDEN_HOE:
+    kind: TOOL
+    category: hoe
+    weight: 4.0
+    material-tier: 2
+    material-family: gold
+    tempering-material: GOLD_INGOT
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+  DIAMOND_HOE:
+    kind: TOOL
+    category: hoe
+    weight: 4.0
+    material-tier: 3
+    material-family: diamond
+    tempering-material: DIAMOND
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+  NETHERITE_HOE:
+    kind: TOOL
+    category: hoe
+    weight: 6.0
+    material-tier: 4
+    material-family: netherite
+    tempering-material: NETHERITE_INGOT
+    relevant-skill: smithing
+    maximum-quality-rank: 6
+
+  LEATHER_HELMET:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 5
+    weight: 3.0
+    material-tier: 0
+    material-family: leather
+    tempering-material: LEATHER
+    relevant-skill: light_armor
+    maximum-quality-rank: 6
+  LEATHER_CHESTPLATE:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 15
+    weight: 8.0
+    material-tier: 0
+    material-family: leather
+    tempering-material: LEATHER
+    relevant-skill: light_armor
+    maximum-quality-rank: 6
+  LEATHER_LEGGINGS:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 12
+    weight: 6.0
+    material-tier: 0
+    material-family: leather
+    tempering-material: LEATHER
+    relevant-skill: light_armor
+    maximum-quality-rank: 6
+  LEATHER_BOOTS:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 5
+    weight: 2.0
+    material-tier: 0
+    material-family: leather
+    tempering-material: LEATHER
+    relevant-skill: light_armor
+    maximum-quality-rank: 6
+  CHAINMAIL_HELMET:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 15
+    weight: 5.0
+    material-tier: 1
+    material-family: chainmail
+    temperable: false
+    tempering-material: IRON_INGOT
+    relevant-skill: light_armor
+    maximum-quality-rank: 0
+  CHAINMAIL_CHESTPLATE:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 25
+    weight: 13.0
+    material-tier: 1
+    material-family: chainmail
+    temperable: false
+    tempering-material: IRON_INGOT
+    relevant-skill: light_armor
+    maximum-quality-rank: 0
+  CHAINMAIL_LEGGINGS:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 20
+    weight: 10.0
+    material-tier: 1
+    material-family: chainmail
+    temperable: false
+    tempering-material: IRON_INGOT
+    relevant-skill: light_armor
+    maximum-quality-rank: 0
+  CHAINMAIL_BOOTS:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 8
+    weight: 4.0
+    material-tier: 1
+    material-family: chainmail
+    temperable: false
+    tempering-material: IRON_INGOT
+    relevant-skill: light_armor
+    maximum-quality-rank: 0
+  GOLDEN_HELMET:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 12
+    weight: 6.0
+    material-tier: 2
+    material-family: gold
+    tempering-material: GOLD_INGOT
+    relevant-skill: light_armor
+    maximum-quality-rank: 6
+  GOLDEN_CHESTPLATE:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 25
+    weight: 15.0
+    material-tier: 2
+    material-family: gold
+    tempering-material: GOLD_INGOT
+    relevant-skill: light_armor
+    maximum-quality-rank: 6
+  GOLDEN_LEGGINGS:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 15
+    weight: 12.0
+    material-tier: 2
+    material-family: gold
+    tempering-material: GOLD_INGOT
+    relevant-skill: light_armor
+    maximum-quality-rank: 6
+  GOLDEN_BOOTS:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 8
+    weight: 5.0
+    material-tier: 2
+    material-family: gold
+    tempering-material: GOLD_INGOT
+    relevant-skill: light_armor
+    maximum-quality-rank: 6
+  TURTLE_HELMET:
+    kind: ARMOR
+    category: light_armor
+    armor-class: LIGHT
+    base-armor-rating: 18
+    weight: 5.0
+    material-tier: 1
+    material-family: turtle
+    tempering-material: TURTLE_SCUTE
+    relevant-skill: light_armor
+    maximum-quality-rank: 6
+
+  COPPER_HELMET:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 17
+    weight: 6.0
+    material-tier: 2
+    material-family: copper
+    tempering-material: COPPER_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  COPPER_CHESTPLATE:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 28
+    weight: 15.0
+    material-tier: 2
+    material-family: copper
+    tempering-material: COPPER_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  COPPER_LEGGINGS:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 22
+    weight: 12.0
+    material-tier: 2
+    material-family: copper
+    tempering-material: COPPER_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  COPPER_BOOTS:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 10
+    weight: 5.0
+    material-tier: 2
+    material-family: copper
+    tempering-material: COPPER_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  IRON_HELMET:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 20
+    weight: 7.0
+    material-tier: 2
+    material-family: iron
+    tempering-material: IRON_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  IRON_CHESTPLATE:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 32
+    weight: 18.0
+    material-tier: 2
+    material-family: iron
+    tempering-material: IRON_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  IRON_LEGGINGS:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 25
+    weight: 14.0
+    material-tier: 2
+    material-family: iron
+    tempering-material: IRON_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  IRON_BOOTS:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 12
+    weight: 6.0
+    material-tier: 2
+    material-family: iron
+    tempering-material: IRON_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  DIAMOND_HELMET:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 25
+    weight: 6.0
+    material-tier: 3
+    material-family: diamond
+    tempering-material: DIAMOND
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  DIAMOND_CHESTPLATE:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 40
+    weight: 16.0
+    material-tier: 3
+    material-family: diamond
+    tempering-material: DIAMOND
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  DIAMOND_LEGGINGS:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 30
+    weight: 13.0
+    material-tier: 3
+    material-family: diamond
+    tempering-material: DIAMOND
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  DIAMOND_BOOTS:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 15
+    weight: 5.0
+    material-tier: 3
+    material-family: diamond
+    tempering-material: DIAMOND
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  NETHERITE_HELMET:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 28
+    weight: 9.0
+    material-tier: 4
+    material-family: netherite
+    tempering-material: NETHERITE_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  NETHERITE_CHESTPLATE:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 45
+    weight: 24.0
+    material-tier: 4
+    material-family: netherite
+    tempering-material: NETHERITE_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  NETHERITE_LEGGINGS:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 35
+    weight: 20.0
+    material-tier: 4
+    material-family: netherite
+    tempering-material: NETHERITE_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6
+  NETHERITE_BOOTS:
+    kind: ARMOR
+    category: heavy_armor
+    armor-class: HEAVY
+    base-armor-rating: 18
+    weight: 8.0
+    material-tier: 4
+    material-family: netherite
+    tempering-material: NETHERITE_INGOT
+    relevant-skill: heavy_armor
+    maximum-quality-rank: 6

@@ -1,0 +1,33 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 5
+
+injuries:
+  broken-leg:
+    enabled: true
+    movement-speed-multiplier: 0.55
+    disable-sprinting: true
+    persist-through-death: true
+    healing-potions:
+      - cure
+      - restore_health
+      - minor_health
+      - health
+      - greater_health
+    natural-healing:
+      enabled: true
+      time-ticks: 48000
+    minimum-fall-damage: 4.0
+    base-chance: 0.08
+    chance-per-extra-damage: 0.03
+    maximum-chance: 0.80
+
+messages:
+  broken: "You broke your leg!\nUse an approved LOTN health potion to mend it."
+  still-broken: "Your leg is still broken. Use an approved LOTN health potion."
+  healed-by-potion: "The potion mended your broken leg!"
+  healed-by-admin: "Your broken leg was healed."
+  healed-on-death: "Your broken leg did not persist through death."
+  healed-naturally: "Your broken leg healed over time."

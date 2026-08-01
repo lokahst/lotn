@@ -1,0 +1,564 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 5
+enabled: true
+
+messages:
+  no-curable-injury: "&7You have no LOTN injury that this potion can cure."
+study:
+  skill-xp-success: 6.0
+  skill-xp-failure: 1.0
+brewing:
+  skill-xp: 12.0
+
+quality-thresholds:
+  potion: 0
+  draught: 25
+  philter: 50
+  elixir: 75
+
+ingredients:
+  BROWN_MUSHROOM:
+    - REGENERATE_HEALTH
+    - HEAVY_ARMOR
+  RED_MUSHROOM:
+    - FORTIFY_HEALTH
+    - ALCHEMIST
+  CRIMSON_FUNGUS:
+    - RESIST_FIRE
+  WARPED_FUNGUS:
+    - RESIST_FIRE
+  DANDELION:
+    - REGENERATE_HEALTH
+    - LIGHT_ARMOR
+  POPPY:
+    - RESTORE_HEALTH
+    - WARRIOR
+  BLUE_ORCHID:
+    - FORTIFY_HEALTH
+    - FORTIFY_MAGICKA
+    - COOLING
+  ALLIUM:
+    - FORTIFY_STAMINA
+    - DEFENDER
+  AZURE_BLUET:
+    - REGENERATE_MAGICKA
+    - INVISIBILITY
+  RED_TULIP:
+    - WARMTH
+    - WARRIOR
+  ORANGE_TULIP:
+    - REGENERATE_STAMINA
+    - SMITHING
+  WHITE_TULIP:
+    - DEFENDER
+    - RESIST_FROST
+  PINK_TULIP:
+    - FORTIFY_MAGICKA
+    - LIGHT_ARMOR
+  OXEYE_DAISY:
+    - ALCHEMIST
+    - CURE
+  CORNFLOWER:
+    - RESTORE_MAGICKA
+  LILY_OF_THE_VALLEY:
+    - INVISIBILITY
+    - CURE
+  WHEAT_SEEDS:
+    - RESTORE_STAMINA
+    - FISHING
+  COCOA_BEANS:
+    - FORTIFY_HEALTH
+    - RESTORE_MAGICKA
+    - RESIST_FROST
+    - SMITHING
+  PUMPKIN_SEEDS:
+    - FORTIFY_STAMINA
+    - DEFENDER
+  MELON_SEEDS:
+    - REGENERATE_STAMINA
+    - LIGHT_ARMOR
+    - COOLING
+  BEETROOT_SEEDS:
+    - REGENERATE_MAGICKA
+    - ALCHEMIST
+  KELP:
+    - REGENERATE_STAMINA
+    - REGENERATE_MAGICKA
+    - RESIST_FROST
+    - COOLING
+    - FISHING
+  EGG:
+    - RESTORE_HEALTH
+    - HEAVY_ARMOR
+  NETHER_WART:
+    - RESIST_FIRE
+  GUNPOWDER:
+    - INVISIBILITY
+    - FISHING
+  FERMENTED_SPIDER_EYE:
+    - FORTIFY_MAGICKA
+    - INVISIBILITY
+    - CURE
+  SUGAR:
+    - RESTORE_STAMINA
+    - RESTORE_MAGICKA
+    - WARMTH
+  WHEAT:
+    - REGENERATE_HEALTH
+    - WARRIOR
+    - HEAVY_ARMOR
+    - WARMTH
+    - SMITHING
+  RABBIT_FOOT:
+    - RESTORE_STAMINA
+    - LIGHT_ARMOR
+  SPIDER_EYE:
+    - WARRIOR
+    - DEFENDER
+    - CURE
+  SWEET_BERRIES:
+    - RESTORE_HEALTH
+    - FORTIFY_STAMINA
+
+recipes:
+  restore_health:
+    display-name: "Potion of Restore Health"
+    ingredients:
+      - SWEET_BERRIES
+      - POPPY
+      - EGG
+    effect: RESTORE_HEALTH
+    color: "C62828"
+    qualities:
+      potion:
+        value: 15
+        duration-seconds: 0
+      draught:
+        value: 30
+        duration-seconds: 0
+      philter:
+        value: 50
+        duration-seconds: 0
+      elixir:
+        value: 80
+        duration-seconds: 0
+  regenerate_health:
+    display-name: "Potion of Regenerate Health"
+    ingredients:
+      - BROWN_MUSHROOM
+      - DANDELION
+      - WHEAT
+    effect: REGENERATE_HEALTH
+    color: "EF5350"
+    qualities:
+      potion:
+        value: 0.25
+        duration-seconds: 60
+      draught:
+        value: 0.50
+        duration-seconds: 120
+      philter:
+        value: 0.75
+        duration-seconds: 180
+      elixir:
+        value: 1.00
+        duration-seconds: 300
+  fortify_health:
+    display-name: "Potion of Fortify Health"
+    ingredients:
+      - RED_MUSHROOM
+      - BLUE_ORCHID
+      - COCOA_BEANS
+    effect: FORTIFY_HEALTH
+    color: "AD1457"
+    qualities:
+      potion:
+        value: 10
+        duration-seconds: 60
+      draught:
+        value: 20
+        duration-seconds: 120
+      philter:
+        value: 30
+        duration-seconds: 180
+      elixir:
+        value: 40
+        duration-seconds: 300
+  restore_stamina:
+    display-name: "Potion of Restore Stamina"
+    ingredients:
+      - SUGAR
+      - WHEAT_SEEDS
+      - RABBIT_FOOT
+    effect: RESTORE_STAMINA
+    color: "2E7D32"
+    qualities:
+      potion:
+        value: 20
+        duration-seconds: 0
+      draught:
+        value: 40
+        duration-seconds: 0
+      philter:
+        value: 65
+        duration-seconds: 0
+      elixir:
+        value: 100
+        duration-seconds: 0
+  regenerate_stamina:
+    display-name: "Potion of Regenerate Stamina"
+    ingredients:
+      - KELP
+      - MELON_SEEDS
+      - ORANGE_TULIP
+    effect: REGENERATE_STAMINA
+    color: "66BB6A"
+    qualities:
+      potion:
+        value: 0.25
+        duration-seconds: 60
+      draught:
+        value: 0.50
+        duration-seconds: 120
+      philter:
+        value: 0.75
+        duration-seconds: 180
+      elixir:
+        value: 1.00
+        duration-seconds: 300
+  fortify_stamina:
+    display-name: "Potion of Fortify Stamina"
+    ingredients:
+      - PUMPKIN_SEEDS
+      - ALLIUM
+      - SWEET_BERRIES
+    effect: FORTIFY_STAMINA
+    color: "00897B"
+    qualities:
+      potion:
+        value: 15
+        duration-seconds: 60
+      draught:
+        value: 30
+        duration-seconds: 120
+      philter:
+        value: 45
+        duration-seconds: 180
+      elixir:
+        value: 60
+        duration-seconds: 300
+  restore_magicka:
+    display-name: "Potion of Restore Magicka"
+    ingredients:
+      - CORNFLOWER
+      - COCOA_BEANS
+      - SUGAR
+    effect: RESTORE_MAGICKA
+    color: "1565C0"
+    qualities:
+      potion:
+        value: 20
+        duration-seconds: 0
+      draught:
+        value: 40
+        duration-seconds: 0
+      philter:
+        value: 65
+        duration-seconds: 0
+      elixir:
+        value: 100
+        duration-seconds: 0
+  regenerate_magicka:
+    display-name: "Potion of Regenerate Magicka"
+    ingredients:
+      - AZURE_BLUET
+      - KELP
+      - BEETROOT_SEEDS
+    effect: REGENERATE_MAGICKA
+    color: "42A5F5"
+    qualities:
+      potion:
+        value: 0.25
+        duration-seconds: 60
+      draught:
+        value: 0.50
+        duration-seconds: 120
+      philter:
+        value: 0.75
+        duration-seconds: 180
+      elixir:
+        value: 1.00
+        duration-seconds: 300
+  fortify_magicka:
+    display-name: "Potion of Fortify Magicka"
+    ingredients:
+      - BLUE_ORCHID
+      - PINK_TULIP
+      - FERMENTED_SPIDER_EYE
+    effect: FORTIFY_MAGICKA
+    color: "3949AB"
+    qualities:
+      potion:
+        value: 15
+        duration-seconds: 60
+      draught:
+        value: 30
+        duration-seconds: 120
+      philter:
+        value: 45
+        duration-seconds: 180
+      elixir:
+        value: 60
+        duration-seconds: 300
+  warrior:
+    display-name: "Potion of the Warrior"
+    ingredients:
+      - POPPY
+      - SPIDER_EYE
+      - WHEAT
+    effect: WARRIOR
+    color: "B71C1C"
+    qualities:
+      potion:
+        value: 0.10
+        duration-seconds: 60
+      draught:
+        value: 0.15
+        duration-seconds: 120
+      philter:
+        value: 0.20
+        duration-seconds: 180
+      elixir:
+        value: 0.25
+        duration-seconds: 300
+  heavy_armor:
+    display-name: "Potion of Heavy Armor"
+    ingredients:
+      - BROWN_MUSHROOM
+      - WHEAT
+      - EGG
+    effect: HEAVY_ARMOR
+    color: "6D4C41"
+    qualities:
+      potion:
+        value: 0.10
+        duration-seconds: 60
+      draught:
+        value: 0.15
+        duration-seconds: 120
+      philter:
+        value: 0.20
+        duration-seconds: 180
+      elixir:
+        value: 0.25
+        duration-seconds: 300
+  defender:
+    display-name: "Potion of the Defender"
+    ingredients:
+      - WHITE_TULIP
+      - PUMPKIN_SEEDS
+      - SPIDER_EYE
+    effect: DEFENDER
+    color: "78909C"
+    qualities:
+      potion:
+        value: 0.10
+        duration-seconds: 60
+      draught:
+        value: 0.15
+        duration-seconds: 120
+      philter:
+        value: 0.20
+        duration-seconds: 180
+      elixir:
+        value: 0.25
+        duration-seconds: 300
+  light_armor:
+    display-name: "Potion of Light Armor"
+    ingredients:
+      - DANDELION
+      - RABBIT_FOOT
+      - MELON_SEEDS
+    effect: LIGHT_ARMOR
+    color: "AED581"
+    qualities:
+      potion:
+        value: 10
+        duration-seconds: 60
+      draught:
+        value: 20
+        duration-seconds: 120
+      philter:
+        value: 30
+        duration-seconds: 180
+      elixir:
+        value: 40
+        duration-seconds: 300
+  resist_fire:
+    display-name: "Potion of Resist Fire"
+    ingredients:
+      - CRIMSON_FUNGUS
+      - WARPED_FUNGUS
+      - NETHER_WART
+    effect: RESIST_FIRE
+    color: "FF6D00"
+    qualities:
+      potion:
+        value: 1.00
+        duration-seconds: 60
+      draught:
+        value: 1.00
+        duration-seconds: 120
+      philter:
+        value: 1.00
+        duration-seconds: 180
+      elixir:
+        value: 1.00
+        duration-seconds: 300
+  resist_frost:
+    display-name: "Potion of Resist Frost"
+    ingredients:
+      - WHITE_TULIP
+      - KELP
+      - COCOA_BEANS
+    effect: RESIST_FROST
+    color: "80DEEA"
+    qualities:
+      potion:
+        value: 1.00
+        duration-seconds: 60
+      draught:
+        value: 1.00
+        duration-seconds: 120
+      philter:
+        value: 1.00
+        duration-seconds: 180
+      elixir:
+        value: 1.00
+        duration-seconds: 300
+  warmth:
+    display-name: "Potion of Warmth"
+    ingredients:
+      - RED_TULIP
+      - WHEAT
+      - SUGAR
+    effect: WARMTH
+    max-quality: potion
+    color: "FF8F00"
+    qualities:
+      potion:
+        value: 0.50
+        duration-seconds: 300
+  cooling:
+    display-name: "Potion of Cooling"
+    ingredients:
+      - BLUE_ORCHID
+      - KELP
+      - MELON_SEEDS
+    effect: COOLING
+    max-quality: potion
+    color: "00ACC1"
+    qualities:
+      potion:
+        value: 0.50
+        duration-seconds: 300
+  invisibility:
+    display-name: "Potion of Invisibility"
+    ingredients:
+      - FERMENTED_SPIDER_EYE
+      - LILY_OF_THE_VALLEY
+      - GUNPOWDER
+    effect: INVISIBILITY
+    color: "9E9E9E"
+    qualities:
+      potion:
+        value: 1.00
+        duration-seconds: 45
+      draught:
+        value: 1.00
+        duration-seconds: 90
+      philter:
+        value: 1.00
+        duration-seconds: 150
+      elixir:
+        value: 1.00
+        duration-seconds: 240
+  smithing:
+    display-name: "Potion of Smithing"
+    ingredients:
+      - ORANGE_TULIP
+      - WHEAT
+      - COCOA_BEANS
+    effect: SMITHING
+    color: "757575"
+    qualities:
+      potion:
+        value: 0.04
+        duration-seconds: 60
+      draught:
+        value: 0.09
+        duration-seconds: 120
+      philter:
+        value: 0.13
+        duration-seconds: 180
+      elixir:
+        value: 0.17
+        duration-seconds: 300
+  alchemist:
+    display-name: "Potion of the Alchemist"
+    ingredients:
+      - OXEYE_DAISY
+      - RED_MUSHROOM
+      - BEETROOT_SEEDS
+    effect: ALCHEMIST
+    color: "8E24AA"
+    qualities:
+      potion:
+        value: 0.04
+        duration-seconds: 60
+      draught:
+        value: 0.09
+        duration-seconds: 120
+      philter:
+        value: 0.13
+        duration-seconds: 180
+      elixir:
+        value: 0.17
+        duration-seconds: 300
+  cure:
+    display-name: "Potion of Cure"
+    ingredients:
+      - SPIDER_EYE
+      - FERMENTED_SPIDER_EYE
+      - OXEYE_DAISY
+    effect: CURE
+    max-quality: potion
+    color: "88CC88"
+    qualities:
+      potion:
+        value: 1.00
+        duration-seconds: 0
+  fishing:
+    display-name: "Potion of Fishing"
+    ingredients:
+      - KELP
+      - WHEAT_SEEDS
+      - GUNPOWDER
+    effect: FISHING
+    color: "3FA7D6"
+    qualities:
+      potion:
+        value: 0.20
+        duration-seconds: 60
+      draught:
+        value: 0.25
+        duration-seconds: 120
+      philter:
+        value: 0.30
+        duration-seconds: 180
+      elixir:
+        value: 0.35
+        duration-seconds: 300

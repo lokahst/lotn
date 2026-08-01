@@ -1,0 +1,549 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 8
+
+settings:
+  maximum-active-quests: 5
+
+quests:
+  main_ender_dragon:
+    enabled: true
+    display-name: "Main Quest: Kill the Ender Dragon"
+    icon: DRAGON_HEAD
+    category: main
+    description:
+      - "Find the End portal and kill the Ender Dragon."
+    objectives:
+      defeat_dragon:
+        type: KILL
+        target: ENDER_DRAGON
+        amount: 1
+        description: "Kill the Ender Dragon"
+    rewards:
+      experience: 5000
+      skill-xp:
+        one_handed: 200
+        archery: 100
+
+  adventure_iron_road:
+    enabled: true
+    display-name: "The Iron Road"
+    icon: IRON_INGOT
+    category: adventure
+    ordered: true
+    description:
+      - "Mine some iron, smelt it, and make a new weapon."
+    objectives:
+      gather_ore:
+        type: MINE
+        target: "IRON_ORE|DEEPSLATE_IRON_ORE"
+        amount: 20
+        description: "Mine iron ore"
+      refine_iron:
+        type: SMELT
+        target: IRON_INGOT
+        amount: 16
+        description: "Smelt iron ingots"
+      forge_weapon:
+        type: CRAFT
+        target: WEAPON
+        amount: 1
+        description: "Craft a weapon"
+    rewards:
+      experience: 180
+      skill-xp:
+        smithing: 65
+      items:
+        - "IRON_INGOT:8"
+
+  adventure_deep_roads:
+    enabled: true
+    display-name: "Echoes in the Deep"
+    icon: DEEPSLATE_REDSTONE_ORE
+    category: adventure
+    description:
+      - "Descend to deepslate level and return with proof."
+    objectives:
+      reach_depths:
+        type: DISCOVER
+        target: "milestone:deep_underground"
+        amount: 1
+        description: "Discover the Deep Roads"
+      mine_redstone:
+        type: MINE
+        target: DEEPSLATE_REDSTONE_ORE
+        amount: 16
+        description: "Mine deepslate redstone ore"
+    rewards:
+      experience: 240
+      skill-xp:
+        mining: 45
+      items:
+        - "REDSTONE:24"
+
+  adventure_nether_scout:
+    enabled: true
+    display-name: "Fire Beyond the Gate"
+    icon: BLAZE_POWDER
+    category: adventure
+    ordered: true
+    requirements:
+      minimum-level: 10
+    description:
+      - "Cross into the Nether, gather quartz, and survive its sentinels."
+    objectives:
+      enter_nether:
+        type: DISCOVER
+        target: "dimension:nether"
+        amount: 1
+        description: "Discover the Nether frontier"
+      gather_quartz:
+        type: MINE
+        target: NETHER_QUARTZ_ORE
+        amount: 18
+        description: "Mine Nether quartz ore"
+      defeat_blazes:
+        type: KILL
+        target: BLAZE
+        amount: 6
+        description: "Defeat blazes"
+    rewards:
+      experience: 360
+      skill-xp:
+        mining: 35
+        one_handed: 25
+      items:
+        - "BLAZE_ROD:3"
+
+  adventure_wayfarer:
+    enabled: true
+    display-name: "The Wayfarer's Map"
+    icon: ENDER_PEARL
+    category: adventure
+    description:
+      - "Use Fast Traveling to get back from your trips."
+    objectives:
+      travel_routes:
+        type: TRAVEL
+        target: ANY
+        amount: 3
+        description: "Use fast travel"
+    rewards:
+      experience: 150
+      items:
+        - "ENDER_PEARL:2"
+
+  adventure_arcane_apprentice:
+    enabled: true
+    display-name: "Arcane Apprenticeship"
+    icon: ENCHANTED_BOOK
+    category: adventure
+    ordered: true
+    requirements:
+      skills:
+        enchanting: 1
+    description:
+      - "Recover enchanted relics and document their LOTN effects."
+    objectives:
+      discover_effects:
+        type: DISCOVER_ENCHANT
+        target: ANY
+        amount: 2
+        description: "Discover two LOTN enchantments on dropped equipment"
+    rewards:
+      experience: 300
+      skill-xp:
+        enchanting: 60
+        smithing: 25
+      items:
+        - "AMETHYST_SHARD:8"
+
+  adventure_defender:
+    enabled: true
+    display-name: "Defender"
+    icon: SHIELD
+    category: adventure
+    description:
+      - "Kill enemies around your area."
+    objectives:
+      hostile_patrol:
+        type: KILL
+        target: HOSTILE
+        amount: 30
+        description: "Defeat hostile mobs"
+      break_zombie_line:
+        type: KILL
+        target: "ZOMBIE|HUSK|DROWNED"
+        amount: 10
+        description: "Defeat zombies, husks, or drowned"
+      silence_archers:
+        type: KILL
+        target: "SKELETON|STRAY|BOGGED"
+        amount: 10
+        description: "Defeat skeletons"
+    rewards:
+      experience: 320
+      skill-xp:
+        one_handed: 30
+        blocking: 25
+      items:
+        - "GOLDEN_APPLE:1"
+
+  adventure_farmer:
+    enabled: true
+    display-name: "Farmer"
+    icon: HAY_BLOCK
+    category: adventure
+    ordered: true
+    description:
+      - "Plant seeds, watch them grow, and use them for food."
+    objectives:
+      sow_field:
+        type: PLANT
+        target: CROPS
+        amount: 24
+        description: "Plant crops"
+      reap_field:
+        type: HARVEST
+        target: FARM_PRODUCE
+        amount: 24
+        description: "Harvest farm produce"
+      bake_bread:
+        type: CRAFT
+        target: BREAD
+        amount: 8
+        description: "Craft bread"
+    rewards:
+      experience: 190
+      skill-xp:
+        farming: 45
+      items:
+        - "BONE_MEAL:16"
+
+  adventure_the_fisher:
+    enabled: true
+    display-name: "The Fisher"
+    icon: TROPICAL_FISH
+    category: adventure
+    description:
+      - "Catch some fish and defend them from drowned."
+    objectives:
+      catch_fish:
+        type: FISH
+        target: ANY
+        amount: 12
+        description: "Catch fish"
+      clear_drowned:
+        type: KILL
+        target: DROWNED
+        amount: 6
+        description: "Defeat drowned"
+    rewards:
+      experience: 220
+      skill-xp:
+        fishing: 50
+        archery: 15
+      items:
+        - "NAUTILUS_SHELL:1"
+
+  radiant_hostile_hunt:
+    enabled: true
+    display-name: "Monster Hunt"
+    icon: IRON_SWORD
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Kill hostile mobs."
+    objectives:
+      hunt:
+        type: KILL
+        target: HOSTILE
+        amount: 12
+        description: "Kill hostile mobs"
+    rewards:
+      experience: 70
+      skill-xp:
+        one_handed: 12
+
+  radiant_zombie_hunt:
+    enabled: true
+    display-name: "Zombie Hunt"
+    icon: ROTTEN_FLESH
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Kill zombies."
+    objectives:
+      zombies:
+        type: KILL
+        target: ZOMBIE
+        amount: 10
+        description: "Kill zombies"
+    rewards:
+      experience: 65
+      skill-xp:
+        one_handed: 10
+
+  radiant_skeleton_hunt:
+    enabled: true
+    display-name: "Skeleton Hunt"
+    icon: BONE
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Kill skeletons."
+    objectives:
+      skeletons:
+        type: KILL
+        target: SKELETON
+        amount: 10
+        description: "Kill skeletons"
+    rewards:
+      experience: 65
+      skill-xp:
+        archery: 10
+
+  radiant_creeper_hunt:
+    enabled: true
+    display-name: "Creeper Hunt"
+    icon: GUNPOWDER
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Kill creepers."
+    objectives:
+      creepers:
+        type: KILL
+        target: CREEPER
+        amount: 6
+        description: "Kill creepers"
+    rewards:
+      experience: 75
+      skill-xp:
+        archery: 12
+
+  radiant_spider_hunt:
+    enabled: true
+    display-name: "Spider Hunt"
+    icon: SPIDER_EYE
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Kill spiders."
+    objectives:
+      spiders:
+        type: KILL
+        target: "SPIDER|CAVE_SPIDER"
+        amount: 10
+        description: "Kill spiders"
+    rewards:
+      experience: 65
+      skill-xp:
+        one_handed: 10
+
+  radiant_blaze_hunt:
+    enabled: true
+    display-name: "Blaze Hunt"
+    icon: BLAZE_ROD
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Kill blazes in the Nether."
+    objectives:
+      blazes:
+        type: KILL
+        target: BLAZE
+        amount: 6
+        description: "Kill blazes"
+    rewards:
+      experience: 110
+      skill-xp:
+        one_handed: 15
+
+  radiant_iron_mining:
+    enabled: true
+    display-name: "Mine Iron"
+    icon: RAW_IRON
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Mine iron ore."
+    objectives:
+      iron:
+        type: MINE
+        target: "IRON_ORE|DEEPSLATE_IRON_ORE"
+        amount: 16
+        description: "Mine iron ore"
+    rewards:
+      experience: 65
+      skill-xp:
+        mining: 18
+
+  radiant_coal_mining:
+    enabled: true
+    display-name: "Mine Coal"
+    icon: COAL
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Mine coal ore."
+    objectives:
+      coal:
+        type: MINE
+        target: "COAL_ORE|DEEPSLATE_COAL_ORE"
+        amount: 20
+        description: "Mine coal ore"
+    rewards:
+      experience: 55
+      skill-xp:
+        mining: 15
+
+  radiant_redstone_mining:
+    enabled: true
+    display-name: "Mine Redstone"
+    icon: REDSTONE
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Mine redstone ore."
+    objectives:
+      redstone:
+        type: MINE
+        target: "REDSTONE_ORE|DEEPSLATE_REDSTONE_ORE"
+        amount: 14
+        description: "Mine redstone ore"
+    rewards:
+      experience: 80
+      skill-xp:
+        mining: 20
+
+  radiant_lumber:
+    enabled: true
+    display-name: "Chop Wood"
+    icon: IRON_AXE
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Chop logs."
+    objectives:
+      logs:
+        type: BREAK
+        target: LOGS
+        amount: 24
+        description: "Chop logs"
+    rewards:
+      experience: 55
+      skill-xp:
+        mining: 18
+
+  radiant_harvest:
+    enabled: true
+    display-name: "Harvest Crops"
+    icon: WHEAT
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Harvest crops."
+    objectives:
+      crops:
+        type: HARVEST
+        target: FARM_PRODUCE
+        amount: 24
+        description: "Harvest crops"
+    rewards:
+      experience: 55
+      skill-xp:
+        farming: 18
+
+  radiant_planting:
+    enabled: true
+    display-name: "Plant Crops"
+    icon: WHEAT_SEEDS
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Plant crops."
+    objectives:
+      crops:
+        type: PLANT
+        target: CROPS
+        amount: 24
+        description: "Plant crops"
+    rewards:
+      experience: 45
+      skill-xp:
+        farming: 15
+
+  radiant_catch_fish:
+    enabled: true
+    display-name: "Catch fish"
+    icon: FISHING_ROD
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Catch fish."
+    objectives:
+      catches:
+        type: FISH
+        target: ANY
+        amount: 6
+        description: "Catch fish"
+    rewards:
+      experience: 65
+      skill-xp:
+        fishing: 18
+
+  radiant_smelting:
+    enabled: true
+    display-name: "Smelt Iron"
+    icon: FURNACE
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Smelt iron ingots."
+    objectives:
+      ingots:
+        type: SMELT
+        target: IRON_INGOT
+        amount: 16
+        description: "Smelt iron ingots"
+    rewards:
+      experience: 60
+      skill-xp:
+        smithing: 18
+
+  radiant_weapon_crafting:
+    enabled: true
+    display-name: "Craft Weapons"
+    icon: ANVIL
+    category: repeatable
+    repeatable: true
+    cooldown-seconds: 0
+    description:
+      - "Craft weapons."
+    objectives:
+      weapons:
+        type: CRAFT
+        target: WEAPON
+        amount: 3
+        description: "Craft weapons"
+    rewards:
+      experience: 65
+      skill-xp:
+        smithing: 20

@@ -1,0 +1,34 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 14
+enabled: true
+update-interval-ticks: 20
+show-title: true
+show-numbers: false
+title: "&m          &l&cLOTN&r&m          "
+
+quest-bar:
+  enabled: true
+  color: YELLOW
+  style: SEGMENTED_10
+  update-interval-ticks: 10
+  title-format: "&f{quest} &8• &7{objective}"
+
+lines:
+  - "&a★ &lCharacter"
+  - "&fName: &7{character_name}"
+  - "&fMoney: &7◈{balance}"
+  - ""
+  - "&7★ &lPhysical"
+  - "&fArmor: &e{armor_rating}"
+  - "&fCarry: &e{weight}"
+  - ""
+  - "&9★ &lLevel"
+  - "&fLevel: &7{level}"
+  - "&fXP: &7{xp}/{xp_required}"
+  - ""
+  - "&d★ &lWorld"
+  - "&fDate: &7{date}"
+  - "&fTemp: &7{temp_c}"

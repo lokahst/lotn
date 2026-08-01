@@ -1,0 +1,260 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 23
+
+chat:
+  prefix: "&a&lLOTN > &7"
+
+console:
+  rate-limit-duplicate-entity-uuid-warnings: true
+  duplicate-entity-uuid-warning-rate-limit-seconds: 30
+
+links:
+  website: "https://lokahst.dev"
+  discord: "https://lokahst.dev/discord"
+
+leveling:
+  max-level: 100
+  xp-curve:
+    # level 1 = 115, then +28 XP per level
+    base-xp: 115.0
+    xp-per-level: 28.0
+  legacy-direct-xp-enabled: false
+  activity-xp:
+    enabled: true
+    shield-block:
+      per-damage-prevented: 0.06
+      maximum-per-hit: 0.75
+    equipment-crafting:
+      skill-xp-fraction: 0.20
+    equipment-upgrading:
+      skill-xp-fraction: 0.08
+  show-gain-message: false
+  skill-level-contribution:
+    base-xp: 75.0
+    skill-level-exponent: 1.35
+    overlevel-gap-penalty: 0.018
+    minimum-diversity-multiplier: 0.65
+  messages:
+    level-up: "Overall level increased to {level}."
+    vitality-choice: "Choose Health, Stamina, or Magicka to increase by 10. Pending choices: {pending_choices}."
+    xp-gain: "+{amount} overall XP from {reason}."
+  feedback:
+    enabled: true
+    sound: UI_TOAST_CHALLENGE_COMPLETE
+    sound-volume: 0.65
+    sound-pitch: 1.2
+    particle: END_ROD
+    particle-amount: 12
+  action-bar:
+    enabled: true
+    hold-millis: 1800
+    summary-message: "&6LOTN Lv. {level} &8• &e{current_xp}&7/&e{required_xp} XP"
+    gain-message: "&a+{amount} Overall XP &8• &6Lv. {level} &e{current_xp}&7/&e{required_xp}"
+
+systems:
+  skills: true
+  quests: true
+  discovery: true
+  codex-viewer: true
+  codex: true
+  achievements: true
+  fishing: true
+  temperature: true
+  injuries: true
+  weight: true
+  fast-travel: true
+  mob-scaling: true
+  alchemy: true
+
+shouts:
+  enabled-by-default: true
+  unlocked-words-by-default: 3
+  activation:
+    double-shift-window-ms: 350
+  gui:
+    title: "Shouts"
+    show-locked-shouts: true
+    show-cooldowns: true
+    show-magicka-cost: true
+  unrelenting-force:
+    cooldown-seconds: 12
+    magicka-cost: 25
+    range: 10.0
+    cone-angle-degrees: 55.0
+    damage: 2.0
+    horizontal-force: 2.4
+    vertical-force: 0.45
+    stagger-duration-ticks: 40
+    affect-players: false
+    affect-tamed-animals: false
+    respect-line-of-sight: true
+    force:
+      minimum-distance-multiplier: 0.45
+      minimum-edge-multiplier: 0.65
+      small-mob-multiplier: 1.15
+      large-mob-multiplier: 0.70
+      iron-golem-multiplier: 0.45
+      ravager-multiplier: 0.45
+      warden-multiplier: 0.25
+      wither-multiplier: 0.15
+      maximum-horizontal-velocity: 3.0
+    visual:
+      rings: 12
+      particles-per-ring: 24
+      duration-ticks: 10
+  whirlwind-sprint:
+    cooldown-seconds: 10
+    magicka-cost: 25
+    distance-by-words:
+      - 7.0
+      - 11.0
+      - 15.0
+    speed-by-words:
+      - 2.0
+      - 2.6
+      - 3.2
+    safety-margin: 1.25
+  fire-breath:
+    cooldown-seconds: 18
+    magicka-cost: 30
+    range-by-words:
+      - 10.0
+      - 14.0
+      - 18.0
+    damage-by-words:
+      - 4.0
+      - 7.0
+      - 10.0
+    fire-ticks-by-words:
+      - 80
+      - 120
+      - 160
+    cone-angle-degrees: 55.0
+    affect-players: false
+    affect-tamed-animals: false
+    respect-line-of-sight: true
+    dragon-damage-multiplier: 0.15
+    visual:
+      rings: 12
+      particles-per-ring: 28
+      duration-ticks: 12
+  become-ethereal:
+    cooldown-seconds: 45
+    magicka-cost: 35
+    duration-ticks-by-words:
+      - 60
+      - 100
+      - 160
+  storm-call:
+    cooldown-seconds: 1200
+    magicka-cost: 60
+    duration-ticks: 1200
+    minimum-strike-delay-seconds: 3
+    maximum-strike-delay-seconds: 6
+    target-radius: 64.0
+    lightning-damage: 8.0
+  aura-whisper:
+    cooldown-seconds: 300
+    magicka-cost: 30
+    range-by-words:
+      - 15.0
+      - 22.0
+      - 30.0
+    duration-ticks-by-words:
+      - 200
+      - 400
+      - 600
+  battle-cry:
+    cooldown-seconds: 3600
+    magicka-cost: 50
+    range-by-words:
+      - 20.0
+      - 25.0
+      - 30.0
+    duration-ticks: 400
+  clear-skies:
+    cooldown-seconds: 300
+    magicka-cost: 20
+    clear-duration-ticks: 12000
+  dragon-aspect:
+    cooldown-seconds: 3600
+    magicka-cost: 75
+    duration-ticks: 6000
+    armor-rating-bonus: 0.20
+
+worlds:
+  whitelist: []
+  blacklist: []
+
+storage:
+  autosave-ticks: 6000
+  dirty-flush-ticks: 100
+  backup-legacy-profiles: true
+  playerdata-backups:
+    online-interval-minutes: 10
+    full-save-interval-minutes: 180
+    cleanup:
+      enabled: false
+      inactivity-months: 12
+
+character-creation:
+  enabled: true
+  setup-title: "&0Create your LOTN Character"
+  race-title: "&0Choose Your Race"
+  chat-input:
+    prompt: "&6Type your LOTN character name in chat. Type &ecancel &6to stop."
+    cancel-word: "cancel"
+  name:
+    minimum-length: 3
+    maximum-length: 20
+    allowed-pattern: "[A-Za-z][A-Za-z0-9 _'\\-]*"
+    blacklist: []
+    unique: true
+vitals:
+  health-upgrade: 10.0
+  stamina-upgrade: 10.0
+  magicka-upgrade: 10.0
+  health-display-per-minecraft-health: 5.0
+  health-scale: 20.0
+  stamina-drain-multiplier: 0.50
+  stamina-sprint-drain-per-second: 10.0
+  stamina-shield-drain-per-second: 12.0
+  stamina-regen-per-second: 18.0
+  exhaustion-slowness-level: 5
+  exhaustion-duration-ticks: 40
+  exhaustion-recovery-threshold: 0.25
+  magicka-regen-per-second: 20.0
+  empty-stamina-shield-cooldown-ticks: 25
+  attacks:
+    cost-multiplier: 1.0
+    sword-cost: 6.5
+    axe-cost: 7.0
+    mace-cost: 7.0
+    spear-cost: 6.5
+    ranged-cost: 6.5
+    power-cost: 16.5
+    power-cooldown-threshold: 0.90
+    regeneration-delay-ticks: 80
+    exhausted-cooldown-ticks: 24
+
+world-settings:
+  enchanting-table:
+    enabled: true
+  enchanted-books:
+    enabled: true
+
+trading:
+  enabled: true
+  price-multiplier: 1.4
+
+weight:
+  base-capacity: 200.0
+  overweight-speed-penalty-percent: 15.0
+  heavy-armor-capacity-per-rank: 10.0
+  heavy-armor-capacity-max: 50.0
+  light-armor-capacity-per-rank: 6.0
+  light-armor-capacity-max: 30.0
+  heavy-regen-multiplier: 0.5

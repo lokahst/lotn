@@ -1,0 +1,25 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 1
+enabled: true
+categories:
+  fish:
+    display-name: "Fish"
+    icon: COD
+  discovery:
+    display-name: "Discoveries"
+    icon: COMPASS
+  enchantment:
+    display-name: "Enchantments"
+    icon: ENCHANTED_BOOK
+  quest:
+    display-name: "Completed Tales"
+    icon: WRITABLE_BOOK
+  elite:
+    display-name: "Elite Enemies"
+    icon: WITHER_SKELETON_SKULL
+  achievement:
+    display-name: "Achievements"
+    icon: NETHER_STAR

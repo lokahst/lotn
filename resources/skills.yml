@@ -1,0 +1,696 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 21
+
+migration:
+  old-data-policy: ARCHIVE_AND_RESET
+  percentage-source-max-level: 100
+
+multipliers:
+  global: 1.0
+  server-event: 1.0
+  worlds: {}
+  permissions: {}
+  mob-types: {}
+  mob-tiers:
+    1: 1.0
+    2: 1.08
+    3: 1.16
+    4: 1.24
+    5: 1.32
+    6: 1.40
+
+debug:
+  enabled: false
+
+item-progression:
+  enabled: true
+  max-level: 100
+  weapon:
+    experience-per-kill: 1.0
+    experience-per-level: 1.0
+  armor:
+    experience-per-damage: 1.0
+    experience-per-level: 10.0
+
+anti-exploit:
+  maximum-single-xp-gain: 10000
+  allow-pvp-xp: false
+  allow-friendly-targets: false
+  allow-player-spawned-mobs: false
+  allow-environmental-armor-xp: false
+  allow-dispenser-projectile-xp: false
+  excluded-entities: [ARMOR_STAND]
+  player-spawned-multiplier: 0.25
+  low-level-mob:
+    enabled: true
+    full-xp-level-gap: 5
+    reduction-per-level: 0.05
+    minimum-multiplier: 0.20
+  repeated-target:
+    enabled: true
+    window-millis: 30000
+    full-xp-actions: 6
+    reduction-per-action: 0.12
+    minimum-multiplier: 0.15
+  movement:
+    afk-after-seconds: 120
+    minimum-distance: 0.20
+    maximum-segment-distance: 8.0
+    repeated-cell-window: 12
+  trading:
+    resale-window-seconds: 120
+    repeat-window-seconds: 60
+    full-xp-transactions: 3
+    minimum-multiplier: 0.10
+
+notifications:
+  xp-gain-chat: false
+  xp-gain-message: "&7+{amount} {skill} XP ({source})"
+  xp-action-bar:
+    enabled: true
+    hold-millis: 1800
+    message: "&a+{amount} {skill} XP &8• &6Lv. {level} &e{current_xp}&7/&e{required_xp}"
+  chat:
+    enabled: true
+    message: "&a{skill} increased to Level {level}!\n&6Unlocked: &e{reward}\n&7{description}"
+  action-bar:
+    enabled: false
+    message: "&6{skill} {level}: &e{reward}"
+  title:
+    enabled: false
+    title: "&6{skill} {level}"
+    subtitle: "&e{reward}"
+  sound:
+    enabled: true
+    name: ui.toast.challenge_complete
+    volume: 0.7
+    pitch: 1.2
+  particles:
+    enabled: true
+    type: END_ROD
+    amount: 12
+
+categories:
+  combat:
+    display-name: "Combat"
+    icon: IRON_SWORD
+    description: "Weapon, blocking, and armor mastery."
+  crafting_gathering:
+    display-name: "Crafting & Gathering"
+    icon: CRAFTING_TABLE
+    description: "Create, improve, harvest, and discover."
+  utility:
+    display-name: "Utility"
+    icon: COMPASS
+    description: "Travel, trade, and practical expertise."
+
+gui:
+  progress-bar-length: 10
+  unlocked-material: LIME_STAINED_GLASS_PANE
+  locked-material: GRAY_STAINED_GLASS_PANE
+  category-slots: [20, 22, 24]
+  skill-slots: [10, 12, 14, 16, 28, 30]
+  rewards-per-page: 28
+
+integrations:
+  requirements:
+    alchemy-splash:
+      enabled: false
+    alchemy-lingering:
+      enabled: false
+    rotating-merchant-offers:
+      enabled: false
+  economy:
+    supported-shop-enabled: true
+    sale-price-must-not-exceed-purchase-price: true
+  headshots:
+    upper-hitbox-fraction: 0.28
+    excluded-entities: [ENDER_DRAGON, WITHER]
+  fast-travel:
+    preparation-seconds: 5
+    cooldown-seconds: 30
+    nearby-hostile-radius: 12
+    damage-lock-seconds: 8
+    region-provider: NONE
+  armor:
+    heavy-material-prefixes: [CHAINMAIL, IRON, DIAMOND, NETHERITE]
+    light-material-prefixes: [LEATHER]
+  farming:
+    automatic-replant-default: true
+  alchemy:
+    base-brewing-seconds: 5.0
+  mining:
+    valid-tool-suffixes: [AXE, PICKAXE]
+  fishing:
+    legendary-base-chance: 0.002
+    mythic-base-chance: 0.0002
+
+xp-values:
+  combat:
+    per-damage: 0.70
+    maximum-per-hit: 12.0
+    kill-bonus-per-max-health: 0.08
+    maximum-kill-bonus: 6.0
+    critical-bonus: 0.10
+    boss-bonus: 1.5
+    mob-tier-bonus: 0.08
+  archery:
+    distance-bonus-per-block: 0.01
+    maximum-distance-bonus: 1.0
+    headshot-bonus: 1.25
+    moving-target-bonus: 1.10
+    moving-target-minimum-speed: 0.08
+  unarmed:
+    combo-percent-per-hit: 0.05
+    combo-maximum-percent: 0.20
+    combo-window-millis: 2000
+    armored-target-multiplier: 1.15
+    boss-multiplier: 1.50
+  blocking:
+    per-damage-prevented: 0.90
+    perfect-block: 4.0
+    projectile-block: 2.0
+    shield-bash: 3.0
+    maximum-per-hit: 12.0
+  armor:
+    per-damage: 0.45
+    maximum-per-hit: 8.0
+    encounter-survival: 5.0
+    valid-causes: [ENTITY_ATTACK, ENTITY_SWEEP_ATTACK, PROJECTILE, ENTITY_EXPLOSION]
+  smithing:
+    crafting-base: 1.0
+    repair-per-durability: 0.05
+    useful-smelt: 1.0
+    equipment-upgrade: 8.0
+  enchanting:
+    discovery: 12.0
+    enchanted-drop: 5.0
+    tier-multiplier: 1.5
+    activation: 0.5
+  alchemy:
+    brewing: 12.0
+    quality-tier-multiplier: 1.25
+    first-recipe: 8.0
+    study-success: 6.0
+    useful-use: 2.0
+  mining:
+    first-natural-material: 5.0
+    dangerous-depth-maximum-y: 0
+    natural-blocks:
+      COAL_ORE: 1.0
+      COPPER_ORE: 1.2
+      IRON_ORE: 1.5
+      GOLD_ORE: 2.0
+      REDSTONE_ORE: 1.8
+      LAPIS_ORE: 2.0
+      DIAMOND_ORE: 4.0
+      EMERALD_ORE: 5.0
+      NETHER_GOLD_ORE: 1.5
+      NETHER_QUARTZ_ORE: 1.2
+      ANCIENT_DEBRIS: 8.0
+    deepslate-multiplier: 1.20
+    dangerous-depth-multiplier: 1.15
+  farming:
+    mature-harvest: 2.0
+    planting: 0.25
+    first-crop-type: 5.0
+    breeding: 4.0
+    animal-product: 1.0
+    farm-sale-per-value: 0.02
+  fishing:
+    base-catch: 4.0
+    treasure: 8.0
+    first-species: 12.0
+    legendary: 25.0
+  wayfaring:
+    distance-per-block: 0.02
+    biome-discovery: 15.0
+    new-bed: 10.0
+    dimension: 30.0
+    destination-reached: 8.0
+  trading:
+    per-value: 0.02
+    merchant-variety: 5.0
+    large-transaction-minimum-value: 64.0
+    large-transaction: 10.0
+
+skills:
+  one_handed:
+    display-name: "One-Handed"
+    category: combat
+    icon: IRON_SWORD
+    description: "Master configured one-handed swords and axes."
+    max-level: 30
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Valid weapon damage", "Critical hits and kills", "Elite and boss participation"]
+    rewards:
+      1: {name: "Weapon Training I", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
+      2: {name: "Critical Force I", description: "+5% one-handed critical damage", modifiers: {one-handed.critical-damage-percent: "ADD:5"}}
+      3: {name: "Power Strike I", description: "5% chance to deal +3 damage", modifiers: {one-handed.power-strike-chance: "MAX:5", one-handed.power-strike-damage: "MAX:3"}}
+      4: {name: "Weapon Training II", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
+      5: {name: "Adrenaline I", description: "+5% damage below 30% maximum health", modifiers: {one-handed.low-health-damage-percent: "MAX:5", combat.low-health-threshold-percent: "LATEST:30"}}
+      6: {name: "Critical Eye I", description: "+1% one-handed critical chance", modifiers: {one-handed.critical-chance-percent: "ADD:1"}}
+      7: {name: "Weapon Training III", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
+      8: {name: "Power Strike II", description: "7% chance to deal +4 damage", modifiers: {one-handed.power-strike-chance: "MAX:7", one-handed.power-strike-damage: "MAX:4"}}
+      9: {name: "Critical Force II", description: "+5% one-handed critical damage", modifiers: {one-handed.critical-damage-percent: "ADD:5"}}
+      10: {name: "Duelist I", description: "+5% damage while the offhand is empty", modifiers: {one-handed.duelist-damage-percent: "MAX:5"}}
+      11: {name: "Weapon Training IV", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
+      12: {name: "Efficient Strikes", description: "One-handed attacks cost 5% less stamina", modifiers: {one-handed.stamina-cost-reduction-percent: "MAX:5"}}
+      13: {name: "Critical Eye II", description: "+1% one-handed critical chance", modifiers: {one-handed.critical-chance-percent: "ADD:1"}}
+      14: {name: "Weapon Training V", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
+      15: {name: "Adrenaline II", description: "Low-health bonus becomes +10%", modifiers: {one-handed.low-health-damage-percent: "MAX:10"}}
+      16: {name: "Deep Wounds I", description: "5% chance to deal 3 bleeding damage", modifiers: {one-handed.bleed-chance: "MAX:5", one-handed.bleed-damage: "MAX:3"}}
+      17: {name: "Critical Force III", description: "+5% one-handed critical damage", modifiers: {one-handed.critical-damage-percent: "ADD:5"}}
+      18: {name: "Weapon Training VI", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
+      19: {name: "Momentum", description: "Consecutive hits gain +2% damage per hit, up to +6%", modifiers: {one-handed.momentum-percent-per-hit: "MAX:2", one-handed.momentum-maximum-percent: "MAX:6"}}
+      20: {name: "Duelist II", description: "Empty-offhand bonus becomes +10%", modifiers: {one-handed.duelist-damage-percent: "MAX:10"}}
+      21: {name: "Critical Eye III", description: "+1% one-handed critical chance", modifiers: {one-handed.critical-chance-percent: "ADD:1"}}
+      22: {name: "Weapon Training VII", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
+      23: {name: "Power Strike III", description: "10% chance to deal +5 damage", modifiers: {one-handed.power-strike-chance: "MAX:10", one-handed.power-strike-damage: "MAX:5"}}
+      24: {name: "Critical Force IV", description: "+5% one-handed critical damage", modifiers: {one-handed.critical-damage-percent: "ADD:5"}}
+      25: {name: "Giant Slayer", description: "+5% damage against elites and bosses", modifiers: {one-handed.elite-damage-percent: "MAX:5"}}
+      26: {name: "Weapon Training VIII", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
+      27: {name: "Battle Rhythm", description: "Critical hits restore 2 stamina; 2-second cooldown", modifiers: {one-handed.critical-stamina-restore: "MAX:2", one-handed.critical-stamina-cooldown-seconds: "MAX:2"}}
+      28: {name: "Deep Wounds II", description: "8% chance to deal 4 bleeding damage", modifiers: {one-handed.bleed-chance: "MAX:8", one-handed.bleed-damage: "MAX:4"}}
+      29: {name: "Critical Eye IV", description: "+1% one-handed critical chance", modifiers: {one-handed.critical-chance-percent: "ADD:1"}}
+      30: {name: "Swordmaster", description: "+1 damage and +10% one-handed attack speed", modifiers: {one-handed.damage-flat: "ADD:1", one-handed.attack-speed-percent: "MAX:10"}}
+
+  archery:
+    display-name: "Archery"
+    category: combat
+    icon: BOW
+    description: "Master bows and crossbows at every range."
+    max-level: 30
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Projectile damage and distance", "Headshots and moving targets", "Kills and boss participation"]
+    rewards:
+      1: {name: "Projectile Training I", description: "+0.5 projectile damage", modifiers: {archery.damage-flat: "ADD:0.5"}}
+      2: {name: "Critical Force I", description: "+5% projectile critical damage", modifiers: {archery.critical-damage-percent: "ADD:5"}}
+      3: {name: "Steady Aim I", description: "+5% damage after standing still for 1 second", modifiers: {archery.steady-aim-percent: "MAX:5", archery.steady-aim-seconds: "LATEST:1"}}
+      4: {name: "Projectile Training II", description: "+0.5 projectile damage", modifiers: {archery.damage-flat: "ADD:0.5"}}
+      5: {name: "Quick Draw I", description: "+5% bow draw speed", modifiers: {archery.draw-speed-percent: "MAX:5"}}
+      6: {name: "Critical Eye I", description: "+1% projectile critical chance", modifiers: {archery.critical-chance-percent: "ADD:1"}}
+      7: {name: "Projectile Training III", description: "+0.5 projectile damage", modifiers: {archery.damage-flat: "ADD:0.5"}}
+      8: {name: "Longshot I", description: "+5% damage beyond 20 blocks", modifiers: {archery.longshot-damage-percent: "MAX:5", archery.longshot-distance: "LATEST:20"}}
+      9: {name: "Critical Force II", description: "+5% projectile critical damage", modifiers: {archery.critical-damage-percent: "ADD:5"}}
+      10: {name: "Hunter's Focus I", description: "Headshots deal +10% damage", modifiers: {archery.headshot-damage-percent: "MAX:10"}}
+      11: {name: "Projectile Training IV", description: "+0.5 projectile damage", modifiers: {archery.damage-flat: "ADD:0.5"}}
+      12: {name: "Conservation I", description: "5% chance not to consume arrows", modifiers: {archery.ammo-conservation-chance: "MAX:5"}}
+      13: {name: "Critical Eye II", description: "+1% critical chance", modifiers: {archery.critical-chance-percent: "ADD:1"}}
+      14: {name: "Projectile Training V", description: "+0.5 projectile damage", modifiers: {archery.damage-flat: "ADD:0.5"}}
+      15: {name: "Quick Draw II", description: "Draw-speed bonus becomes +10%", modifiers: {archery.draw-speed-percent: "MAX:10"}}
+      16: {name: "Crippling Shot I", description: "5% chance to slow for 2 seconds", modifiers: {archery.cripple-chance: "MAX:5", archery.cripple-duration-seconds: "MAX:2"}}
+      17: {name: "Critical Force III", description: "+5% critical damage", modifiers: {archery.critical-damage-percent: "ADD:5"}}
+      18: {name: "Projectile Training VI", description: "+0.5 projectile damage", modifiers: {archery.damage-flat: "ADD:0.5"}}
+      19: {name: "Steady Aim II", description: "Standing-still bonus becomes +10%", modifiers: {archery.steady-aim-percent: "MAX:10"}}
+      20: {name: "Hunter's Focus II", description: "Headshot bonus becomes +20%", modifiers: {archery.headshot-damage-percent: "MAX:20"}}
+      21: {name: "Critical Eye III", description: "+1% critical chance", modifiers: {archery.critical-chance-percent: "ADD:1"}}
+      22: {name: "Projectile Training VII", description: "+0.5 projectile damage", modifiers: {archery.damage-flat: "ADD:0.5"}}
+      23: {name: "Longshot II", description: "Long-range bonus becomes +10%", modifiers: {archery.longshot-damage-percent: "MAX:10"}}
+      24: {name: "Critical Force IV", description: "+5% critical damage", modifiers: {archery.critical-damage-percent: "ADD:5"}}
+      25: {name: "Conservation II", description: "Arrow-conservation chance becomes 10%", modifiers: {archery.ammo-conservation-chance: "MAX:10"}}
+      26: {name: "Projectile Training VIII", description: "+0.5 projectile damage", modifiers: {archery.damage-flat: "ADD:0.5"}}
+      27: {name: "Crippling Shot II", description: "8% chance to slow for 3 seconds", modifiers: {archery.cripple-chance: "MAX:8", archery.cripple-duration-seconds: "MAX:3"}}
+      28: {name: "Piercing Shot", description: "6% chance to ignore 30% of target armor", modifiers: {archery.pierce-chance: "MAX:6", archery.armor-ignore-percent: "MAX:30"}}
+      29: {name: "Critical Eye IV", description: "+1% critical chance", modifiers: {archery.critical-chance-percent: "ADD:1"}}
+      30: {name: "Master Archer", description: "+1 damage, +5% draw speed, and +10% projectile speed", modifiers: {archery.damage-flat: "ADD:1", archery.draw-speed-percent: "ADD:5", archery.projectile-speed-percent: "MAX:10"}}
+
+  blocking:
+    display-name: "Blocking"
+    category: combat
+    icon: SHIELD
+    description: "Prevent real damage with blocking and stamina."
+    max-level: 30
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Damage actually prevented", "Perfect blocks and projectiles", "Shield bashes"]
+    rewards:
+      1: {name: "Block Strength I", description: "+2% blocked damage", modifiers: {blocking.damage-percent: "ADD:2"}}
+      2: {name: "Efficient Guard I", description: "Blocking costs 5% less stamina", modifiers: {blocking.stamina-cost-reduction-percent: "ADD:5"}}
+      3: {name: "Brace I", description: "+10% knockback resistance while blocking", modifiers: {blocking.knockback-resistance-percent: "ADD:10"}}
+      4: {name: "Block Strength II", description: "+2% blocked damage", modifiers: {blocking.damage-percent: "ADD:2"}}
+      5: {name: "Perfect Block I", description: "Timed blocks absorb 20% additional damage", modifiers: {blocking.perfect-block-extra-percent: "MAX:20", blocking.perfect-window-millis: "LATEST:250"}}
+      6: {name: "Guarded Endurance I", description: "+5 maximum stamina", modifiers: {blocking.maximum-stamina: "ADD:5"}}
+      7: {name: "Block Strength III", description: "+2% blocked damage", modifiers: {blocking.damage-percent: "ADD:2"}}
+      8: {name: "Deflection I", description: "5% chance to reflect projectiles", modifiers: {blocking.projectile-reflect-chance: "MAX:5"}}
+      9: {name: "Efficient Guard II", description: "Blocking costs another 5% less stamina", modifiers: {blocking.stamina-cost-reduction-percent: "ADD:5"}}
+      10: {name: "Shield Bash I", description: "Unlock shield bash and basic stagger", modifiers: {blocking.shield-bash-rank: "LATEST:1", blocking.shield-bash-damage: "LATEST:2", blocking.shield-bash-stagger-ticks: "LATEST:10"}}
+      11: {name: "Block Strength IV", description: "+2% blocked damage", modifiers: {blocking.damage-percent: "ADD:2"}}
+      12: {name: "Brace II", description: "Another +10% knockback resistance while blocking", modifiers: {blocking.knockback-resistance-percent: "ADD:10"}}
+      13: {name: "Efficient Guard III", description: "Blocking costs another 5% less stamina", modifiers: {blocking.stamina-cost-reduction-percent: "ADD:5"}}
+      14: {name: "Block Strength V", description: "+2% blocked damage", modifiers: {blocking.damage-percent: "ADD:2"}}
+      15: {name: "Perfect Block II", description: "Larger timing window and restore 2 stamina", modifiers: {blocking.perfect-window-millis: "LATEST:400", blocking.perfect-stamina-restore: "MAX:2"}}
+      16: {name: "Fortress I", description: "Blocking 10 damage grants 5% resistance for 3 seconds", modifiers: {blocking.fortress-trigger-damage: "LATEST:10", blocking.fortress-resistance-percent: "MAX:5", blocking.fortress-duration-seconds: "LATEST:3"}}
+      17: {name: "Guarded Endurance II", description: "+5 maximum stamina", modifiers: {blocking.maximum-stamina: "ADD:5"}}
+      18: {name: "Block Strength VI", description: "+2% blocked damage", modifiers: {blocking.damage-percent: "ADD:2"}}
+      19: {name: "Deflection II", description: "Projectile reflection becomes 10%", modifiers: {blocking.projectile-reflect-chance: "MAX:10"}}
+      20: {name: "Shield Bash II", description: "Increased bash damage and stagger", modifiers: {blocking.shield-bash-rank: "LATEST:2", blocking.shield-bash-damage: "LATEST:4", blocking.shield-bash-stagger-ticks: "LATEST:20"}}
+      21: {name: "Efficient Guard IV", description: "Blocking costs another 5% less stamina", modifiers: {blocking.stamina-cost-reduction-percent: "ADD:5"}}
+      22: {name: "Block Strength VII", description: "+2% blocked damage", modifiers: {blocking.damage-percent: "ADD:2"}}
+      23: {name: "Projectile Guard", description: "Projectiles cost 25% less stamina to block", modifiers: {blocking.projectile-stamina-reduction-percent: "MAX:25"}}
+      24: {name: "Brace III", description: "Another +10% knockback resistance while blocking", modifiers: {blocking.knockback-resistance-percent: "ADD:10"}}
+      25: {name: "Perfect Block III", description: "Restore 4 stamina and interrupt the attacker", modifiers: {blocking.perfect-stamina-restore: "MAX:4", blocking.perfect-interrupt: "LATEST:1"}}
+      26: {name: "Block Strength VIII", description: "+2% blocked damage", modifiers: {blocking.damage-percent: "ADD:2"}}
+      27: {name: "Fortress II", description: "Temporary resistance becomes 10%", modifiers: {blocking.fortress-resistance-percent: "MAX:10"}}
+      28: {name: "Deflection III", description: "Projectile reflection becomes 15%", modifiers: {blocking.projectile-reflect-chance: "MAX:15"}}
+      29: {name: "Steadfast", description: "Shield-disable duration reduced by 30%", modifiers: {blocking.shield-disable-reduction-percent: "MAX:30"}}
+      30: {name: "Bulwark", description: "+4% blocked damage and knockback immunity while blocking", modifiers: {blocking.damage-percent: "ADD:4", blocking.knockback-immunity: "LATEST:1"}}
+
+  heavy_armor:
+    display-name: "Heavy Armor"
+    category: combat
+    icon: IRON_CHESTPLATE
+    description: "Resist damage in chainmail, iron, diamond, and netherite heavy armor."
+    max-level: 30
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Legitimate combat damage received or prevented", "Matching heavy pieces", "Surviving meaningful encounters"]
+    rewards:
+      1: {name: "Heavy Resistance I", description: "+1% physical resistance while wearing heavy armor", modifiers: {heavy-armor.physical-resistance-percent: "ADD:1"}}
+      2: {name: "Heavy Vitality I", description: "+2 maximum health", modifiers: {heavy-armor.maximum-health: "ADD:2"}}
+      3: {name: "Heavy Poise I", description: "+10% knockback resistance", modifiers: {heavy-armor.knockback-resistance-percent: "ADD:10"}}
+      4: {name: "Heavy Resistance II", description: "+1% physical resistance", modifiers: {heavy-armor.physical-resistance-percent: "ADD:1"}}
+      5: {name: "Burden Training I", description: "Heavy-armor stamina penalty reduced by 10%", modifiers: {heavy-armor.stamina-penalty-reduction-percent: "MAX:10"}}
+      6: {name: "Missile Guard I", description: "+5% projectile resistance", modifiers: {heavy-armor.projectile-resistance-percent: "ADD:5"}}
+      7: {name: "Heavy Resistance III", description: "+1% physical resistance", modifiers: {heavy-armor.physical-resistance-percent: "ADD:1"}}
+      8: {name: "Iron Skin I", description: "5% chance to reduce incoming damage by 25%", modifiers: {heavy-armor.iron-skin-chance: "MAX:5", heavy-armor.iron-skin-reduction-percent: "LATEST:25"}}
+      9: {name: "Heavy Vitality II", description: "+2 maximum health", modifiers: {heavy-armor.maximum-health: "ADD:2"}}
+      10: {name: "Juggernaut I", description: "+5% melee damage in a full heavy set", modifiers: {heavy-armor.full-set-melee-damage-percent: "MAX:5"}}
+      11: {name: "Heavy Resistance IV", description: "+1% physical resistance", modifiers: {heavy-armor.physical-resistance-percent: "ADD:1"}}
+      12: {name: "Heavy Poise II", description: "+10% knockback resistance", modifiers: {heavy-armor.knockback-resistance-percent: "ADD:10"}}
+      13: {name: "Pack Harness I", description: "+10 carry capacity", modifiers: {heavy-armor.carry-capacity: "ADD:10"}}
+      14: {name: "Heavy Resistance V", description: "+1% physical resistance", modifiers: {heavy-armor.physical-resistance-percent: "ADD:1"}}
+      15: {name: "Burden Training II", description: "Heavy-armor stamina penalty reduced by 20% total", modifiers: {heavy-armor.stamina-penalty-reduction-percent: "MAX:20"}}
+      16: {name: "Last Stand I", description: "+5% resistance below 30% health", modifiers: {heavy-armor.low-health-resistance-percent: "MAX:5", combat.low-health-threshold-percent: "LATEST:30"}}
+      17: {name: "Heavy Vitality III", description: "+2 maximum health", modifiers: {heavy-armor.maximum-health: "ADD:2"}}
+      18: {name: "Heavy Resistance VI", description: "+1% physical resistance", modifiers: {heavy-armor.physical-resistance-percent: "ADD:1"}}
+      19: {name: "Iron Skin II", description: "Activation chance becomes 8%", modifiers: {heavy-armor.iron-skin-chance: "MAX:8"}}
+      20: {name: "Juggernaut II", description: "Full-set melee bonus becomes 10%", modifiers: {heavy-armor.full-set-melee-damage-percent: "MAX:10"}}
+      21: {name: "Pack Harness II", description: "+10 carry capacity", modifiers: {heavy-armor.carry-capacity: "ADD:10"}}
+      22: {name: "Heavy Resistance VII", description: "+1% physical resistance", modifiers: {heavy-armor.physical-resistance-percent: "ADD:1"}}
+      23: {name: "Heavy Poise III", description: "+10% knockback resistance", modifiers: {heavy-armor.knockback-resistance-percent: "ADD:10"}}
+      24: {name: "Heavy Vitality IV", description: "+2 maximum health", modifiers: {heavy-armor.maximum-health: "ADD:2"}}
+      25: {name: "Last Stand II", description: "Low-health resistance becomes 10%", modifiers: {heavy-armor.low-health-resistance-percent: "MAX:10"}}
+      26: {name: "Heavy Resistance VIII", description: "+1% physical resistance", modifiers: {heavy-armor.physical-resistance-percent: "ADD:1"}}
+      27: {name: "Steady Recovery", description: "Stagger and stun duration reduced by 20%", modifiers: {heavy-armor.stagger-duration-reduction-percent: "MAX:20"}}
+      28: {name: "Iron Skin III", description: "Activation chance becomes 12%", modifiers: {heavy-armor.iron-skin-chance: "MAX:12"}}
+      29: {name: "Missile Guard II", description: "Another +5% projectile resistance", modifiers: {heavy-armor.projectile-resistance-percent: "ADD:5"}}
+      30: {name: "Living Fortress", description: "+2% physical resistance and +20% knockback resistance", modifiers: {heavy-armor.physical-resistance-percent: "ADD:2", heavy-armor.knockback-resistance-percent: "ADD:20"}}
+
+  light_armor:
+    display-name: "Light Armor"
+    category: combat
+    icon: LEATHER_CHESTPLATE
+    description: "Resist damage in leather light armor."
+    max-level: 30
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Legitimate combat damage received or prevented", "Matching leather pieces", "Surviving meaningful encounters"]
+    rewards:
+      1: {name: "Fleet I", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
+      2: {name: "Light Endurance I", description: "+5 maximum stamina", modifiers: {light-armor.maximum-stamina: "ADD:5"}}
+      3: {name: "Evasion I", description: "+2% dodge chance", modifiers: {light-armor.dodge-chance: "ADD:2"}}
+      4: {name: "Fleet II", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
+      5: {name: "Agile Defense I", description: "Stamina costs reduced by 5%", modifiers: {light-armor.stamina-cost-reduction-percent: "MAX:5"}}
+      6: {name: "Quick Strikes I", description: "+3% attack speed", modifiers: {light-armor.attack-speed-percent: "ADD:3"}}
+      7: {name: "Fleet III", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
+      8: {name: "Soft Landing I", description: "Fall damage reduced by 15%", modifiers: {light-armor.fall-damage-reduction-percent: "MAX:15"}}
+      9: {name: "Light Endurance II", description: "+5 maximum stamina", modifiers: {light-armor.maximum-stamina: "ADD:5"}}
+      10: {name: "Skirmisher I", description: "+5% damage while moving", modifiers: {light-armor.moving-damage-percent: "MAX:5"}}
+      11: {name: "Fleet IV", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
+      12: {name: "Evasion II", description: "+2% dodge chance", modifiers: {light-armor.dodge-chance: "ADD:2"}}
+      13: {name: "Breath Control I", description: "+5% stamina regeneration", modifiers: {light-armor.stamina-regeneration-percent: "ADD:5"}}
+      14: {name: "Fleet V", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
+      15: {name: "Agile Defense II", description: "Stamina-cost reduction becomes 10%", modifiers: {light-armor.stamina-cost-reduction-percent: "MAX:10"}}
+      16: {name: "Nimble I", description: "After sprinting 2 seconds, reduce the next hit by 10%", modifiers: {light-armor.nimble-sprint-seconds: "LATEST:2", light-armor.nimble-hit-reduction-percent: "MAX:10"}}
+      17: {name: "Light Endurance III", description: "+5 maximum stamina", modifiers: {light-armor.maximum-stamina: "ADD:5"}}
+      18: {name: "Fleet VI", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
+      19: {name: "Soft Landing II", description: "Fall-damage reduction becomes 30%", modifiers: {light-armor.fall-damage-reduction-percent: "MAX:30"}}
+      20: {name: "Skirmisher II", description: "Moving-damage bonus becomes 10%", modifiers: {light-armor.moving-damage-percent: "MAX:10"}}
+      21: {name: "Evasion III", description: "+2% dodge chance", modifiers: {light-armor.dodge-chance: "ADD:2"}}
+      22: {name: "Fleet VII", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
+      23: {name: "Breath Control II", description: "Another +5% stamina regeneration", modifiers: {light-armor.stamina-regeneration-percent: "ADD:5"}}
+      24: {name: "Light Endurance IV", description: "+5 maximum stamina", modifiers: {light-armor.maximum-stamina: "ADD:5"}}
+      25: {name: "Nimble II", description: "Next-hit reduction becomes 20%; 6-second cooldown", modifiers: {light-armor.nimble-hit-reduction-percent: "MAX:20", light-armor.nimble-cooldown-seconds: "LATEST:6"}}
+      26: {name: "Fleet VIII", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
+      27: {name: "Evasion IV", description: "+2% dodge chance", modifiers: {light-armor.dodge-chance: "ADD:2"}}
+      28: {name: "Quickstep", description: "Taking damage grants +10% speed for 2 seconds", modifiers: {light-armor.quickstep-speed-percent: "MAX:10", light-armor.quickstep-duration-seconds: "LATEST:2"}}
+      29: {name: "Light Endurance V", description: "+5 maximum stamina", modifiers: {light-armor.maximum-stamina: "ADD:5"}}
+      30: {name: "Windrunner", description: "+2% speed, +2% dodge, and +10% stamina regeneration", modifiers: {light-armor.movement-speed-percent: "ADD:2", light-armor.dodge-chance: "ADD:2", light-armor.stamina-regeneration-percent: "ADD:10"}}
+
+  unarmed:
+    display-name: "Unarmed"
+    category: combat
+    icon: PLAYER_HEAD
+    description: "Fight with an empty main hand."
+    max-level: 10
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Empty-main-hand damage and kills", "Combos and armored enemies", "Elite and boss participation"]
+    rewards:
+      1: {name: "Brawler Training I", description: "+1 unarmed damage", modifiers: {unarmed.damage-flat: "ADD:1"}}
+      2: {name: "Fast Hands I", description: "+5% unarmed attack speed", modifiers: {unarmed.attack-speed-percent: "ADD:5"}}
+      3: {name: "Heavy Fist I", description: "5% chance to deal +2 damage", modifiers: {unarmed.heavy-fist-chance: "MAX:5", unarmed.heavy-fist-damage: "MAX:2"}}
+      4: {name: "Brawler Training II", description: "+1 unarmed damage", modifiers: {unarmed.damage-flat: "ADD:1"}}
+      5: {name: "Brawler I", description: "+5% damage while both hands are empty", modifiers: {unarmed.both-hands-damage-percent: "MAX:5"}}
+      6: {name: "Unarmed Precision", description: "+1% unarmed critical chance", modifiers: {unarmed.critical-chance-percent: "ADD:1"}}
+      7: {name: "Brawler Training III", description: "+1 unarmed damage", modifiers: {unarmed.damage-flat: "ADD:1"}}
+      8: {name: "Stagger I", description: "5% chance to stagger the target briefly", modifiers: {unarmed.stagger-chance: "MAX:5", unarmed.stagger-duration-ticks: "LATEST:10"}}
+      9: {name: "Unarmed Force", description: "+5% unarmed critical damage", modifiers: {unarmed.critical-damage-percent: "ADD:5"}}
+      10: {name: "Fists of the North", description: "+2 damage, +10% speed, and 10% strong-knockback chance", modifiers: {unarmed.damage-flat: "ADD:2", unarmed.attack-speed-percent: "ADD:10", unarmed.strong-knockback-chance: "MAX:10"}}
+
+  smithing:
+    display-name: "Smithing"
+    category: crafting_gathering
+    icon: ANVIL
+    description: "Craft, repair, and improve equipment."
+    max-level: 30
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Equipment crafting and upgrades", "Meaningful repairs", "Useful material smelting"]
+    rewards:
+      1: {name: "Equipment Upgrading", description: "Unlock equipment upgrading", modifiers: {smithing.upgrading-unlocked: "MAX:1"}}
+      2: {name: "Wooden Upgrading I", description: "Unlock wooden upgrading with planks", modifiers: {smithing.wood-upgrading-unlocked: "MAX:1"}}
+      3: {name: "Wooden Upgrading II", description: "Wooden upgrades are 3% stronger", modifiers: {smithing.wood-upgrade-strength-percent: "MAX:3"}}
+      4: {name: "Leather Upgrading I", description: "Unlock leather upgrading with leather", modifiers: {smithing.leather-upgrading-unlocked: "MAX:1"}}
+      5: {name: "Leather Upgrading II", description: "Leather upgrades are 3% stronger", modifiers: {smithing.leather-upgrade-strength-percent: "MAX:3"}}
+      6: {name: "Stone Upgrading I", description: "Unlock stone upgrading with cobblestone", modifiers: {smithing.stone-upgrading-unlocked: "MAX:1"}}
+      7: {name: "Stone Upgrading II", description: "Stone upgrades are 3% stronger", modifiers: {smithing.stone-upgrade-strength-percent: "MAX:3"}}
+      8: {name: "Copper Upgrading I", description: "Unlock copper upgrading with copper ingots", modifiers: {smithing.copper-upgrading-unlocked: "MAX:1"}}
+      9: {name: "Copper Upgrading II", description: "Copper upgrades are 3% stronger", modifiers: {smithing.copper-upgrade-strength-percent: "MAX:3"}}
+      10: {name: "Golden Upgrading I", description: "Unlock golden upgrading with gold ingots", modifiers: {smithing.gold-upgrading-unlocked: "MAX:1"}}
+      11: {name: "Golden Upgrading II", description: "Golden upgrades are 3% stronger", modifiers: {smithing.gold-upgrade-strength-percent: "MAX:3"}}
+      12: {name: "Chainmail Upgrading I", description: "Unlock chainmail upgrading with iron ingots", modifiers: {smithing.chainmail-upgrading-unlocked: "MAX:1"}}
+      13: {name: "Chainmail Upgrading II", description: "Chainmail upgrades are 3% stronger", modifiers: {smithing.chainmail-upgrade-strength-percent: "MAX:3"}}
+      14: {name: "Iron Upgrading I", description: "Unlock iron upgrading with iron ingots", modifiers: {smithing.iron-upgrading-unlocked: "MAX:1"}}
+      15: {name: "Iron Upgrading II", description: "Iron upgrades are 3% stronger", modifiers: {smithing.iron-upgrade-strength-percent: "MAX:3"}}
+      16: {name: "Diamond Upgrading I", description: "Unlock diamond upgrading with diamonds", modifiers: {smithing.diamond-upgrading-unlocked: "MAX:1"}}
+      17: {name: "Diamond Upgrading II", description: "Diamond upgrades are 3% stronger", modifiers: {smithing.diamond-upgrade-strength-percent: "MAX:3"}}
+      18: {name: "Netherite Upgrading I", description: "Unlock Netherite upgrading with Netherite ingots", modifiers: {smithing.netherite-upgrading-unlocked: "MAX:1"}}
+      19: {name: "Netherite Upgrading II", description: "Netherite upgrades are 3% stronger", modifiers: {smithing.netherite-upgrade-strength-percent: "MAX:3"}}
+      20: {name: "Tempering I", description: "All upgrades are 2% stronger", modifiers: {smithing.tempering-strength-percent: "MAX:2"}}
+      21: {name: "Durable Crafting I", description: "Crafted equipment gains 5% natural durability", modifiers: {smithing.crafted-durability-percent: "MAX:5"}}
+      22: {name: "Tempering II", description: "All upgrades are 4% stronger", modifiers: {smithing.tempering-strength-percent: "MAX:4"}}
+      23: {name: "Reinforcement I", description: "Upgraded equipment gains 5% maximum durability", modifiers: {smithing.upgraded-durability-percent: "MAX:5"}}
+      24: {name: "Exceptional Upgrade I", description: "5% chance for an upgrade to be 5% stronger", modifiers: {smithing.exceptional-upgrade-chance: "MAX:5", smithing.exceptional-upgrade-strength-percent: "MAX:5"}}
+      25: {name: "Tempering III", description: "All upgrades are 6% stronger", modifiers: {smithing.tempering-strength-percent: "MAX:6"}}
+      26: {name: "Durable Crafting II", description: "Crafted equipment gains 10% natural durability", modifiers: {smithing.crafted-durability-percent: "MAX:10"}}
+      27: {name: "Reinforcement II", description: "Upgraded equipment gains 10% maximum durability", modifiers: {smithing.upgraded-durability-percent: "MAX:10"}}
+      28: {name: "Exceptional Upgrade II", description: "Exceptional-upgrade chance becomes 10%", modifiers: {smithing.exceptional-upgrade-chance: "MAX:10"}}
+      29: {name: "Tempering IV", description: "All upgrades are 8% stronger", modifiers: {smithing.tempering-strength-percent: "MAX:8"}}
+      30: {name: "Master Smith", description: "All upgrades are 10% stronger and exceptional chance becomes 15%", modifiers: {smithing.tempering-strength-percent: "MAX:10", smithing.exceptional-upgrade-chance: "MAX:15"}}
+
+  enchanting:
+    display-name: "Enchanting"
+    category: crafting_gathering
+    icon: ENCHANTED_BOOK
+    description: "Discover and empower LOTN enchantments."
+    max-level: 20
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Enchantment discoveries", "Enchanted mob equipment", "Activations and higher-tier drops"]
+    rewards:
+      1: {name: "Enchanting I", description: "Unlock Tier I enchantments and drops", modifiers: {enchanting.highest-tier: "MAX:1"}}
+      2: {name: "Enchanted Loot I", description: "+10% relative enchanted-drop chance", modifiers: {enchanting.drop-weight-percent: "MAX:10"}}
+      3: {name: "Arcane Attunement I", description: "Active enchantments are 2% stronger", modifiers: {enchanting.strength-percent: "MAX:2"}}
+      4: {name: "Dual Enchantment I", description: "2% second compatible enchantment chance", modifiers: {enchanting.second-chance: "MAX:2"}}
+      5: {name: "Enchanting II", description: "Unlock Tier II", modifiers: {enchanting.highest-tier: "MAX:2"}}
+      6: {name: "Enchanted Loot II", description: "+20% relative enchanted-drop chance", modifiers: {enchanting.drop-weight-percent: "MAX:20"}}
+      7: {name: "Arcane Discovery I", description: "Highest-tier weight increases by 5%", modifiers: {enchanting.highest-tier-weight-percent: "MAX:5"}}
+      8: {name: "Arcane Attunement II", description: "Enchantment strength becomes +4%", modifiers: {enchanting.strength-percent: "MAX:4"}}
+      9: {name: "Dual Enchantment II", description: "Second-enchantment chance becomes 4%", modifiers: {enchanting.second-chance: "MAX:4"}}
+      10: {name: "Enchanting III", description: "Unlock Tier III", modifiers: {enchanting.highest-tier: "MAX:3"}}
+      11: {name: "Enchanted Loot III", description: "+35% relative enchanted-drop chance", modifiers: {enchanting.drop-weight-percent: "MAX:35"}}
+      12: {name: "Stable Magic I", description: "Proc cooldowns reduced by 5%", modifiers: {enchanting.cooldown-reduction-percent: "MAX:5"}}
+      13: {name: "Arcane Attunement III", description: "Enchantment strength becomes +6%", modifiers: {enchanting.strength-percent: "MAX:6"}}
+      14: {name: "Arcane Discovery II", description: "Highest-tier weight becomes +10%", modifiers: {enchanting.highest-tier-weight-percent: "MAX:10"}}
+      15: {name: "Enchanting IV", description: "Unlock Tier IV", modifiers: {enchanting.highest-tier: "MAX:4"}}
+      16: {name: "Enchanted Loot IV", description: "+50% relative enchanted-drop chance", modifiers: {enchanting.drop-weight-percent: "MAX:50"}}
+      17: {name: "Dual Enchantment III", description: "Second-enchantment chance becomes 7%", modifiers: {enchanting.second-chance: "MAX:7"}}
+      18: {name: "Arcane Attunement IV", description: "Enchantment strength becomes +8%", modifiers: {enchanting.strength-percent: "MAX:8"}}
+      19: {name: "Arcane Mastery", description: "Highest-tier weight +20%; elite and boss triple chance 2%", modifiers: {enchanting.highest-tier-weight-percent: "MAX:20", enchanting.triple-elite-chance: "MAX:2"}}
+      20: {name: "Enchanting V", description: "Unlock Tier V and master all enchanting bonuses", modifiers: {enchanting.highest-tier: "MAX:5", enchanting.drop-weight-percent: "MAX:75", enchanting.strength-percent: "MAX:10", enchanting.second-chance: "MAX:10", enchanting.triple-elite-chance: "MAX:5"}}
+
+  alchemy:
+    display-name: "Alchemy"
+    category: crafting_gathering
+    icon: BREWING_STAND
+    description: "Brew and use useful mixtures."
+    max-level: 30
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Useful brewing and first recipes", "Higher-tier and custom mixtures", "Meaningful potion use"]
+    rewards:
+      1: {name: "Extended Brewing I", description: "Positive potion duration +3%", modifiers: {alchemy.positive-duration-percent: "MAX:3"}}
+      2: {name: "Quick Brewing I", description: "Brewing time reduced by 5%", modifiers: {alchemy.brewing-time-reduction-percent: "MAX:5"}}
+      3: {name: "Potent Mixtures I", description: "Instant potion potency +3%", modifiers: {alchemy.instant-potency-percent: "MAX:3"}}
+      4: {name: "Ingredient Conservation I", description: "3% primary ingredient conservation", modifiers: {alchemy.ingredient-conservation-chance: "MAX:3"}}
+      5: {name: "Herbal Knowledge I", description: "Reveal known ingredient uses in the Alchemy GUI", modifiers: {alchemy.herbal-knowledge: "MAX:1"}}
+      6: {name: "Extended Brewing II", description: "Positive potion duration becomes +6%", modifiers: {alchemy.positive-duration-percent: "MAX:6"}}
+      7: {name: "Lasting Toxins I", description: "Negative potion duration +5%", modifiers: {alchemy.negative-duration-percent: "MAX:5"}}
+      8: {name: "Wide Splash I", description: "Splash-potion radius +5%", modifiers: {alchemy.splash-radius-percent: "MAX:5"}, requires: ["CONFIGURATION:alchemy-splash"]}
+      9: {name: "Quick Brewing II", description: "Brewing-time reduction becomes 10%", modifiers: {alchemy.brewing-time-reduction-percent: "MAX:10"}}
+      10: {name: "Concentrated Brewing I", description: "5% valid stronger-potion chance", modifiers: {alchemy.stronger-potion-chance: "MAX:5"}}
+      11: {name: "Potent Mixtures II", description: "Instant potency becomes +6%", modifiers: {alchemy.instant-potency-percent: "MAX:6"}}
+      12: {name: "Ingredient Conservation II", description: "Ingredient-conservation chance becomes 6%", modifiers: {alchemy.ingredient-conservation-chance: "MAX:6"}}
+      13: {name: "Extended Brewing III", description: "Positive duration becomes +10%", modifiers: {alchemy.positive-duration-percent: "MAX:10"}}
+      14: {name: "Potion Trader", description: "Supported potion sales are worth 5% more", modifiers: {alchemy.sale-price-percent: "MAX:5"}, requires: ["ECONOMY:supported-shop"]}
+      15: {name: "Efficient Brewing I", description: "5% additional-potion chance", modifiers: {alchemy.additional-potion-chance: "MAX:5"}}
+      16: {name: "Lasting Toxins II", description: "Negative duration becomes +10%", modifiers: {alchemy.negative-duration-percent: "MAX:10"}}
+      17: {name: "Wide Splash II", description: "Splash radius becomes +10%", modifiers: {alchemy.splash-radius-percent: "MAX:10"}, requires: ["CONFIGURATION:alchemy-splash"]}
+      18: {name: "Quick Brewing III", description: "Brewing-time reduction becomes 20%", modifiers: {alchemy.brewing-time-reduction-percent: "MAX:20"}}
+      19: {name: "Ingredient Conservation III", description: "Ingredient-conservation chance becomes 10%", modifiers: {alchemy.ingredient-conservation-chance: "MAX:10"}}
+      20: {name: "Concentrated Brewing II", description: "Stronger-potion chance becomes 8%", modifiers: {alchemy.stronger-potion-chance: "MAX:8"}}
+      21: {name: "Potent Mixtures III", description: "Instant potency becomes +10%", modifiers: {alchemy.instant-potency-percent: "MAX:10"}}
+      22: {name: "Lightweight Bottles I", description: "Potion weight becomes 0.45 kg", modifiers: {alchemy.potion-weight-kg: "LATEST:0.45"}}
+      23: {name: "Lingering Mastery", description: "Lingering cloud duration +10%", modifiers: {alchemy.lingering-duration-percent: "MAX:10"}, requires: ["CONFIGURATION:alchemy-lingering"]}
+      24: {name: "Ingredient Conservation IV", description: "Ingredient-conservation chance becomes 15%", modifiers: {alchemy.ingredient-conservation-chance: "MAX:15"}}
+      25: {name: "Toxicologist", description: "Damaging mixtures are 10% stronger", modifiers: {alchemy.damaging-mixture-strength-percent: "MAX:10"}}
+      26: {name: "Extended Brewing IV", description: "Positive duration becomes +15%", modifiers: {alchemy.positive-duration-percent: "MAX:15"}}
+      27: {name: "Efficient Brewing II", description: "Additional-potion chance becomes 10%", modifiers: {alchemy.additional-potion-chance: "MAX:10"}}
+      28: {name: "Potent Mixtures IV", description: "Instant potency becomes +15%", modifiers: {alchemy.instant-potency-percent: "MAX:15"}}
+      29: {name: "Quick Brewing IV", description: "Brewing-time reduction becomes 30%", modifiers: {alchemy.brewing-time-reduction-percent: "MAX:30"}}
+      30: {name: "Master Alchemist", description: "Positive +25%, negative +20%, concentrated 10%, potion weight 0.4 kg", modifiers: {alchemy.positive-duration-percent: "MAX:25", alchemy.negative-duration-percent: "MAX:20", alchemy.stronger-potion-chance: "MAX:10", alchemy.potion-weight-kg: "LATEST:0.4"}}
+
+  mining:
+    display-name: "Mining"
+    category: crafting_gathering
+    icon: IRON_PICKAXE
+    description: "Extract natural ores and craft specialist tools."
+    max-level: 15
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Naturally generated ores", "Rare materials and dangerous depths", "First natural-block discoveries"]
+    rewards:
+      1: {name: "Mining Efficiency I", description: "New axes and pickaxes gain Mining Efficiency 1.2", modifiers: {mining.efficiency: "MAX:1.2"}}
+      2: {name: "Tool Preservation I", description: "5% durability-conservation chance", modifiers: {mining.tool-preservation-chance: "MAX:5"}}
+      3: {name: "Rich Veins I", description: "3% chance for one additional raw material", modifiers: {mining.rich-veins-chance: "MAX:3"}}
+      4: {name: "Mining Efficiency II", description: "Mining Efficiency becomes 1.6", modifiers: {mining.efficiency: "MAX:1.6"}}
+      5: {name: "Durable Tools I", description: "Crafted axes and pickaxes gain 12% natural durability", modifiers: {mining.crafted-tool-durability-percent: "MAX:12"}}
+      6: {name: "Natural Unbreaking I", description: "Natural Unbreaking 1.4", modifiers: {mining.natural-unbreaking: "MAX:1.4"}}
+      7: {name: "Mining Efficiency III", description: "Mining Efficiency becomes 2.4", modifiers: {mining.efficiency: "MAX:2.4"}}
+      8: {name: "Natural Unbreaking II", description: "Natural Unbreaking becomes 1.8", modifiers: {mining.natural-unbreaking: "MAX:1.8"}}
+      9: {name: "Rich Veins II", description: "Additional-material chance becomes 5%", modifiers: {mining.rich-veins-chance: "MAX:5"}}
+      10: {name: "Mining Efficiency IV", description: "Mining Efficiency becomes 3.0", modifiers: {mining.efficiency: "MAX:3"}}
+      11: {name: "Durable Tools II", description: "Crafted tool durability bonus becomes 20%", modifiers: {mining.crafted-tool-durability-percent: "MAX:20"}}
+      12: {name: "Natural Unbreaking III", description: "Natural Unbreaking becomes 2.4", modifiers: {mining.natural-unbreaking: "MAX:2.4"}}
+      13: {name: "Mining Efficiency V", description: "Mining Efficiency becomes 4.2", modifiers: {mining.efficiency: "MAX:4.2"}}
+      14: {name: "Natural Unbreaking IV", description: "Natural Unbreaking becomes 3.0", modifiers: {mining.natural-unbreaking: "MAX:3"}}
+      15: {name: "Master Miner", description: "Efficiency 6.0, +30% durability, and Rich Veins 8%", modifiers: {mining.efficiency: "MAX:6", mining.crafted-tool-durability-percent: "MAX:30", mining.rich-veins-chance: "MAX:8"}}
+
+  farming:
+    display-name: "Farming"
+    category: crafting_gathering
+    icon: WHEAT
+    description: "Cultivate crops and raise animals."
+    max-level: 15
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Mature crop harvesting and planting", "Breeding and supported animal products", "Supported farm sales and new crops"]
+    rewards:
+      1: {name: "Bountiful Harvest I", description: "3% chance for one additional crop", modifiers: {farming.extra-crop-chance: "MAX:3"}}
+      2: {name: "Green Thumb I", description: "5% chance not to consume seeds", modifiers: {farming.seed-conservation-chance: "MAX:5"}}
+      3: {name: "Automatic Replanting", description: "Unlock individually toggleable automatic replanting", modifiers: {farming.auto-replant-unlocked: "MAX:1"}}
+      4: {name: "Crop Trader I", description: "Supported crop sales are worth 5% more", modifiers: {farming.crop-sale-price-percent: "MAX:5"}, requires: ["ECONOMY:supported-shop"]}
+      5: {name: "Husbandry I", description: "5% bred-animal twin chance", modifiers: {farming.twin-chance: "MAX:5"}}
+      6: {name: "Bountiful Harvest II", description: "Additional-crop chance becomes 6%", modifiers: {farming.extra-crop-chance: "MAX:6"}}
+      7: {name: "Animal Produce I", description: "5% additional supported animal product chance", modifiers: {farming.extra-animal-product-chance: "MAX:5"}}
+      8: {name: "Green Thumb II", description: "Seed-conservation chance becomes 10%", modifiers: {farming.seed-conservation-chance: "MAX:10"}}
+      9: {name: "Crop Trader II", description: "Supported crop-sale bonus becomes 10%", modifiers: {farming.crop-sale-price-percent: "MAX:10"}, requires: ["ECONOMY:supported-shop"]}
+      10: {name: "Husbandry II", description: "Twin chance becomes 10%", modifiers: {farming.twin-chance: "MAX:10"}}
+      11: {name: "Rich Soil I", description: "New crops have 10% chance to begin at growth stage one", modifiers: {farming.rich-soil-chance: "MAX:10"}}
+      12: {name: "Bountiful Harvest III", description: "Additional-crop chance becomes 9%", modifiers: {farming.extra-crop-chance: "MAX:9"}}
+      13: {name: "Efficient Breeding", description: "10% chance not to consume breeding food", modifiers: {farming.breeding-food-conservation-chance: "MAX:10"}}
+      14: {name: "Crop Trader III", description: "Supported crop-sale bonus becomes 15%", modifiers: {farming.crop-sale-price-percent: "MAX:15"}, requires: ["ECONOMY:supported-shop"]}
+      15: {name: "Master Farmer", description: "Extra crop 12%, twins 15%, Rich Soil 15%", modifiers: {farming.extra-crop-chance: "MAX:12", farming.twin-chance: "MAX:15", farming.rich-soil-chance: "MAX:15"}}
+
+  fishing:
+    display-name: "Fishing"
+    category: crafting_gathering
+    icon: FISHING_ROD
+    description: "Catch valuable and legendary fish."
+    max-level: 20
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Fish rarity", "Treasure and first species", "Legendary catches"]
+    rewards:
+      1: {name: "Fish Merchant I", description: "Fish sell for 3% more", modifiers: {fishing.sale-price-percent: "MAX:3"}}
+      2: {name: "Seasoned Seller I", description: "Fish-sale bonus becomes 4%", modifiers: {fishing.sale-price-percent: "MAX:4"}}
+      3: {name: "Fishing Luck I", description: "Rare-fish chance +3%", modifiers: {fishing.rarity-chance-percent: "MAX:3"}}
+      4: {name: "Rod Preservation I", description: "5% rod durability conservation", modifiers: {fishing.rod-preservation-chance: "MAX:5"}}
+      5: {name: "Angler's Instinct I", description: "Rare-fish chance +3% in favorable conditions", modifiers: {fishing.favorable-condition-rarity-chance-percent: "MAX:3"}}
+      6: {name: "Fish Merchant II", description: "Fish-sale bonus becomes 6%", modifiers: {fishing.sale-price-percent: "MAX:6"}}
+      7: {name: "Treasure Hunter I", description: "Treasure chance +2%", modifiers: {fishing.treasure-chance-percent: "MAX:2"}}
+      8: {name: "Seasoned Seller II", description: "Fish-sale bonus becomes 8%", modifiers: {fishing.sale-price-percent: "MAX:8"}}
+      9: {name: "Fishing Luck II", description: "Rare-fish chance becomes +7%", modifiers: {fishing.rarity-chance-percent: "MAX:7"}}
+      10: {name: "Double Catch I", description: "3% double-catch chance", modifiers: {fishing.double-catch-chance: "MAX:3"}}
+      11: {name: "Angler's Instinct II", description: "Favorable-condition rare-fish chance becomes +6%", modifiers: {fishing.favorable-condition-rarity-chance-percent: "MAX:6"}}
+      12: {name: "Rod Preservation II", description: "Rod durability conservation becomes 10%", modifiers: {fishing.rod-preservation-chance: "MAX:10"}}
+      13: {name: "Fish Merchant III", description: "Fish-sale bonus becomes 10%", modifiers: {fishing.sale-price-percent: "MAX:10"}}
+      14: {name: "Treasure Hunter II", description: "Treasure chance becomes +5%", modifiers: {fishing.treasure-chance-percent: "MAX:5"}}
+      15: {name: "Experienced Angler", description: "Rare-fish chance gains another 10% in favorable conditions", modifiers: {fishing.favorable-condition-rarity-chance-percent: "MAX:10"}}
+      16: {name: "Seasoned Seller III", description: "Fish-sale bonus becomes 12%", modifiers: {fishing.sale-price-percent: "MAX:12"}}
+      17: {name: "Fishing Luck III", description: "Rare-fish chance becomes +12%", modifiers: {fishing.rarity-chance-percent: "MAX:12"}}
+      18: {name: "Double Catch II", description: "Double-catch chance becomes 6%", modifiers: {fishing.double-catch-chance: "MAX:6"}}
+      19: {name: "Legendary Hunter", description: "Legendary-fish chance +10%", modifiers: {fishing.legendary-chance-percent: "MAX:10"}}
+      20: {name: "Master Angler", description: "Sale +15% and double-catch chance 8%", modifiers: {fishing.sale-price-percent: "MAX:15", fishing.double-catch-chance: "MAX:8"}}
+
+  wayfaring:
+    display-name: "Wayfaring"
+    category: utility
+    icon: COMPASS
+    description: "Explore the world and unlock Fast Travel."
+    max-level: 3
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Meaningful walking and sprinting", "New biomes, beds, and dimensions", "Exploration milestones and destinations reached normally"]
+    rewards:
+      1: {name: "Fast Travel I", description: "Unlock Fast Travel and one Fast Travel Point", modifiers: {wayfaring.fast-travel-unlocked: "MAX:1", wayfaring.fast-travel-points: "MAX:1"}}
+      2: {name: "Fast Travel II", description: "Unlock a second Fast Travel Point", modifiers: {wayfaring.fast-travel-points: "MAX:2"}}
+      3: {name: "Fast Travel III", description: "Unlock a third and final Fast Travel Point", modifiers: {wayfaring.fast-travel-points: "MAX:3"}}
+
+  trading:
+    display-name: "Trading"
+    category: utility
+    icon: EMERALD
+    description: "Trade safely and profitably."
+    max-level: 10
+    player-level-weight: 1.0
+    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Legitimate transaction value", "Merchant variety and item rarity", "Crafted goods and large transactions"]
+    rewards:
+      1: {name: "Trader I", description: "Supported item sales are worth 2% more", modifiers: {trading.sale-price-percent: "MAX:2"}, requires: ["ECONOMY:supported-shop"]}
+      2: {name: "Customer I", description: "Supported purchases cost 1% less", modifiers: {trading.purchase-price-reduction-percent: "MAX:1"}, requires: ["ECONOMY:supported-shop"]}
+      3: {name: "Market Sense", description: "Show whether a price is below, equal to, or above normal", modifiers: {trading.market-sense: "MAX:1"}}
+      4: {name: "Trader II", description: "Item-sale bonus becomes 4%", modifiers: {trading.sale-price-percent: "MAX:4"}, requires: ["ECONOMY:supported-shop"]}
+      5: {name: "Bulk Trader", description: "Stacks of at least 16 gain an additional 2% sale value", modifiers: {trading.bulk-sale-percent: "MAX:2", trading.bulk-minimum-items: "LATEST:16"}, requires: ["ECONOMY:supported-shop"]}
+      6: {name: "Customer II", description: "Purchase-price reduction becomes 2%", modifiers: {trading.purchase-price-reduction-percent: "MAX:2"}, requires: ["ECONOMY:supported-shop"]}
+      7: {name: "Appraiser", description: "Show base value, quality, enchantment value, and final estimate", modifiers: {trading.appraiser: "MAX:1"}}
+      8: {name: "Trusted Customer", description: "Unlock rotating special merchant offers", modifiers: {trading.rotating-offers: "MAX:1"}, requires: ["CONFIGURATION:rotating-merchant-offers"]}
+      9: {name: "Expert Trader", description: "Sale +8% and purchase reduction 3%", modifiers: {trading.sale-price-percent: "MAX:8", trading.purchase-price-reduction-percent: "MAX:3"}, requires: ["ECONOMY:supported-shop"]}
+      10: {name: "Master Trader", description: "Sale +10%, purchase reduction 5%, master offers", modifiers: {trading.sale-price-percent: "MAX:10", trading.purchase-price-reduction-percent: "MAX:5", trading.master-offers: "MAX:1"}, requires: ["ECONOMY:supported-shop", "CONFIGURATION:rotating-merchant-offers"]}

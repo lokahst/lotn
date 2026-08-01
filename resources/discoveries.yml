@@ -1,0 +1,17 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 1
+enabled: true
+check-cell-size: 32
+milestones:
+  high-mountain-y: 180
+  deep-underground-y: -20
+rewards:
+  biome:
+    experience: 0.5
+  dimension:
+    experience: 3.0
+  milestone:
+    experience: 1.5

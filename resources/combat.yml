@@ -1,0 +1,79 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 5
+
+critical:
+  base-chance: 0.05
+  base-multiplier: 1.5
+  max-chance: 0.75
+  heavy-armor-penalty: -0.02
+
+ambient-effects:
+  enabled: false
+
+bleed:
+  base-chance: 0.08
+  duration-ticks: 60
+  damage-per-tick: 1.0
+  interval-ticks: 20
+
+poison:
+  base-chance: 0.05
+  duration-ticks: 100
+  level: 1
+
+burn:
+  chance: 0.10
+  ticks: 40
+
+frost:
+  chance: 0.10
+  duration-ticks: 60
+  level: 2
+  damage-multiplier: 1.0
+  freeze-mobs: true
+
+shock:
+  chance: 0.08
+  duration-ticks: 40
+  level: 1
+  damage-multiplier: 1.15
+  chain-chance: 0.25
+  chain-radius: 3.0
+
+damage-variation: 0.1
+
+mob-shield-damage:
+  enabled: true
+  base-damage-through: 0.35
+  damage-through-per-level: 0.0065
+  minimum-damage-through: 0.25
+  maximum-damage-through: 0.85
+
+combat-effects:
+  secondary-damage:
+    allow-pvp: false
+    allow-friendly-mobs: false
+  mob-dodge:
+    enabled: true
+    base-chance: 0.02
+    chance-per-tier: 0.008
+    maximum-chance: 0.12
+  particles:
+    enabled: true
+    viewing-distance: 32.0
+    dodge:
+      amount: 5
+    hit:
+      amount: 4
+      damage-indicator-amount: 1
+    burning:
+      interval-ticks: 8
+      amount: 3
+      small-flame-chance: 0.35
+    freezing:
+      interval-ticks: 8
+      amount: 3
+      snowflake-chance: 0.45

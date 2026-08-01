@@ -1,0 +1,257 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 6
+
+fishing:
+  enabled: true
+  catch-cooldown-ticks: 20
+  base-catch-chance: 0.85
+  junk-chance: 0.10
+  treasure-chance: 0.03
+  base-catch-experience: 0.35
+  base-skill-experience: 4.0
+
+rarities:
+  common:
+    chance: 100.0
+    color: GRAY
+    price-multiplier: 1.0
+    experience-multiplier: 1.0
+  uncommon:
+    chance: 45.0
+    color: GREEN
+    price-multiplier: 2.5
+    experience-multiplier: 1.5
+  rare:
+    chance: 18.0
+    color: BLUE
+    price-multiplier: 6.0
+    experience-multiplier: 3.0
+  epic:
+    chance: 6.0
+    color: DARK_PURPLE
+    price-multiplier: 15.0
+    experience-multiplier: 6.0
+  legendary:
+    chance: 1.5
+    color: GOLD
+    price-multiplier: 40.0
+    experience-multiplier: 12.0
+  mythic:
+    chance: 0.3
+    color: AQUA
+    price-multiplier: 100.0
+    experience-multiplier: 25.0
+
+fish:
+  trout:
+    display-name: "Trout"
+    base-cost: 5.0
+    icon: COD
+    biomes:
+      - RIVER
+      - SWAMP
+      - FOREST
+      - PLAINS
+  salmon:
+    display-name: "Salmon"
+    base-cost: 8.0
+    icon: SALMON
+    biomes:
+      - RIVER
+      - OCEAN
+      - BEACH
+  pike:
+    display-name: "Pike"
+    base-cost: 12.0
+    icon: COD
+    biomes:
+      - RIVER
+      - SWAMP
+  carp:
+    display-name: "Carp"
+    base-cost: 4.0
+    icon: COD
+    biomes:
+      - RIVER
+      - SWAMP
+  perch:
+    display-name: "Perch"
+    base-cost: 3.5
+    icon: COD
+    biomes:
+      - RIVER
+      - FOREST
+      - SWAMP
+  catfish:
+    display-name: "Catfish"
+    base-cost: 10.0
+    icon: COD
+    biomes:
+      - RIVER
+      - SWAMP
+  cod:
+    display-name: "Cod"
+    base-cost: 6.0
+    icon: COD
+    biomes:
+      - OCEAN
+      - BEACH
+  tuna:
+    display-name: "Tuna"
+    base-cost: 20.0
+    icon: SALMON
+    biomes:
+      - OCEAN
+  swordfish:
+    display-name: "Swordfish"
+    base-cost: 35.0
+    icon: SALMON
+    biomes:
+      - OCEAN
+  mackerel:
+    display-name: "Mackerel"
+    base-cost: 5.5
+    icon: COD
+    biomes:
+      - OCEAN
+      - BEACH
+  clownfish:
+    display-name: "Clownfish"
+    base-cost: 15.0
+    icon: TROPICAL_FISH
+    biomes:
+      - OCEAN
+  pufferfish:
+    display-name: "Pufferfish"
+    base-cost: 18.0
+    icon: PUFFERFISH
+    biomes:
+      - OCEAN
+  anglerfish:
+    display-name: "Anglerfish"
+    base-cost: 45.0
+    icon: COD
+    biomes:
+      - OCEAN
+  goldfish:
+    display-name: "Golden Koi"
+    base-cost: 80.0
+    icon: TROPICAL_FISH
+    biomes:
+      - RIVER
+      - SWAMP
+  crystal_bass:
+    display-name: "Crystal Bass"
+    base-cost: 120.0
+    icon: COD
+    biomes:
+      - OCEAN
+      - RIVER
+  shadow_eel:
+    display-name: "Shadow Eel"
+    base-cost: 150.0
+    icon: SALMON
+    biomes:
+      - SWAMP
+      - OCEAN
+  starfish:
+    display-name: "Starfin"
+    base-cost: 200.0
+    icon: TROPICAL_FISH
+    biomes:
+      - OCEAN
+  leviathan:
+    display-name: "Leviathan Spawn"
+    base-cost: 500.0
+    icon: SALMON
+    biomes:
+      - OCEAN
+  northern_kraken:
+    display-name: "Northern Kraken"
+    base-cost: 2500.0
+    icon: SALMON
+    legendary-only: true
+    biomes:
+      - OCEAN
+  aurora_dragonfish:
+    display-name: "Aurora Dragonfish"
+    base-cost: 3200.0
+    icon: TROPICAL_FISH
+    legendary-only: true
+    biomes:
+      - OCEAN
+      - RIVER
+    time:
+      - NIGHT
+  stormglass_herring:
+    display-name: "Stormglass Herring"
+    base-cost: 1800.0
+    icon: COD
+    legendary-only: true
+    biomes:
+      - OCEAN
+      - DEEP_OCEAN
+    weather:
+      - THUNDER
+  pale_ice_koi:
+    display-name: "Pale Ice Koi"
+    base-cost: 2200.0
+    icon: TROPICAL_FISH
+    legendary-only: true
+    biomes:
+      - FROZEN_RIVER
+      - FROZEN_OCEAN
+    time:
+      - NIGHT
+
+junk:
+  stick:
+    display-name: "Waterlogged Stick"
+    base-cost: 0.5
+    icon: STICK
+  leather:
+    display-name: "Soggy Leather"
+    base-cost: 1.0
+    icon: LEATHER
+  bowl:
+    display-name: "Old Bowl"
+    base-cost: 0.8
+    icon: BOWL
+  bone:
+    display-name: "Fish Bone"
+    base-cost: 0.3
+    icon: BONE
+  lily_pad:
+    display-name: "Lily Pad"
+    base-cost: 0.2
+    icon: LILY_PAD
+
+treasures:
+  name_tag:
+    display-name: "Engraved Name Tag"
+    base-cost: 50.0
+    icon: NAME_TAG
+  saddle:
+    display-name: "Ancient Saddle"
+    base-cost: 65.0
+    icon: SADDLE
+  nautilus_shell:
+    display-name: "Pristine Nautilus Shell"
+    base-cost: 90.0
+    icon: NAUTILUS_SHELL
+  heart_of_the_sea:
+    display-name: "Heart of the Deep"
+    base-cost: 250.0
+    icon: HEART_OF_THE_SEA
+  enchanted_book:
+    display-name: "Waterlogged Tome"
+    base-cost: 120.0
+    icon: ENCHANTED_BOOK
+
+sell:
+  global-multiplier: 1.0
+  round-decimals: 2
+  min-price: 0.01

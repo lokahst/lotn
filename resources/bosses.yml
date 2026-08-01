@@ -1,0 +1,57 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 4
+
+enabled: true
+respect-existing-custom-name: true
+
+format:
+  name-color: "&5"
+  custom-name-visible: false
+
+names:
+  ender-dragon:
+    display-name: "Enderodian"
+    level: 80
+    maximum-health: 400.0
+  wither:
+    display-name: "Wither"
+    level: 70
+    maximum-health: 200.0
+  elder-guardian:
+    display-name: "Leviathan"
+    level: 55
+    maximum-health: 120.0
+  warden:
+    display-name: "Ehrnal"
+    level: 75
+    maximum-health: 700.0
+
+dragon:
+  enhanced-ai-enabled: true
+  tick-interval: 10
+  target-range: 80.0
+  decision-interval-ticks: 70
+  phase-steering-enabled: true
+  fire-breath:
+    enabled: true
+    chance-per-decision: 0.35
+    cooldown-ticks: 260
+    windup-ticks: 24
+    range: 45.0
+    cone-angle-degrees: 18.0
+    damage: 7.0
+    fire-ticks: 80
+    duration-ticks: 12
+    particles-per-step: 26
+    respect-line-of-sight: true
+  wing-gust:
+    enabled: true
+    chance-per-decision: 0.45
+    cooldown-ticks: 140
+    range: 11.0
+    damage: 3.0
+    horizontal-force: 1.8
+    vertical-force: 0.35

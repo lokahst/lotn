@@ -1,0 +1,60 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 8
+
+enabled: true
+combat:
+  enabled: true
+  legacy-weapon-impacts-enabled: true
+  particles-per-hit: 7
+  power-attacks-enabled: true
+  shield-block-effects-enabled: true
+  projectile-trails-enabled: true
+  projectile-trail-interval-ticks: 1
+  projectile-trail-maximum-ticks: 60
+  projectile-trail-particle-spacing: 0.22
+  projectile-trail-maximum-particles-per-tick: 32
+  kill-effects-enabled: true
+  kill-particles: 18
+  wounded-effects-enabled: true
+  wounded-health-threshold: 0.30
+  wounded-effect-cooldown-ms: 1800
+  healing-effects-enabled: true
+  boss-particle-multiplier: 3
+  boss-burst-cooldown-ms: 300
+  boss-death-particles: 75
+fishing:
+  enabled: true
+  cast-particles: 5
+  catch-particles: 14
+quests:
+  enabled: true
+  accept-particles: 12
+  progress-particles: 6
+  progress-effect-cooldown-ms: 1500
+  objective-complete-particles: 20
+  complete-particles: 35
+travel:
+  enabled: true
+  rings: 4
+  particles-per-ring: 20
+loot:
+  enabled: true
+  enchanted-drop-particles: 24
+discoveries:
+  enabled: true
+  particles: 14
+alchemy:
+  enabled: true
+  learn-particles: 18
+  brew-particles: 24
+  potion-particles: 16
+general:
+  enabled: true
+  player-level-up-particles: 55
+  skill-level-up-particles: 24
+  achievement-particles: 45
+  enchantment-discovered-particles: 32
+  elite-defeat-particles: 42

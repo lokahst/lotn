@@ -1,0 +1,1172 @@
+# Note:
+# You're using first versions of stable releases. Please note that this plugin
+# is still under development.
+
+schema-version: 12
+
+scaling:
+  enabled: true
+  base-health-multiplier: 1.10
+  base-damage-multiplier: 1.05
+  health-per-level: 0.028
+  damage-per-level: 0.018
+  armor-per-level: 0.025
+
+player-selection:
+  detection-radius: 48.0
+  default-level: 1
+  ignore-creative: true
+  ignore-spectator: true
+
+levels:
+  minimum: 1
+  maximum: 80
+  roll-within-player-bracket: true
+
+tiers:
+  1:
+    stats:
+      health-multiplier: 0.95
+      damage-multiplier: 0.95
+      armor-bonus: 0.0
+      speed-multiplier: 1.0
+      experience-multiplier: 0.85
+      knockback-resistance: 0.0
+  2:
+    stats:
+      health-multiplier: 1.12
+      damage-multiplier: 1.05
+      armor-bonus: 1.0
+      speed-multiplier: 1.10
+      experience-multiplier: 1.1
+      knockback-resistance: 0.02
+  3:
+    stats:
+      health-multiplier: 1.40
+      damage-multiplier: 1.22
+      armor-bonus: 2.5
+      speed-multiplier: 1.04
+      experience-multiplier: 1.45
+      knockback-resistance: 0.06
+  4:
+    stats:
+      health-multiplier: 1.90
+      damage-multiplier: 1.38
+      armor-bonus: 4.0
+      speed-multiplier: 1.07
+      experience-multiplier: 2.1
+      knockback-resistance: 0.12
+  5:
+    stats:
+      health-multiplier: 2.65
+      damage-multiplier: 1.60
+      armor-bonus: 6.0
+      speed-multiplier: 1.10
+      experience-multiplier: 3.2
+      knockback-resistance: 0.20
+  6:
+    stats:
+      health-multiplier: 3.70
+      damage-multiplier: 1.88
+      armor-bonus: 8.0
+      speed-multiplier: 1.12
+      experience-multiplier: 5.0
+      knockback-resistance: 0.30
+
+families:
+  zombie:
+    group: zombie
+    entities:
+      - ZOMBIE
+      - HUSK
+      - ZOMBIE_VILLAGER
+    stats:
+      health-multiplier: 1.0
+      damage-multiplier: 1.0
+      armor-bonus: 0.0
+      speed-multiplier: 1.0
+      experience-multiplier: 1.0
+    variants:
+      rotten_corpse:
+        display-name: "Rotten Corpse"
+        tier: 1
+        weights:
+          - 120
+          - 95
+          - 70
+          - 45
+          - 28
+          - 16
+          - 8
+          - 3
+      zombie:
+        display-name: "Zombie"
+        tier: 2
+        weights:
+          - 75
+          - 85
+          - 82
+          - 70
+          - 55
+          - 42
+          - 30
+          - 18
+      diseased_zombie:
+        display-name: "Diseased Zombie"
+        tier: 3
+        weights:
+          - 20
+          - 38
+          - 55
+          - 62
+          - 65
+          - 60
+          - 50
+          - 35
+      plague_walker:
+        display-name: "Plague Walker"
+        tier: 4
+        weights:
+          - 3
+          - 10
+          - 20
+          - 35
+          - 48
+          - 60
+          - 65
+          - 65
+      grave_champion:
+        display-name: "Grave Champion"
+        tier: 5
+        weights:
+          - 1
+          - 2
+          - 6
+          - 15
+          - 28
+          - 40
+          - 55
+          - 70
+      undying_lord:
+        display-name: "Undying Lord"
+        tier: 6
+        weights:
+          - 0
+          - 0
+          - 1
+          - 3
+          - 6
+          - 12
+          - 25
+          - 45
+
+  skeleton:
+    group: skeleton
+    entities:
+      - SKELETON
+      - STRAY
+      - BOGGED
+      - WITHER_SKELETON
+    stats:
+      health-multiplier: 0.95
+      damage-multiplier: 1.05
+      armor-bonus: 0.0
+      speed-multiplier: 1.0
+      experience-multiplier: 1.0
+    variants:
+      skeleton:
+        display-name: "Skeleton"
+        tier: 1
+        weights:
+          - 120
+          - 95
+          - 70
+          - 48
+          - 30
+          - 18
+          - 10
+          - 4
+      archer_skeleton:
+        display-name: "Archer Skeleton"
+        tier: 2
+        weights:
+          - 70
+          - 82
+          - 80
+          - 68
+          - 55
+          - 45
+          - 32
+          - 20
+      bone_hunter:
+        display-name: "Bone Hunter"
+        tier: 3
+        weights:
+          - 18
+          - 35
+          - 52
+          - 60
+          - 64
+          - 60
+          - 54
+          - 40
+      bone_captain:
+        display-name: "Bone Captain"
+        tier: 4
+        weights:
+          - 3
+          - 10
+          - 20
+          - 35
+          - 46
+          - 58
+          - 65
+          - 68
+      bone_warden:
+        display-name: "Bone Warden"
+        tier: 5
+        weights:
+          - 1
+          - 3
+          - 8
+          - 16
+          - 28
+          - 40
+          - 52
+          - 65
+      bone_overlord:
+        display-name: "Bone Overlord"
+        tier: 6
+        weights:
+          - 0
+          - 0
+          - 1
+          - 2
+          - 5
+          - 10
+          - 22
+          - 42
+
+  spider:
+    group: spider
+    entities:
+      - SPIDER
+      - CAVE_SPIDER
+    stats:
+      health-multiplier: 0.90
+      damage-multiplier: 1.0
+      armor-bonus: 0.0
+      speed-multiplier: 1.06
+      experience-multiplier: 1.0
+    variants:
+      spider:
+        display-name: "Spider"
+        tier: 1
+        weights:
+          - 125
+          - 100
+          - 75
+          - 50
+          - 30
+          - 20
+          - 12
+          - 6
+      venom_spider:
+        display-name: "Venom Spider"
+        tier: 2
+        weights:
+          - 55
+          - 70
+          - 72
+          - 68
+          - 60
+          - 50
+          - 42
+          - 30
+      frost_spider:
+        display-name: "Frost Spider"
+        tier: 3
+        weights:
+          - 12
+          - 22
+          - 40
+          - 52
+          - 58
+          - 62
+          - 60
+          - 54
+      widow_spider:
+        display-name: "Widow Spider"
+        tier: 4
+        weights:
+          - 2
+          - 5
+          - 15
+          - 28
+          - 40
+          - 50
+          - 60
+          - 68
+      broodmother:
+        display-name: "Broodmother"
+        tier: 5
+        weights:
+          - 1
+          - 2
+          - 5
+          - 10
+          - 18
+          - 30
+          - 42
+          - 55
+      ancient_broodmother:
+        display-name: "Ancient Broodmother"
+        tier: 6
+        weights:
+          - 0
+          - 0
+          - 1
+          - 2
+          - 4
+          - 8
+          - 18
+          - 35
+
+  creeper:
+    group: creeper
+    entities:
+      - CREEPER
+    stats:
+      health-multiplier: 1.0
+      damage-multiplier: 1.0
+      armor-bonus: 0.0
+      speed-multiplier: 1.0
+      experience-multiplier: 1.0
+    variants:
+      creeper:
+        display-name: "Creeper"
+        tier: 1
+        weights:
+          - 120
+          - 95
+          - 70
+          - 50
+          - 35
+          - 22
+          - 12
+          - 6
+      swift_creeper:
+        display-name: "Swift Creeper"
+        tier: 2
+        weights:
+          - 55
+          - 68
+          - 70
+          - 68
+          - 60
+          - 52
+          - 42
+          - 32
+      armored_creeper:
+        display-name: "Armored Creeper"
+        tier: 3
+        weights:
+          - 15
+          - 28
+          - 42
+          - 52
+          - 58
+          - 60
+          - 58
+          - 50
+      toxic_creeper:
+        display-name: "Toxic Creeper"
+        tier: 4
+        weights:
+          - 3
+          - 8
+          - 18
+          - 30
+          - 42
+          - 55
+          - 62
+          - 68
+      infernal_creeper:
+        display-name: "Infernal Creeper"
+        tier: 5
+        weights:
+          - 1
+          - 2
+          - 6
+          - 12
+          - 22
+          - 35
+          - 48
+          - 60
+      ancient_creeper:
+        display-name: "Ancient Creeper"
+        tier: 6
+        weights:
+          - 0
+          - 0
+          - 1
+          - 2
+          - 5
+          - 10
+          - 20
+          - 40
+
+  drowned:
+    group: drowned
+    entities:
+      - DROWNED
+    stats:
+      health-multiplier: 1.05
+      damage-multiplier: 1.0
+      armor-bonus: 0.0
+      speed-multiplier: 1.0
+      experience-multiplier: 1.05
+    variants:
+      drowned:
+        display-name: "Drowned"
+        tier: 1
+        weights:
+          - 120
+          - 95
+          - 70
+          - 45
+          - 28
+          - 16
+          - 8
+          - 3
+      sea_walker:
+        display-name: "Sea Walker"
+        tier: 2
+        weights:
+          - 75
+          - 85
+          - 82
+          - 70
+          - 55
+          - 42
+          - 30
+          - 18
+      deep_stalker:
+        display-name: "Deep Stalker"
+        tier: 3
+        weights:
+          - 20
+          - 38
+          - 55
+          - 62
+          - 65
+          - 60
+          - 50
+          - 35
+      abyss_hunter:
+        display-name: "Abyss Hunter"
+        tier: 4
+        weights:
+          - 3
+          - 10
+          - 20
+          - 35
+          - 48
+          - 60
+          - 65
+          - 65
+      abyss_guardian:
+        display-name: "Abyss Guardian"
+        tier: 5
+        weights:
+          - 1
+          - 2
+          - 6
+          - 15
+          - 28
+          - 40
+          - 55
+          - 70
+      leviathans_servant:
+        display-name: "Leviathan's Servant"
+        tier: 6
+        weights:
+          - 0
+          - 0
+          - 1
+          - 3
+          - 6
+          - 12
+          - 25
+          - 45
+
+  phantom:
+    group: phantom
+    entities:
+      - PHANTOM
+    stats:
+      health-multiplier: 0.95
+      damage-multiplier: 1.05
+      armor-bonus: 0.0
+      speed-multiplier: 1.08
+      experience-multiplier: 1.1
+    variants:
+      phantom:
+        display-name: "Phantom"
+        tier: 1
+        weights:
+          - 125
+          - 100
+          - 75
+          - 50
+          - 30
+          - 20
+          - 12
+          - 6
+      night_phantom:
+        display-name: "Night Phantom"
+        tier: 2
+        weights:
+          - 55
+          - 70
+          - 72
+          - 68
+          - 60
+          - 50
+          - 42
+          - 30
+      shadow_phantom:
+        display-name: "Shadow Phantom"
+        tier: 3
+        weights:
+          - 12
+          - 22
+          - 40
+          - 52
+          - 58
+          - 62
+          - 60
+          - 54
+      soul_phantom:
+        display-name: "Soul Phantom"
+        tier: 4
+        weights:
+          - 2
+          - 5
+          - 15
+          - 28
+          - 40
+          - 50
+          - 60
+          - 68
+      nightmare:
+        display-name: "Nightmare"
+        tier: 5
+        weights:
+          - 1
+          - 2
+          - 5
+          - 10
+          - 18
+          - 30
+          - 42
+          - 55
+      ancient_nightmare:
+        display-name: "Ancient Nightmare"
+        tier: 6
+        weights:
+          - 0
+          - 0
+          - 1
+          - 2
+          - 4
+          - 8
+          - 18
+          - 35
+
+  piglin:
+    group: piglin
+    entities:
+      - PIGLIN
+      - PIGLIN_BRUTE
+      - ZOMBIFIED_PIGLIN
+    stats:
+      health-multiplier: 1.05
+      damage-multiplier: 1.08
+      armor-bonus: 1.0
+      speed-multiplier: 1.0
+      experience-multiplier: 1.1
+    variants:
+      piglin:
+        display-name: "Piglin"
+        tier: 1
+        weights:
+          - 120
+          - 95
+          - 70
+          - 48
+          - 30
+          - 18
+          - 10
+          - 4
+      piglin_raider:
+        display-name: "Piglin Raider"
+        tier: 2
+        weights:
+          - 70
+          - 82
+          - 80
+          - 68
+          - 55
+          - 45
+          - 32
+          - 20
+      piglin_warrior:
+        display-name: "Piglin Warrior"
+        tier: 3
+        weights:
+          - 18
+          - 35
+          - 52
+          - 60
+          - 64
+          - 60
+          - 54
+          - 40
+      piglin_champion:
+        display-name: "Piglin Champion"
+        tier: 4
+        weights:
+          - 3
+          - 10
+          - 20
+          - 35
+          - 46
+          - 58
+          - 65
+          - 68
+      piglin_warlord:
+        display-name: "Piglin Warlord"
+        tier: 5
+        weights:
+          - 1
+          - 3
+          - 8
+          - 16
+          - 28
+          - 40
+          - 52
+          - 65
+      piglin_king:
+        display-name: "Piglin King"
+        tier: 6
+        weights:
+          - 0
+          - 0
+          - 1
+          - 2
+          - 5
+          - 10
+          - 22
+          - 42
+
+  blaze:
+    group: nether
+    entities:
+      - BLAZE
+    bracket-shift: -1
+    stats:
+      health-multiplier: 1.1
+      damage-multiplier: 1.1
+      armor-bonus: 1.0
+      speed-multiplier: 1.0
+      experience-multiplier: 1.2
+    variants:
+      blaze:
+        display-name: "Blaze"
+        tier: 1
+        weights:
+          - 120
+          - 95
+          - 70
+          - 48
+          - 30
+          - 18
+          - 10
+          - 4
+      infernal_blaze:
+        display-name: "Infernal Blaze"
+        tier: 2
+        weights:
+          - 70
+          - 82
+          - 80
+          - 68
+          - 55
+          - 45
+          - 32
+          - 20
+      ember_mage:
+        display-name: "Ember Mage"
+        tier: 3
+        weights:
+          - 18
+          - 35
+          - 52
+          - 60
+          - 64
+          - 60
+          - 54
+          - 40
+      hellfire_sentinel:
+        display-name: "Hellfire Sentinel"
+        tier: 4
+        weights:
+          - 3
+          - 10
+          - 20
+          - 35
+          - 46
+          - 58
+          - 65
+          - 68
+      flame_tyrant:
+        display-name: "Flame Tyrant"
+        tier: 5
+        weights:
+          - 1
+          - 3
+          - 8
+          - 16
+          - 28
+          - 40
+          - 52
+          - 65
+      phoenix_herald:
+        display-name: "Phoenix Herald"
+        tier: 6
+        weights:
+          - 0
+          - 0
+          - 1
+          - 2
+          - 5
+          - 10
+          - 22
+          - 42
+
+  pillager:
+    group: pillager
+    entities:
+      - PILLAGER
+    variants:
+      pillager:
+        display-name: "Pillager"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  vindicator:
+    group: vindicator
+    entities:
+      - VINDICATOR
+    variants:
+      vindicator:
+        display-name: "Vindicator"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  evoker:
+    group: evoker
+    entities:
+      - EVOKER
+    variants:
+      evoker:
+        display-name: "Evoker"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  magma_cube:
+    group: nether
+    entities:
+      - MAGMA_CUBE
+    stats:
+      health-multiplier: 1.1
+      damage-multiplier: 1.05
+      experience-multiplier: 1.1
+    variants:
+      magma_cube:
+        display-name: "Magma Cube"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  enderman:
+    group: end
+    entities:
+      - ENDERMAN
+    stats:
+      health-multiplier: 1.15
+      damage-multiplier: 1.1
+      experience-multiplier: 1.15
+    variants:
+      enderman:
+        display-name: "Enderman"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  shulker:
+    group: end
+    entities:
+      - SHULKER
+    variants:
+      shulker:
+        display-name: "Shulker"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  endermite:
+    group: end
+    entities:
+      - ENDERMITE
+    variants:
+      endermite:
+        display-name: "Endermite"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+
+  witch:
+    group: witch
+    entities:
+      - WITCH
+    variants:
+      witch:
+        display-name: "Witch"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  slime:
+    group: slime
+    entities:
+      - SLIME
+    variants:
+      slime:
+        display-name: "Slime"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  silverfish:
+    group: silverfish
+    entities:
+      - SILVERFISH
+    variants:
+      silverfish:
+        display-name: "Silverfish"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  guardian:
+    group: guardian
+    entities:
+      - GUARDIAN
+    variants:
+      guardian:
+        display-name: "Guardian"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  ghast:
+    group: nether
+    entities:
+      - GHAST
+    variants:
+      ghast:
+        display-name: "Ghast"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  hoglin:
+    group: nether
+    entities:
+      - HOGLIN
+    variants:
+      hoglin:
+        display-name: "Hoglin"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  zoglin:
+    group: nether
+    entities:
+      - ZOGLIN
+    variants:
+      zoglin:
+        display-name: "Zoglin"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  ravager:
+    group: pillager
+    entities:
+      - RAVAGER
+    variants:
+      ravager:
+        display-name: "Ravager"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  vex:
+    group: evoker
+    entities:
+      - VEX
+    variants:
+      vex:
+        display-name: "Vex"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  breeze:
+    group: trial
+    entities:
+      - BREEZE
+    variants:
+      breeze:
+        display-name: "Breeze"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+  creaking:
+    group: woodland
+    entities:
+      - CREAKING
+    variants:
+      creaking:
+        display-name: "Creaking"
+        tier: 1
+        weights:
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+          - 100
+
+hologram:
+  enabled: true
+  show-on-hostile-mobs: true
+  show-on-passive-mobs: true
+  show-on-neutral-mobs: true
+  show-on-bosses: true
+  suppress-native-nameplate: true
+  visibility-range: 32.0
+  visibility:
+    poll-interval-ticks: 1
+    look-enabled: true
+    look-range: 8.0
+    ray-size: 0.15
+    look-retain-ms: 2000
+    combat-enabled: true
+    combat-retain-ms: 8000
+    minimum-view-distance: 0.75
+    hide-when-camera-inside: true
+  show-level: true
+  show-health: true
+  level-generation:
+    minimum: 1
+    maximum: 80
+    default-level: 1
+    nearest-player-enabled: true
+    player-level-influence: 0.35
+    random-spread: 2
+    world-environment-base:
+      normal: 1
+      nether: 20
+      the_end: 35
+      custom: 1
+  format:
+    name-line: "&c{name} &8• &7Lv. &f{level}"
+    name-only-line: "&c{name}"
+  health-bar:
+    segments: 10
+    left: ""
+    filled: "&a&m "
+    missing: "&c&m "
+    right: ""
+  style:
+    billboard: VERTICAL
+    vertical-offset: 0.35
+    scale: 0.8
+    see-through: false
+    shadowed: true
+    line-width: 160
+    display-width: 2.5
+    display-height: 1.0
+    view-range: 1.0
+    shadow-radius: 0.0
+    shadow-strength: 0.0
+    background:
+      alpha: 0
+      red: 15
+      green: 15
+      blue: 18
+
+armor:
+  enabled: true
+  minimum-tier: 4
+  default:
+    helmet: CHAINMAIL_HELMET
+    chestplate: CHAINMAIL_CHESTPLATE
+    leggings: CHAINMAIL_LEGGINGS
+    boots: CHAINMAIL_BOOTS
+
+equipment-profiles:
+  tier-4:
+    helmet: CHAINMAIL_HELMET
+    chestplate: CHAINMAIL_CHESTPLATE
+    leggings: CHAINMAIL_LEGGINGS
+    boots: CHAINMAIL_BOOTS
+  tier-5:
+    helmet: IRON_HELMET
+    chestplate: IRON_CHESTPLATE
+    leggings: IRON_LEGGINGS
+    boots: IRON_BOOTS
+  tier-6:
+    helmet: DIAMOND_HELMET
+    chestplate: DIAMOND_CHESTPLATE
+    leggings: DIAMOND_LEGGINGS
+    boots: DIAMOND_BOOTS
+
+rewards:
+  base-kill-experience: 8.0
+  experience-per-mob-level: 1.2
+  farmed-spawn-multiplier: 0.15
+  farmed-spawns-count-for-quests: false
+  rank-multipliers:
+    normal: 1.0
+    common: 1.0
+    uncommon: 1.1
+    strong: 1.35
+    elite: 2.25
+    champion: 4.0
+    legendary: 6.0
+    boss: 8.0

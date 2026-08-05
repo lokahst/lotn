@@ -1,14 +1,70 @@
-# Note:
-# You're using first versions of stable releases. Please note that this plugin
-# is still under development.
+# LOTN is still under active development.
 
-schema-version: 5
+schema-version: 6
+
+frostbite:
+  enabled: true
+  check-interval-ticks: 100
+  unsafe-temperature: 0
+  safe-recovery-temperature: 8
+  minimum-heat-bonus: 3.0
+  exposure-rate: 1.0
+  exposure-per-degree: 0.05
+  wet-exposure-multiplier: 1.60
+  storm-exposure-multiplier: 1.20
+  recovery-delay-millis: 10000
+  recovery-rate: 1.75
+  persist-through-death: true
+  death-retained-exposure: 0.60
+  cure-potion-recovery-fraction: 0.65
+  thresholds:
+    chilled-millis: 300000
+    freezing-millis: 720000
+    frostbite-millis: 1200000
+  heat-sources:
+    scan-radius: 6
+    campfire-strength: 60.0
+    soul-campfire-strength: 28.0
+    furnace-strength: 36.0
+    fire-strength: 50.0
+    lava-strength: 80.0
+    lava-safe-radius: 5.0
+    magma-strength: 30.0
+    torch-strength: 14.0
+    lantern-strength: 20.0
+    shroomlight-strength: 6.0
+    glowstone-strength: 4.0
+    sea-lantern-strength: 3.0
+  armor:
+    leather-piece-insulation: 0.12
+  sheltered-exposure-multiplier: 0.78
+  stages:
+    1:
+      stamina-regen-multiplier: 0.82
+      stamina-capacity-multiplier: 1.0
+      sprint-cost-multiplier: 1.15
+      healing-multiplier: 0.95
+    2:
+      stamina-regen-multiplier: 0.60
+      stamina-capacity-multiplier: 0.90
+      sprint-cost-multiplier: 1.35
+      healing-multiplier: 0.82
+      slowness-amplifier: 0
+    3:
+      stamina-regen-multiplier: 0.35
+      stamina-capacity-multiplier: 0.72
+      sprint-cost-multiplier: 1.65
+      healing-multiplier: 0.65
+      slowness-amplifier: 1
+      damage: 1.0
+      damage-interval-millis: 10000
 
 injuries:
   broken-leg:
     enabled: true
     movement-speed-multiplier: 0.55
     disable-sprinting: true
+    stamina-cost-multiplier: 1.45
     persist-through-death: true
     healing-potions:
       - cure
@@ -19,15 +75,41 @@ injuries:
     natural-healing:
       enabled: true
       time-ticks: 48000
+      bed-rest-ticks: 1200
+    healer-service:
+      enabled: false
+      emerald-cost: 8
+    severe-falls:
+      chance-per-extra-effective-block: 0.015
+      landing-block-multipliers:
+        water: 0.0
+        bubble_column: 0.0
+        bed: 0.50
+        hay_block: 0.45
+        slime_block: 0.15
+        honey_block: 0.65
+        white_bed: 0.50
+        powder_snow: 0.55
+        snow_block: 0.78
+        stone: 1.12
+        deepslate: 1.15
+      brackets:
+        moderate: {minimum-effective-fall: 10.0, base-chance: 0.02}
+        severe: {minimum-effective-fall: 15.0, base-chance: 0.08}
+        critical: {minimum-effective-fall: 20.0, base-chance: 0.22}
+        catastrophic: {minimum-effective-fall: 30.0, base-chance: 0.45}
+        extreme: {minimum-effective-fall: 40.0, base-chance: 0.70}
     minimum-fall-damage: 4.0
     base-chance: 0.08
     chance-per-extra-damage: 0.03
     maximum-chance: 0.80
 
 messages:
-  broken: "You broke your leg!\nUse an approved LOTN health potion to mend it."
-  still-broken: "Your leg is still broken. Use an approved LOTN health potion."
-  healed-by-potion: "The potion mended your broken leg!"
-  healed-by-admin: "Your broken leg was healed."
-  healed-on-death: "Your broken leg did not persist through death."
-  healed-naturally: "Your broken leg healed over time."
+  broken: "You broke your leg!\nDrink a LOTN healing potion to treat it."
+  still-broken: "Your leg is still broken. A LOTN healing potion should mend it."
+  healed-by-potion: "The potion mended your leg."
+  healed-by-admin: "Your leg is healed."
+  healed-on-death: "Your leg healed when you respawned."
+  healed-naturally: "Your leg has healed."
+  healed-by-healer: "The healer mended your leg."
+  healer-cannot-afford: "You don't have enough emeralds for the healer."

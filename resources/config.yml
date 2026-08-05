@@ -1,22 +1,107 @@
-# Note:
-# You're using first versions of stable releases. Please note that this plugin
-# is still under development.
+# LOTN is still under active development.
 
-schema-version: 23
+schema-version: 27
 
 chat:
-  prefix: "&a&lLOTN > &7"
+  prefix: "&8[&a&lLOTN&8] &7"
 
 console:
   rate-limit-duplicate-entity-uuid-warnings: true
   duplicate-entity-uuid-warning-rate-limit-seconds: 30
 
-links:
-  website: "https://lokahst.dev"
-  discord: "https://lokahst.dev/discord"
+difficulty:
+  preset: Custom
+  global: 1.00
+  mobs:
+    level: 1.00
+    health: 1.00
+    damage: 1.00
+    armor: 1.00
+    spawn-tier: 1.00
+    elite-chance: 1.00
+  progression:
+    player-xp-required: 1.00
+    skill-xp-required: 1.00
+    player-xp-rewards: 1.00
+    skill-xp-rewards: 1.00
+    quest-xp-rewards: 1.00
+  survival:
+    temperature-rate: 1.00
+    injury-chance: 1.00
+    death-penalty: 1.00
+
+combat-contributions:
+  retention-seconds: 120
+  meaningful-damage-percent: 0.02
+  meaningful-minimum-damage: 1.0
+  minimum-reward-share: 0.10
+
+death-xp-loss:
+  enabled: true
+  base-percent: 3.00
+  minimum-percent: 0.25
+  maximum-percent: 12.00
+  recent-death-window-minutes: 20
+  maximum-recent-deaths-stored: 12
+  allow-level-loss: false
+  killer-modifiers:
+    environment: 0.70
+    normal-mob: 1.00
+    elite-mob: 1.25
+    boss: 1.40
+    player: 0.80
+  tier-modifiers:
+    tier-1: 0.80
+    tier-2: 1.00
+    tier-3: 1.15
+    tier-4: 1.30
+    tier-5: 1.50
+    tier-6: 1.70
+  repeated-death-protection:
+    first: 1.00
+    second: 0.75
+    third: 0.50
+    fourth-and-later: 0.25
+  participation:
+    substantial-damage-percent: 0.15
+    substantial-engagement: 1.00
+    meaningful-fight: 0.75
+    unexpected-attack: 0.45
+  messages:
+    enabled: true
+    breakdown: "&cLost {amount} XP. &7Base {base}%, enemy {killer_tier}, recent deaths {recent}, participation {participation}. Final loss: {final}%."
+
+ipms:
+  enabled: true
+  protected-mob-minimum-level: 50
+  protected-mob-minimum-tier: 3
+  low-level-protection-gap: 15
+  eligible-spawn-reasons: [NATURAL, CHUNK_GEN, PATROL, REINFORCEMENTS, RAID]
+  attack-opt-in:
+    required-hits: 3
+    required-health-percent-damage: 0.04
+  owner-offline-despawn-seconds: 120
+  normal-owner-offline-action: DESPAWN # DESPAWN or RELEASE
+  special-owner-offline-action: RELEASE # elite, boss, persistent, or named mobs
+
+item-provenance:
+  enabled: true
+  include-admin-items: false
+  owner-lore-prefix: "&8Original owner: &7"
+
+codex:
+  playtime-flush-ticks: 1200
+  world:
+    biome-cell-size: 1
+    village-chunk-cache-size: 8192
+    maximum-counted-movement-per-event: 32.0
+    dangerous-cold-temperature: 0
 
 leveling:
-  max-level: 100
+  # Overall progression continues past the old level-100 wall
+  progression-level-cap: 10000
+  # Attribute choices stop once the player reaches this level
+  attribute-choice-level-cap: 100
   xp-curve:
     # level 1 = 115, then +28 XP per level
     base-xp: 115.0
@@ -38,21 +123,92 @@ leveling:
     overlevel-gap-penalty: 0.018
     minimum-diversity-multiplier: 0.65
   messages:
-    level-up: "Overall level increased to {level}."
-    vitality-choice: "Choose Health, Stamina, or Magicka to increase by 10. Pending choices: {pending_choices}."
-    xp-gain: "+{amount} overall XP from {reason}."
-  feedback:
+    level-up: "You reached overall level {level}."
+    vitality-choice: "Choose Health, Stamina, or Magicka for your next upgrade. Choices waiting: {pending_choices}."
+    xp-gain: "+{amount} overall XP - {reason}"
+  action-bar:
     enabled: true
+    hold-millis: 1800
+    summary-message: "&6LOTN Lv. {level} &8| &e{current_xp}&7/&e{required_xp} XP"
+    gain-message: "&a+{amount} Overall XP &8| &6Lv. {level} &e{current_xp}&7/&e{required_xp}"
+
+level-display:
+  enabled: true
+  coordinator-update-interval-ticks: 5
+  periodic:
+    enabled: true
+    interval-seconds: 30.0
+    duration-seconds: 5.0
+    show-on-join: true
+    join-delay-seconds: 3.0
+    # Available placeholders: {level}, {current_xp}, {required_xp}, {percent},
+    # {lifetime_xp}, and {legacy_rank}
+    title-format: "&6Level {level} &8- &e{current_xp}&7/&e{required_xp} XP &8({percent}%)"
+    # Colors: PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+    color: BLUE
+    # Styles: SOLID, NOTCHED_6, NOTCHED_10, NOTCHED_12, NOTCHED_20
+    style: SOLID
+    drain-animation: false
+  dramatic-progress:
+    enabled: true
+    duration-seconds: 3.0
+    minimum-percent-change: 0.10
+    minimum-flat-xp-change: 100.0
+    trigger-mode: ANY # ANY/ALL
+    merge-window-millis: 600
+    trigger-admin-changes: false
+    title-format: "&6Level {level} &8- &e{current_xp} / {required_xp} XP"
+    color: BLUE
+    style: SOLID
+  level-up:
+    duration-seconds: 5.0
+    title-format: "&6Level Up &8- &eLevel {level}"
+    multiple-title-format: "&6{levels} Levels Gained &8- &eLevel {level}"
+    color: PURPLE
+    style: SOLID
+    drain-animation: false
+    feedback-enabled: true
     sound: UI_TOAST_CHALLENGE_COMPLETE
     sound-volume: 0.65
     sound-pitch: 1.2
     particle: END_ROD
     particle-amount: 12
-  action-bar:
-    enabled: true
-    hold-millis: 1800
-    summary-message: "&6LOTN Lv. {level} &8• &e{current_xp}&7/&e{required_xp} XP"
-    gain-message: "&a+{amount} Overall XP &8• &6Lv. {level} &e{current_xp}&7/&e{required_xp}"
+  xp-loss:
+    enabled: false
+    duration-seconds: 3.0
+    title-format: "&c-{amount} LOTN XP &8- &eLevel {level}"
+    color: RED
+    style: SOLID
+
+legacy:
+  enabled: true
+  required-level: 100
+  confirmation-phrase: "I embrace my Legacy"
+  snapshot-retention-count: 5
+  level-choice-message: "&dYou reached Level 100. Keep leveling, or begin a Legacy from the Attributes menu."
+  # DISABLED, FIRST_LEGACY, or EVERY_LEGACY
+  rename-policy: FIRST_LEGACY
+  reset-shout-words-to-one: true
+  retention:
+    completed-quests: true
+    discoveries: true
+    alchemy-knowledge: true
+    legendary-ranks: true
+  inventory:
+    reset-ender-chest: true
+    only-original-owner-items: false
+    reset-untagged-items: true
+  scaling:
+    xp-requirement-per-rank: 0.10
+    xp-requirement-bonus-cap: 2.0
+    skill-xp-requirement-per-rank: 0.12
+    skill-xp-requirement-bonus-cap: 2.0
+    skill-power-per-rank: 0.02
+    skill-power-bonus-cap: 0.25
+    reward-quality-per-rank: 0.03
+    reward-quality-bonus-cap: 0.30
+    mob-level-contribution-per-rank: 0.08
+    mob-level-contribution-bonus-cap: 1.0
 
 systems:
   skills: true
@@ -88,7 +244,6 @@ shouts:
     horizontal-force: 2.4
     vertical-force: 0.45
     stagger-duration-ticks: 40
-    affect-players: false
     affect-tamed-animals: false
     respect-line-of-sight: true
     force:
@@ -133,7 +288,6 @@ shouts:
       - 120
       - 160
     cone-angle-degrees: 55.0
-    affect-players: false
     affect-tamed-animals: false
     respect-line-of-sight: true
     dragon-damage-multiplier: 0.15
@@ -202,10 +356,10 @@ storage:
 
 character-creation:
   enabled: true
-  setup-title: "&0Create your LOTN Character"
+  setup-title: "&0Create Your LOTN Character"
   race-title: "&0Choose Your Race"
   chat-input:
-    prompt: "&6Type your LOTN character name in chat. Type &ecancel &6to stop."
+    prompt: "&6Choose a name for your character. Type it in chat, or type &ecancel&6 to stop."
     cancel-word: "cancel"
   name:
     minimum-length: 3
@@ -214,6 +368,9 @@ character-creation:
     blacklist: []
     unique: true
 vitals:
+  maximum-health: 1200.0
+  maximum-stamina: 1200.0
+  maximum-magicka: 1200.0
   health-upgrade: 10.0
   stamina-upgrade: 10.0
   magicka-upgrade: 10.0

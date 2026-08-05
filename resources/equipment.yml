@@ -1,6 +1,4 @@
-﻿# Note:
-# You're using first versions of stable releases. Please note that this plugin
-# is still under development.
+# LOTN is still under active development.
 
 schema-version: 7
 debug: false
@@ -74,22 +72,22 @@ tempering:
       4: 0.16
       5: 0.20
   messages:
-    disabled: "Tempering is disabled."
-    unsupported: "That equipment is not supported."
+    disabled: "Tempering is turned off."
+    unsupported: "That item can't be tempered."
     stacked: "Temper one item at a time."
     legendary: "This item is already Legendary."
-    wood-maximum: "Wooden equipment cannot be tempered beyond {quality}."
+    wood-maximum: "Wooden equipment can't be tempered beyond {quality}."
     maximum: "This item is already at its maximum quality ({quality})."
-    unavailable: "You cannot temper equipment right now."
+    unavailable: "You can't temper equipment right now."
     category: "Only weapons and armor can be upgraded."
-    material-family: "{material} equipment cannot be upgraded."
-    skill: "Requires Smithing {required}."
-    material: "Requires {amount} {material}."
-    amount: "Not enough material; requires {amount} {material}."
+    material-family: "{material} equipment can't be upgraded."
+    skill: "You need Smithing {required}."
+    material: "You need {amount} {material}."
+    amount: "You don't have enough {material}. You need {amount}."
     unsafe-click: "Take tempered items with a normal empty-cursor click."
     cursor: "Empty your cursor before taking the tempered item."
-    result-changed: "The anvil result changed. Reinsert the items and try again."
-    success: "Tempered equipment to &6{quality}&7 (&b+{percentage}%&7)."
+    result-changed: "The anvil result changed. Put the items back in and try again."
+    success: "Tempered to &6{quality}&7 (&b+{percentage}%&7)."
   sounds:
     success:
       name: "block.anvil.use"

@@ -1,17 +1,18 @@
-# Note:
-# You're using first versions of stable releases. Please note that this plugin
-# is still under development.
+# LOTN is still under active development.
 
 schema-version: 5
 enabled: true
 
 messages:
-  no-curable-injury: "&7You have no LOTN injury that this potion can cure."
+  no-curable-injury: "&7You don't have an injury this potion can cure."
 study:
   skill-xp-success: 6.0
   skill-xp-failure: 1.0
 brewing:
   skill-xp: 12.0
+  allow-duplicate-ingredients: true
+  ordered-recipes: false
+  consume-unknown-mixtures: false
 
 quality-thresholds:
   potion: 0

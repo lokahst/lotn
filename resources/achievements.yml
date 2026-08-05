@@ -1,35 +1,42 @@
-# Note:
-# You're using first versions of stable releases. Please note that this plugin
-# is still under development.
+# LOTN is still under active development.
 
 enabled: true
 entries:
   first_discovery:
     display-name: "Beyond the Hearth"
+    category: exploration
     reward-experience: 20
   first_rare_fish:
     display-name: "A Fisher's Tale"
+    category: exploration
     reward-experience: 35
   legendary_catch:
     display-name: "Whisper of the Deep"
+    category: exploration
     reward-experience: 150
   first_elite:
     display-name: "Proven in Danger"
+    category: combat
     reward-experience: 60
   first_quest:
     display-name: "A Tale Brought Home"
+    category: legacy
     reward-experience: 30
   quest_veteran:
     display-name: "Road-Worn Hero"
+    category: legacy
     reward-experience: 200
     requirements:
       completed-quests: 9
   five_enchantments:
     display-name: "Rune Scholar"
+    category: crafting
     reward-experience: 80
   level_fifty:
     display-name: "Legend in the Making"
+    category: legacy
     reward-experience: 250
   master_skill:
     display-name: "Master of a Discipline"
+    category: skills
     reward-experience: 250

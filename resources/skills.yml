@@ -1,8 +1,14 @@
-# Note:
-# You're using first versions of stable releases. Please note that this plugin
-# is still under development.
+# LOTN is still under active development.
 
-schema-version: 21
+schema-version: 22
+
+legendary:
+  enabled: true
+  maximum-rank: 50
+  xp-requirement-per-rank: 0.15
+  xp-requirement-bonus-cap: 3.0
+  power-per-rank: 0.02
+  power-bonus-cap: 0.25
 
 migration:
   old-data-policy: ARCHIVE_AND_RESET
@@ -72,10 +78,10 @@ notifications:
   xp-action-bar:
     enabled: true
     hold-millis: 1800
-    message: "&a+{amount} {skill} XP &8• &6Lv. {level} &e{current_xp}&7/&e{required_xp}"
+    message: "&a+{amount} {skill} XP &8| &6Lv. {level} &e{current_xp}&7/&e{required_xp}"
   chat:
     enabled: true
-    message: "&a{skill} increased to Level {level}!\n&6Unlocked: &e{reward}\n&7{description}"
+    message: "&a{skill} reached Level {level}!\n&6Unlocked: &e{reward}\n&7{description}"
   action-bar:
     enabled: false
     message: "&6{skill} {level}: &e{reward}"
@@ -97,15 +103,15 @@ categories:
   combat:
     display-name: "Combat"
     icon: IRON_SWORD
-    description: "Weapon, blocking, and armor mastery."
+    description: "Sharpen your weapons, armor, and defensive skills."
   crafting_gathering:
     display-name: "Crafting & Gathering"
     icon: CRAFTING_TABLE
-    description: "Create, improve, harvest, and discover."
+    description: "Craft better gear and make more of what you gather."
   utility:
     display-name: "Utility"
     icon: COMPASS
-    description: "Travel, trade, and practical expertise."
+    description: "Travel farther, trade smarter, and master useful skills."
 
 gui:
   progress-bar-length: 10
@@ -242,11 +248,11 @@ skills:
     display-name: "One-Handed"
     category: combat
     icon: IRON_SWORD
-    description: "Master configured one-handed swords and axes."
+    description: "Fight with one-handed swords and axes."
     max-level: 30
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
-    xp-sources: ["Valid weapon damage", "Critical hits and kills", "Elite and boss participation"]
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["One-handed weapon damage", "Critical hits and kills", "Elite and boss fights"]
     rewards:
       1: {name: "Weapon Training I", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
       2: {name: "Critical Force I", description: "+5% one-handed critical damage", modifiers: {one-handed.critical-damage-percent: "ADD:5"}}
@@ -274,7 +280,7 @@ skills:
       24: {name: "Critical Force IV", description: "+5% one-handed critical damage", modifiers: {one-handed.critical-damage-percent: "ADD:5"}}
       25: {name: "Giant Slayer", description: "+5% damage against elites and bosses", modifiers: {one-handed.elite-damage-percent: "MAX:5"}}
       26: {name: "Weapon Training VIII", description: "+0.5 one-handed damage", modifiers: {one-handed.damage-flat: "ADD:0.5"}}
-      27: {name: "Battle Rhythm", description: "Critical hits restore 2 stamina; 2-second cooldown", modifiers: {one-handed.critical-stamina-restore: "MAX:2", one-handed.critical-stamina-cooldown-seconds: "MAX:2"}}
+      27: {name: "Battle Rhythm", description: "Critical hits restore 2 stamina with a 2-second cooldown", modifiers: {one-handed.critical-stamina-restore: "MAX:2", one-handed.critical-stamina-cooldown-seconds: "MAX:2"}}
       28: {name: "Deep Wounds II", description: "8% chance to deal 4 bleeding damage", modifiers: {one-handed.bleed-chance: "MAX:8", one-handed.bleed-damage: "MAX:4"}}
       29: {name: "Critical Eye IV", description: "+1% one-handed critical chance", modifiers: {one-handed.critical-chance-percent: "ADD:1"}}
       30: {name: "Swordmaster", description: "+1 damage and +10% one-handed attack speed", modifiers: {one-handed.damage-flat: "ADD:1", one-handed.attack-speed-percent: "MAX:10"}}
@@ -286,7 +292,7 @@ skills:
     description: "Master bows and crossbows at every range."
     max-level: 30
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
     xp-sources: ["Projectile damage and distance", "Headshots and moving targets", "Kills and boss participation"]
     rewards:
       1: {name: "Projectile Training I", description: "+0.5 projectile damage", modifiers: {archery.damage-flat: "ADD:0.5"}}
@@ -324,10 +330,10 @@ skills:
     display-name: "Blocking"
     category: combat
     icon: SHIELD
-    description: "Prevent real damage with blocking and stamina."
+    description: "Use your shield well and spend less stamina while blocking."
     max-level: 30
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
     xp-sources: ["Damage actually prevented", "Perfect blocks and projectiles", "Shield bashes"]
     rewards:
       1: {name: "Block Strength I", description: "+2% blocked damage", modifiers: {blocking.damage-percent: "ADD:2"}}
@@ -368,8 +374,8 @@ skills:
     description: "Resist damage in chainmail, iron, diamond, and netherite heavy armor."
     max-level: 30
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
-    xp-sources: ["Legitimate combat damage received or prevented", "Matching heavy pieces", "Surviving meaningful encounters"]
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Damage taken or blocked in combat", "Wearing matching heavy armor", "Surviving dangerous fights"]
     rewards:
       1: {name: "Heavy Resistance I", description: "+1% physical resistance while wearing heavy armor", modifiers: {heavy-armor.physical-resistance-percent: "ADD:1"}}
       2: {name: "Heavy Vitality I", description: "+2 maximum health", modifiers: {heavy-armor.maximum-health: "ADD:2"}}
@@ -409,8 +415,8 @@ skills:
     description: "Resist damage in leather light armor."
     max-level: 30
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
-    xp-sources: ["Legitimate combat damage received or prevented", "Matching leather pieces", "Surviving meaningful encounters"]
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Damage taken or blocked in combat", "Wearing matching leather armor", "Surviving dangerous fights"]
     rewards:
       1: {name: "Fleet I", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
       2: {name: "Light Endurance I", description: "+5 maximum stamina", modifiers: {light-armor.maximum-stamina: "ADD:5"}}
@@ -436,7 +442,7 @@ skills:
       22: {name: "Fleet VII", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
       23: {name: "Breath Control II", description: "Another +5% stamina regeneration", modifiers: {light-armor.stamina-regeneration-percent: "ADD:5"}}
       24: {name: "Light Endurance IV", description: "+5 maximum stamina", modifiers: {light-armor.maximum-stamina: "ADD:5"}}
-      25: {name: "Nimble II", description: "Next-hit reduction becomes 20%; 6-second cooldown", modifiers: {light-armor.nimble-hit-reduction-percent: "MAX:20", light-armor.nimble-cooldown-seconds: "LATEST:6"}}
+      25: {name: "Nimble II", description: "Next-hit reduction becomes 20% with a 6-second cooldown", modifiers: {light-armor.nimble-hit-reduction-percent: "MAX:20", light-armor.nimble-cooldown-seconds: "LATEST:6"}}
       26: {name: "Fleet VIII", description: "+1% movement speed", modifiers: {light-armor.movement-speed-percent: "ADD:1"}}
       27: {name: "Evasion IV", description: "+2% dodge chance", modifiers: {light-armor.dodge-chance: "ADD:2"}}
       28: {name: "Quickstep", description: "Taking damage grants +10% speed for 2 seconds", modifiers: {light-armor.quickstep-speed-percent: "MAX:10", light-armor.quickstep-duration-seconds: "LATEST:2"}}
@@ -450,7 +456,7 @@ skills:
     description: "Fight with an empty main hand."
     max-level: 10
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
     xp-sources: ["Empty-main-hand damage and kills", "Combos and armored enemies", "Elite and boss participation"]
     rewards:
       1: {name: "Brawler Training I", description: "+1 unarmed damage", modifiers: {unarmed.damage-flat: "ADD:1"}}
@@ -471,8 +477,8 @@ skills:
     description: "Craft, repair, and improve equipment."
     max-level: 30
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
-    xp-sources: ["Equipment crafting and upgrades", "Meaningful repairs", "Useful material smelting"]
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Equipment crafting and upgrades", "Repairing worn equipment", "Smelting useful materials"]
     rewards:
       1: {name: "Equipment Upgrading", description: "Unlock equipment upgrading", modifiers: {smithing.upgrading-unlocked: "MAX:1"}}
       2: {name: "Wooden Upgrading I", description: "Unlock wooden upgrading with planks", modifiers: {smithing.wood-upgrading-unlocked: "MAX:1"}}
@@ -512,7 +518,7 @@ skills:
     description: "Discover and empower LOTN enchantments."
     max-level: 20
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
     xp-sources: ["Enchantment discoveries", "Enchanted mob equipment", "Activations and higher-tier drops"]
     rewards:
       1: {name: "Enchanting I", description: "Unlock Tier I enchantments and drops", modifiers: {enchanting.highest-tier: "MAX:1"}}
@@ -533,7 +539,7 @@ skills:
       16: {name: "Enchanted Loot IV", description: "+50% relative enchanted-drop chance", modifiers: {enchanting.drop-weight-percent: "MAX:50"}}
       17: {name: "Dual Enchantment III", description: "Second-enchantment chance becomes 7%", modifiers: {enchanting.second-chance: "MAX:7"}}
       18: {name: "Arcane Attunement IV", description: "Enchantment strength becomes +8%", modifiers: {enchanting.strength-percent: "MAX:8"}}
-      19: {name: "Arcane Mastery", description: "Highest-tier weight +20%; elite and boss triple chance 2%", modifiers: {enchanting.highest-tier-weight-percent: "MAX:20", enchanting.triple-elite-chance: "MAX:2"}}
+      19: {name: "Arcane Mastery", description: "Highest-tier weight +20% and elite or boss triple chance 2%", modifiers: {enchanting.highest-tier-weight-percent: "MAX:20", enchanting.triple-elite-chance: "MAX:2"}}
       20: {name: "Enchanting V", description: "Unlock Tier V and master all enchanting bonuses", modifiers: {enchanting.highest-tier: "MAX:5", enchanting.drop-weight-percent: "MAX:75", enchanting.strength-percent: "MAX:10", enchanting.second-chance: "MAX:10", enchanting.triple-elite-chance: "MAX:5"}}
 
   alchemy:
@@ -543,8 +549,8 @@ skills:
     description: "Brew and use useful mixtures."
     max-level: 30
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
-    xp-sources: ["Useful brewing and first recipes", "Higher-tier and custom mixtures", "Meaningful potion use"]
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Brewing and discovering recipes", "Stronger and custom mixtures", "Using potions when they help"]
     rewards:
       1: {name: "Extended Brewing I", description: "Positive potion duration +3%", modifiers: {alchemy.positive-duration-percent: "MAX:3"}}
       2: {name: "Quick Brewing I", description: "Brewing time reduced by 5%", modifiers: {alchemy.brewing-time-reduction-percent: "MAX:5"}}
@@ -555,11 +561,11 @@ skills:
       7: {name: "Lasting Toxins I", description: "Negative potion duration +5%", modifiers: {alchemy.negative-duration-percent: "MAX:5"}}
       8: {name: "Wide Splash I", description: "Splash-potion radius +5%", modifiers: {alchemy.splash-radius-percent: "MAX:5"}, requires: ["CONFIGURATION:alchemy-splash"]}
       9: {name: "Quick Brewing II", description: "Brewing-time reduction becomes 10%", modifiers: {alchemy.brewing-time-reduction-percent: "MAX:10"}}
-      10: {name: "Concentrated Brewing I", description: "5% valid stronger-potion chance", modifiers: {alchemy.stronger-potion-chance: "MAX:5"}}
+      10: {name: "Concentrated Brewing I", description: "5% chance to brew a stronger potion", modifiers: {alchemy.stronger-potion-chance: "MAX:5"}}
       11: {name: "Potent Mixtures II", description: "Instant potency becomes +6%", modifiers: {alchemy.instant-potency-percent: "MAX:6"}}
       12: {name: "Ingredient Conservation II", description: "Ingredient-conservation chance becomes 6%", modifiers: {alchemy.ingredient-conservation-chance: "MAX:6"}}
       13: {name: "Extended Brewing III", description: "Positive duration becomes +10%", modifiers: {alchemy.positive-duration-percent: "MAX:10"}}
-      14: {name: "Potion Trader", description: "Supported potion sales are worth 5% more", modifiers: {alchemy.sale-price-percent: "MAX:5"}, requires: ["ECONOMY:supported-shop"]}
+      14: {name: "Potion Trader", description: "Potion sales are worth 5% more", modifiers: {alchemy.sale-price-percent: "MAX:5"}, requires: ["ECONOMY:supported-shop"]}
       15: {name: "Efficient Brewing I", description: "5% additional-potion chance", modifiers: {alchemy.additional-potion-chance: "MAX:5"}}
       16: {name: "Lasting Toxins II", description: "Negative duration becomes +10%", modifiers: {alchemy.negative-duration-percent: "MAX:10"}}
       17: {name: "Wide Splash II", description: "Splash radius becomes +10%", modifiers: {alchemy.splash-radius-percent: "MAX:10"}, requires: ["CONFIGURATION:alchemy-splash"]}
@@ -584,7 +590,7 @@ skills:
     description: "Extract natural ores and craft specialist tools."
     max-level: 15
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
     xp-sources: ["Naturally generated ores", "Rare materials and dangerous depths", "First natural-block discoveries"]
     rewards:
       1: {name: "Mining Efficiency I", description: "New axes and pickaxes gain Mining Efficiency 1.2", modifiers: {mining.efficiency: "MAX:1.2"}}
@@ -610,23 +616,23 @@ skills:
     description: "Cultivate crops and raise animals."
     max-level: 15
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
-    xp-sources: ["Mature crop harvesting and planting", "Breeding and supported animal products", "Supported farm sales and new crops"]
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Harvesting and planting crops", "Breeding animals and gathering produce", "Farm sales and new crops"]
     rewards:
       1: {name: "Bountiful Harvest I", description: "3% chance for one additional crop", modifiers: {farming.extra-crop-chance: "MAX:3"}}
       2: {name: "Green Thumb I", description: "5% chance not to consume seeds", modifiers: {farming.seed-conservation-chance: "MAX:5"}}
       3: {name: "Automatic Replanting", description: "Unlock individually toggleable automatic replanting", modifiers: {farming.auto-replant-unlocked: "MAX:1"}}
-      4: {name: "Crop Trader I", description: "Supported crop sales are worth 5% more", modifiers: {farming.crop-sale-price-percent: "MAX:5"}, requires: ["ECONOMY:supported-shop"]}
+      4: {name: "Crop Trader I", description: "Crop sales are worth 5% more", modifiers: {farming.crop-sale-price-percent: "MAX:5"}, requires: ["ECONOMY:supported-shop"]}
       5: {name: "Husbandry I", description: "5% bred-animal twin chance", modifiers: {farming.twin-chance: "MAX:5"}}
       6: {name: "Bountiful Harvest II", description: "Additional-crop chance becomes 6%", modifiers: {farming.extra-crop-chance: "MAX:6"}}
-      7: {name: "Animal Produce I", description: "5% additional supported animal product chance", modifiers: {farming.extra-animal-product-chance: "MAX:5"}}
+      7: {name: "Animal Produce I", description: "5% chance to gather extra animal produce", modifiers: {farming.extra-animal-product-chance: "MAX:5"}}
       8: {name: "Green Thumb II", description: "Seed-conservation chance becomes 10%", modifiers: {farming.seed-conservation-chance: "MAX:10"}}
-      9: {name: "Crop Trader II", description: "Supported crop-sale bonus becomes 10%", modifiers: {farming.crop-sale-price-percent: "MAX:10"}, requires: ["ECONOMY:supported-shop"]}
+      9: {name: "Crop Trader II", description: "Crop-sale bonus becomes 10%", modifiers: {farming.crop-sale-price-percent: "MAX:10"}, requires: ["ECONOMY:supported-shop"]}
       10: {name: "Husbandry II", description: "Twin chance becomes 10%", modifiers: {farming.twin-chance: "MAX:10"}}
       11: {name: "Rich Soil I", description: "New crops have 10% chance to begin at growth stage one", modifiers: {farming.rich-soil-chance: "MAX:10"}}
       12: {name: "Bountiful Harvest III", description: "Additional-crop chance becomes 9%", modifiers: {farming.extra-crop-chance: "MAX:9"}}
       13: {name: "Efficient Breeding", description: "10% chance not to consume breeding food", modifiers: {farming.breeding-food-conservation-chance: "MAX:10"}}
-      14: {name: "Crop Trader III", description: "Supported crop-sale bonus becomes 15%", modifiers: {farming.crop-sale-price-percent: "MAX:15"}, requires: ["ECONOMY:supported-shop"]}
+      14: {name: "Crop Trader III", description: "Crop-sale bonus becomes 15%", modifiers: {farming.crop-sale-price-percent: "MAX:15"}, requires: ["ECONOMY:supported-shop"]}
       15: {name: "Master Farmer", description: "Extra crop 12%, twins 15%, Rich Soil 15%", modifiers: {farming.extra-crop-chance: "MAX:12", farming.twin-chance: "MAX:15", farming.rich-soil-chance: "MAX:15"}}
 
   fishing:
@@ -636,7 +642,7 @@ skills:
     description: "Catch valuable and legendary fish."
     max-level: 20
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
     xp-sources: ["Fish rarity", "Treasure and first species", "Legendary catches"]
     rewards:
       1: {name: "Fish Merchant I", description: "Fish sell for 3% more", modifiers: {fishing.sale-price-percent: "MAX:3"}}
@@ -667,8 +673,8 @@ skills:
     description: "Explore the world and unlock Fast Travel."
     max-level: 3
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
-    xp-sources: ["Meaningful walking and sprinting", "New biomes, beds, and dimensions", "Exploration milestones and destinations reached normally"]
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Walking and sprinting", "New biomes, beds, and dimensions", "Exploration milestones and new destinations"]
     rewards:
       1: {name: "Fast Travel I", description: "Unlock Fast Travel and one Fast Travel Point", modifiers: {wayfaring.fast-travel-unlocked: "MAX:1", wayfaring.fast-travel-points: "MAX:1"}}
       2: {name: "Fast Travel II", description: "Unlock a second Fast Travel Point", modifiers: {wayfaring.fast-travel-points: "MAX:2"}}
@@ -681,11 +687,11 @@ skills:
     description: "Trade safely and profitably."
     max-level: 10
     player-level-weight: 1.0
-    xp: {mode: FORMULA, base: 100, growth: 1.18, multiplier: 1.0, post-cap: false}
-    xp-sources: ["Legitimate transaction value", "Merchant variety and item rarity", "Crafted goods and large transactions"]
+    xp: {mode: FORMULA, base: 500, growth: 1.18, multiplier: 1.0, post-cap: false}
+    xp-sources: ["Trade value", "Merchant variety and item rarity", "Crafted goods and large trades"]
     rewards:
-      1: {name: "Trader I", description: "Supported item sales are worth 2% more", modifiers: {trading.sale-price-percent: "MAX:2"}, requires: ["ECONOMY:supported-shop"]}
-      2: {name: "Customer I", description: "Supported purchases cost 1% less", modifiers: {trading.purchase-price-reduction-percent: "MAX:1"}, requires: ["ECONOMY:supported-shop"]}
+      1: {name: "Trader I", description: "Item sales are worth 2% more", modifiers: {trading.sale-price-percent: "MAX:2"}, requires: ["ECONOMY:supported-shop"]}
+      2: {name: "Customer I", description: "Purchases cost 1% less", modifiers: {trading.purchase-price-reduction-percent: "MAX:1"}, requires: ["ECONOMY:supported-shop"]}
       3: {name: "Market Sense", description: "Show whether a price is below, equal to, or above normal", modifiers: {trading.market-sense: "MAX:1"}}
       4: {name: "Trader II", description: "Item-sale bonus becomes 4%", modifiers: {trading.sale-price-percent: "MAX:4"}, requires: ["ECONOMY:supported-shop"]}
       5: {name: "Bulk Trader", description: "Stacks of at least 16 gain an additional 2% sale value", modifiers: {trading.bulk-sale-percent: "MAX:2", trading.bulk-minimum-items: "LATEST:16"}, requires: ["ECONOMY:supported-shop"]}

@@ -1,0 +1,103 @@
+# LOTN is still under active development.
+
+schema-version: 2
+
+framework:
+  default-unlocked-words: 1
+  global-cooldown: false
+
+voice-knowledge:
+  rewards:
+    quest: 1
+    main-quest: 2
+    achievement: 1
+    discovery: 1
+    level-interval: 5
+    level-milestone: 1
+    elite-minimum-level: 30
+    high-tier-enemy: 1
+    voice-bearer: 2
+    dragon: 3
+    boss: 2
+
+voice-bearers:
+  enabled: true
+  minimum-level: 80
+  allowed-tiers: [5, 6]
+  spawn-chance: 0.015
+  allowed-sources: [NATURAL, CHUNK_GEN, PATROL, REINFORCEMENTS, DEFAULT]
+  word-two-level: 120
+  word-three-level: 180
+  both-shouts-chance: 0.25
+  show-name-marker: true
+  cooldown-seconds: 20
+  telegraph-ticks: 36
+  maximum-range: 18
+  unrelenting-force:
+    enabled: true
+    damage-by-words: [3.0, 5.0, 7.0]
+    knockback-by-words: [0.75, 1.05, 1.35]
+    cone-range-by-words: [7.0, 9.0, 11.0]
+    stagger-ticks-by-words: [12, 20, 30]
+  fire-breath:
+    enabled: true
+    damage-by-words: [3.0, 5.0, 7.0]
+    fire-ticks-by-words: [50, 90, 130]
+    cone-range-by-words: [7.0, 9.0, 11.0]
+
+shouts:
+  unrelenting-force:
+    words:
+      1: {cooldown-seconds: 12, magicka-cost: 20, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {range: 7, damage: 3, knockback: 0.85, stagger-ticks: 14}}
+      2: {cooldown-seconds: 15, magicka-cost: 27, unlock: {voice-knowledge: 2, minimum-level: 10}, effect: {range: 9, damage: 5, knockback: 1.15, stagger-ticks: 22}}
+      3: {cooldown-seconds: 19, magicka-cost: 35, unlock: {voice-knowledge: 4, minimum-level: 20}, effect: {range: 12, damage: 8, knockback: 1.55, stagger-ticks: 32}}
+  whirlwind-sprint:
+    words:
+      1: {cooldown-seconds: 9, magicka-cost: 18, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {distance: 6, speed: 1.8}}
+      2: {cooldown-seconds: 11, magicka-cost: 24, unlock: {voice-knowledge: 2, minimum-level: 10}, effect: {distance: 10, speed: 2.2}}
+      3: {cooldown-seconds: 14, magicka-cost: 30, unlock: {voice-knowledge: 4, minimum-level: 20}, effect: {distance: 15, speed: 2.65}}
+  fire-breath:
+    words:
+      1: {cooldown-seconds: 18, magicka-cost: 25, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {range: 7, damage: 4, fire-ticks: 60}}
+      2: {cooldown-seconds: 22, magicka-cost: 32, unlock: {voice-knowledge: 2, minimum-level: 10}, effect: {range: 9, damage: 7, fire-ticks: 100}}
+      3: {cooldown-seconds: 27, magicka-cost: 40, unlock: {voice-knowledge: 4, minimum-level: 20}, effect: {range: 12, damage: 11, fire-ticks: 150}}
+  become-ethereal:
+    words:
+      1: {cooldown-seconds: 38, magicka-cost: 28, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {duration-ticks: 60, grace-ticks: 8}}
+      2: {cooldown-seconds: 43, magicka-cost: 34, unlock: {voice-knowledge: 3, minimum-level: 12}, effect: {duration-ticks: 100, grace-ticks: 12}}
+      3: {cooldown-seconds: 48, magicka-cost: 42, unlock: {voice-knowledge: 5, minimum-level: 24}, effect: {duration-ticks: 150, grace-ticks: 16}}
+  storm-call:
+    words:
+      1: {cooldown-seconds: 300, magicka-cost: 45, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {duration-ticks: 400, target-radius: 28, damage: 5, minimum-strike-delay-seconds: 5, maximum-strike-delay-seconds: 8}}
+      2: {cooldown-seconds: 600, magicka-cost: 55, unlock: {voice-knowledge: 3, minimum-level: 15}, effect: {duration-ticks: 800, target-radius: 44, damage: 7, minimum-strike-delay-seconds: 4, maximum-strike-delay-seconds: 7}}
+      3: {cooldown-seconds: 1200, magicka-cost: 65, unlock: {voice-knowledge: 6, minimum-level: 30}, effect: {duration-ticks: 1200, target-radius: 64, damage: 9, minimum-strike-delay-seconds: 3, maximum-strike-delay-seconds: 6}}
+  aura-whisper:
+    words:
+      1: {cooldown-seconds: 75, magicka-cost: 18, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {range: 10, duration-ticks: 180}}
+      2: {cooldown-seconds: 120, magicka-cost: 24, unlock: {voice-knowledge: 2, minimum-level: 10}, effect: {range: 20, duration-ticks: 320}}
+      3: {cooldown-seconds: 180, magicka-cost: 30, unlock: {voice-knowledge: 4, minimum-level: 20}, effect: {range: 30, duration-ticks: 500}}
+  battle-cry:
+    words:
+      1: {cooldown-seconds: 180, magicka-cost: 35, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {range: 16, duration-ticks: 140}}
+      2: {cooldown-seconds: 300, magicka-cost: 43, unlock: {voice-knowledge: 3, minimum-level: 15}, effect: {range: 22, duration-ticks: 260}}
+      3: {cooldown-seconds: 480, magicka-cost: 52, unlock: {voice-knowledge: 6, minimum-level: 30}, effect: {range: 30, duration-ticks: 400}}
+  clear-skies:
+    words:
+      1: {cooldown-seconds: 120, magicka-cost: 16, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {clear-duration-ticks: 6000}}
+      2: {cooldown-seconds: 180, magicka-cost: 20, unlock: {voice-knowledge: 2, minimum-level: 10}, effect: {clear-duration-ticks: 12000}}
+      3: {cooldown-seconds: 240, magicka-cost: 25, unlock: {voice-knowledge: 4, minimum-level: 20}, effect: {clear-duration-ticks: 24000}}
+  dragon-aspect:
+    words:
+      1: {cooldown-seconds: 900, magicka-cost: 55, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {duration-ticks: 2400, armor-rating-bonus: 0.10}}
+      2: {cooldown-seconds: 1800, magicka-cost: 65, unlock: {voice-knowledge: 4, minimum-level: 20}, effect: {duration-ticks: 4200, armor-rating-bonus: 0.16}}
+      3: {cooldown-seconds: 3600, magicka-cost: 75, unlock: {voice-knowledge: 8, minimum-level: 40}, effect: {duration-ticks: 6000, armor-rating-bonus: 0.22}}
+  drain-vitality:
+    words:
+      1: {cooldown-seconds: 34, magicka-cost: 28, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {range: 8, damage: 3, heal: 2, per-target-heal-cap: 2, total-heal-cap: 6, duration-ticks: 80, boss-effect-multiplier: 0.45}}
+      2: {cooldown-seconds: 40, magicka-cost: 35, unlock: {voice-knowledge: 3, minimum-level: 14}, effect: {range: 10, damage: 5, heal: 3, per-target-heal-cap: 3, total-heal-cap: 9, stamina-restore-per-target: 3, total-stamina-restore-cap: 10, duration-ticks: 130, boss-effect-multiplier: 0.45}}
+      3: {cooldown-seconds: 48, magicka-cost: 44, unlock: {voice-knowledge: 6, minimum-level: 28}, effect: {range: 13, damage: 8, heal: 5, per-target-heal-cap: 4, total-heal-cap: 12, stamina-restore-per-target: 5, total-stamina-restore-cap: 16, duration-ticks: 190, outgoing-damage-multiplier: 0.72, boss-effect-multiplier: 0.40}}
+  disarm:
+    words:
+      1: {cooldown-seconds: 32, magicka-cost: 24, unlock: {voice-knowledge: 0, minimum-level: 1}, effect: {range: 8, duration-ticks: 100, maximum-weapon-tier: 1}}
+      2: {cooldown-seconds: 38, magicka-cost: 30, unlock: {voice-knowledge: 2, minimum-level: 12}, effect: {range: 11, duration-ticks: 160, maximum-weapon-tier: 1}}
+      3: {cooldown-seconds: 45, magicka-cost: 38, unlock: {voice-knowledge: 5, minimum-level: 25}, effect: {range: 14, duration-ticks: 240, maximum-weapon-tier: 1}}

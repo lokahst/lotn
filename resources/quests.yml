@@ -1,11 +1,31 @@
-# Note:
-# You're using first versions of stable releases. Please note that this plugin
-# is still under development.
+# LOTN is still under active development.
 
-schema-version: 8
+schema-version: 9
 
 settings:
   maximum-active-quests: 5
+
+tier-boundaries:
+  basic: 1
+  trained: 20
+  advanced: 40
+  expert: 60
+  master: 80
+  legendary: 100
+
+boss-contribution:
+  wither:
+    minimum-personal: 0.35
+  dragon:
+    minimum-personal: 0.18
+    minimum-presence-fraction: 0.20
+
+legacy-scaling:
+  quest-difficulty-per-rank: 0.10
+  quest-difficulty-cap: 1.50
+
+migration:
+  unmapped-active-quest-compensation-xp: 0.0
 
 quests:
   main_ender_dragon:
@@ -14,13 +34,16 @@ quests:
     icon: DRAGON_HEAD
     category: main
     description:
-      - "Find the End portal and kill the Ender Dragon."
+      - "Take this quest before the dragon fight begins."
+      - "If the first dragon is gone, bring it back with End Crystals."
     objectives:
       defeat_dragon:
-        type: KILL
+        type: DRAGON_ENCOUNTER
         target: ENDER_DRAGON
         amount: 1
-        description: "Kill the Ender Dragon"
+        description: "Help defeat the Ender Dragon"
+        minimum-contribution: 0.18
+        minimum-presence-fraction: 0.20
     rewards:
       experience: 5000
       skill-xp:
@@ -123,7 +146,7 @@ quests:
     icon: ENDER_PEARL
     category: adventure
     description:
-      - "Use Fast Traveling to get back from your trips."
+      - "Use fast travel to find your way home."
     objectives:
       travel_routes:
         type: TRAVEL
@@ -145,7 +168,7 @@ quests:
       skills:
         enchanting: 1
     description:
-      - "Recover enchanted relics and document their LOTN effects."
+      - "Find enchanted gear and learn the magic woven into it."
     objectives:
       discover_effects:
         type: DISCOVER_ENCHANT
@@ -166,7 +189,7 @@ quests:
     icon: SHIELD
     category: adventure
     description:
-      - "Kill enemies around your area."
+      - "Defend the area from hostile creatures."
     objectives:
       hostile_patrol:
         type: KILL
@@ -228,7 +251,7 @@ quests:
     icon: TROPICAL_FISH
     category: adventure
     description:
-      - "Catch some fish and defend them from drowned."
+      - "Catch fish and keep the drowned away."
     objectives:
       catch_fish:
         type: FISH
@@ -247,6 +270,237 @@ quests:
         archery: 15
       items:
         - "NAUTILUS_SHELL:1"
+
+  trained_villager_provision:
+    enabled: true
+    display-name: "Villager Provision"
+    icon: COD
+    category: fishing
+    tier: trained
+    ordered: true
+    requirements:
+      minimum-level: 20
+      skills:
+        fishing: 5
+    description:
+      - "Catch the requested fish and deliver them to a village."
+      - "Shift-right-click a villager to hand over the fish."
+    objectives:
+      catch_cod:
+        type: FISH
+        target: COD
+        amount: 16
+        description: "Catch 16 cod"
+      deliver_cod:
+        type: DELIVER
+        target: COD
+        amount: 16
+        description: "Deliver the 16 cod to any villager"
+        same-fish: true
+        lotn-fish: true
+        player-caught: true
+        original-owner: true
+        acquisition: fishing
+    rewards:
+      experience: 420
+      money: 180
+      skill-xp:
+        fishing: 90
+
+  trained_apprentice_smith:
+    enabled: true
+    display-name: "Apprentice Smith"
+    icon: ANVIL
+    category: equipment
+    tier: trained
+    ordered: true
+    requirements:
+      minimum-level: 20
+      skills:
+        smithing: 5
+    description:
+      - "Forge your own iron armor, temper every piece, then prove it in battle."
+    objectives:
+      craft_armor:
+        type: CRAFT_EQUIPMENT
+        target: IRON_ARMOR_SET
+        amount: 4
+        description: "Craft a full iron armor set yourself"
+      temper_armor:
+        type: UPGRADE_EQUIPMENT
+        target: IRON_ARMOR_SET
+        amount: 4
+        description: "Temper each piece once"
+        bound-objective: craft_armor
+      equip_armor:
+        type: EQUIP_SET
+        target: IRON_ARMOR_SET
+        amount: 1
+        description: "Wear the full set"
+        bound-objective: craft_armor
+        minimum-pieces: 4
+      field_test:
+        type: KILL_WITH_CRAFTED
+        target: HOSTILE
+        amount: 5
+        description: "Defeat enemies while wearing the full set"
+        equipped-bound-objective: craft_armor
+        minimum-pieces: 4
+    rewards:
+      experience: 720
+      skill-xp:
+        smithing: 160
+        heavy_armor: 75
+      items:
+        - "IRON_INGOT:16"
+
+  advanced_voice_challenge:
+    enabled: true
+    display-name: "Voice Challenge"
+    icon: ECHO_SHARD
+    category: shouts
+    tier: advanced
+    ordered: true
+    requirements:
+      minimum-level: 40
+    description:
+      - "Defeat a Voice-Bearer, learn another word, and put it to use."
+    objectives:
+      bearer:
+        type: DEFEAT_VOICE_BEARER
+        target: VOICE_BEARER
+        amount: 1
+        description: "Defeat a Voice-Bearer"
+      unlock_word:
+        type: UNLOCK_SHOUT_WORD
+        target: ANY
+        amount: 1
+        description: "Unlock another shout word"
+      use_second_word:
+        type: USE_SHOUT
+        target: ANY
+        amount: 1
+        description: "Use a shout with at least Word II"
+        minimum-word: 2
+      strike_enemies:
+        type: SHOUT_HIT
+        target: ANY
+        amount: 5
+        description: "Hit five enemies with shouts"
+    rewards:
+      experience: 900
+      skill-xp:
+        one_handed: 60
+
+  master_wither_hunt:
+    enabled: true
+    display-name: "Master Hunt: Wither"
+    icon: WITHER_SKELETON_SKULL
+    category: boss
+    tier: master
+    ordered: true
+    expiration-seconds: 10800
+    requirements:
+      minimum-level: 80
+    failure-rules:
+      death: continue
+    multiplayer:
+      shared-encounter: true
+      personal-progress: true
+    description:
+      - "Summon a Wither and deal at least 35% of its health yourself."
+      - "Pet and environmental damage don't count toward your share."
+    objectives:
+      summon_wither:
+        type: BOSS_SUMMON
+        target: WITHER
+        amount: 1
+        description: "Summon a Wither"
+      defeat_wither:
+        type: BOSS_CONTRIBUTION
+        target: WITHER
+        amount: 1
+        description: "Defeat it with at least 35% personal contribution"
+        must-summon: true
+        minimum-contribution: 0.35
+    rewards:
+      experience: 2600
+      skill-xp:
+        one_handed: 180
+        archery: 140
+      items:
+        - "NETHER_STAR:1"
+
+  legendary_northern_expedition:
+    enabled: true
+    display-name: "Legendary Northern Expedition"
+    icon: RECOVERY_COMPASS
+    category: legendary
+    tier: legendary
+    ordered: true
+    requirements:
+      minimum-level: 100
+    description:
+      - "Cross dimensions, endure the cold, and prove mastery of the Voice."
+    objectives:
+      cross_frontier:
+        type: VISIT_DIMENSION
+        target: THE_END
+        amount: 1
+        description: "Visit the End"
+      hold_warmth:
+        type: MAINTAIN_WARMTH
+        target: COLD_BIOME
+        amount: 300
+        description: "Maintain safe warmth for five minutes"
+      bearer:
+        type: DEFEAT_VOICE_BEARER
+        target: VOICE_BEARER
+        amount: 2
+        description: "Defeat two Voice-Bearers"
+      voice:
+        type: SHOUT_HIT
+        target: ANY
+        amount: 12
+        description: "Hit twelve enemies with shouts"
+    rewards:
+      experience: 3600
+      skill-xp:
+        wayfaring: 220
+        one_handed: 160
+
+  legacy_proving_ground:
+    enabled: true
+    display-name: "Legacy Proving Ground"
+    icon: NETHER_STAR
+    category: legacy-contract
+    tier: legacy
+    repeatable: true
+    cooldown-seconds: 3600
+    ordered: true
+    description:
+      - "This contract grows harder with each Legacy rank."
+    objectives:
+      road:
+        type: TRAVEL_DISTANCE
+        target: ANY
+        amount: 1200
+        description: "Travel 1,200 blocks without fast travel"
+      hunt:
+        type: KILL
+        target: HOSTILE
+        amount: 30
+        description: "Defeat hostile enemies"
+      voice:
+        type: USE_SHOUT
+        target: ANY
+        amount: 5
+        minimum-word: 1
+        description: "Use the Voice five times"
+    rewards:
+      experience: 1300
+      skill-xp:
+        wayfaring: 90
 
   radiant_hostile_hunt:
     enabled: true
@@ -490,23 +744,37 @@ quests:
 
   radiant_catch_fish:
     enabled: true
-    display-name: "Catch fish"
-    icon: FISHING_ROD
+    display-name: "Village Fishing Contract"
+    icon: COD
     category: repeatable
+    tier: basic
     repeatable: true
     cooldown-seconds: 0
+    ordered: true
     description:
-      - "Catch fish."
+      - "Catch fresh cod and deliver it to a villager."
+      - "Shift-right-click a villager to hand over the fish."
     objectives:
       catches:
         type: FISH
-        target: ANY
-        amount: 6
-        description: "Catch fish"
+        target: COD
+        amount: 16
+        description: "Catch 16 cod"
+      delivery:
+        type: DELIVER
+        target: COD
+        amount: 16
+        description: "Deliver the 16 cod to any villager"
+        same-fish: true
+        lotn-fish: true
+        player-caught: true
+        original-owner: true
+        acquisition: fishing
     rewards:
-      experience: 65
+      experience: 120
+      money: 45
       skill-xp:
-        fishing: 18
+        fishing: 30
 
   radiant_smelting:
     enabled: true

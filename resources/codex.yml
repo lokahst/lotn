@@ -1,25 +1,80 @@
-# Note:
-# You're using first versions of stable releases. Please note that this plugin
-# is still under development.
+# LOTN is still under active development.
 
-schema-version: 1
+schema-version: 3
 enabled: true
-categories:
-  fish:
-    display-name: "Fish"
-    icon: COD
-  discovery:
-    display-name: "Discoveries"
-    icon: COMPASS
-  enchantment:
-    display-name: "Enchantments"
-    icon: ENCHANTED_BOOK
-  quest:
-    display-name: "Completed Tales"
-    icon: WRITABLE_BOOK
-  elite:
-    display-name: "Elite Enemies"
-    icon: WITHER_SKELETON_SKULL
-  achievement:
-    display-name: "Achievements"
-    icon: NETHER_STAR
+
+main:
+  title: "&8Northern Codex"
+  profile:
+    slot: 4
+    material: PLAYER_HEAD
+    name: "&6&lCharacter Record"
+  statistics:
+    character_name: {label: "Character"}
+    player_level: {label: "Overall Level"}
+    legacy_rank: {label: "Legacy Rank"}
+    playtime: {label: "Playtime"}
+    difficulty: {label: "Difficulty"}
+    legendary_skills: {label: "Legendary Skills"}
+    completion: {label: "Codex Completion"}
+
+pages:
+  world:
+    slot: 10
+    material: COMPASS
+    name: "&a&lWorld"
+    title: "&8Codex: World"
+    lore: ["&7Review the places you've found", "&7across the world.", "", "&eClick to open"]
+    statistics:
+      biomes: {label: "Biomes Discovered", material: GRASS_BLOCK}
+      overworld_biomes: {label: "Overworld Biomes", material: OAK_SAPLING}
+      nether_biomes: {label: "Nether Biomes", material: NETHERRACK}
+      villages: {label: "Villages Discovered", material: BELL}
+      dimensions: {label: "Dimensions Visited", material: ENDER_EYE}
+  combat:
+    slot: 11
+    material: IRON_SWORD
+    name: "&c&lCombat"
+    title: "&8Codex: Combat"
+    lore: ["&7Review battles, damage,", "&7boss kills, and deaths.", "", "&eClick to open"]
+    default-stat-material: IRON_SWORD
+    statistics:
+      mobs_killed: {label: "Total Mobs Killed", material: IRON_SWORD}
+      normal_mobs: {label: "Normal Mobs", material: STONE_SWORD}
+      elite_mobs: {label: "Elite Mobs", material: DIAMOND_SWORD}
+      bosses: {label: "Bosses", material: NETHER_STAR}
+      dragons: {label: "Dragons", material: DRAGON_HEAD}
+      withers: {label: "Withers", material: WITHER_SKELETON_SKULL}
+      damage_dealt: {label: "Damage Dealt", material: REDSTONE}
+      damage_received: {label: "Damage Received", material: RED_DYE}
+      damage_blocked: {label: "Damage Blocked", material: SHIELD}
+      deaths_to_mobs: {label: "Deaths to Mobs", material: BONE}
+      deaths_to_players: {label: "Deaths to Players", material: PLAYER_HEAD}
+      environmental_deaths: {label: "Environmental Deaths", material: LAVA_BUCKET}
+  fishing:
+    slot: 12
+    material: FISHING_ROD
+    name: "&b&lFishing"
+    title: "&8Codex: Fishing"
+    lore: ["&7Review your catches, rare fish,", "&7treasure, and best haul.", "", "&eClick to open"]
+    default-stat-material: COD
+    statistics:
+      fish_caught: {label: "Total Fish Caught", material: COD}
+      unique_fish: {label: "Unique Fish", material: TROPICAL_FISH}
+      available_fish: {label: "Fish Species", material: BOOK}
+      highest_rarity: {label: "Highest Rarity", material: HEART_OF_THE_SEA}
+      treasure_catches: {label: "Treasure Catches", material: CHEST}
+      most_valuable: {label: "Most Valuable Catch", material: GOLD_INGOT}
+  survival:
+    slot: 13
+    material: CAMPFIRE
+    name: "&f&lSurvival"
+    title: "&8Codex: Survival"
+    lore: ["&7Review cold exposure, injuries,", "&7and fast travel.", "", "&eClick to open"]
+    default-stat-material: CAMPFIRE
+    statistics:
+      frostbite: {label: "Frostbite Incidents", material: BLUE_ICE}
+      broken_legs: {label: "Broken Legs", material: BONE}
+      injuries_treated: {label: "Injuries Treated", material: HONEY_BOTTLE}
+      dangerous_cold: {label: "Time in Dangerous Cold", material: POWDER_SNOW_BUCKET}
+      fast_travels: {label: "Fast Travels", material: ENDER_PEARL}

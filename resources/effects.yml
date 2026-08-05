@@ -1,8 +1,6 @@
-# Note:
-# You're using first versions of stable releases. Please note that this plugin
-# is still under development.
+# LOTN is still under active development.
 
-schema-version: 8
+schema-version: 9
 
 enabled: true
 combat:
@@ -53,7 +51,6 @@ alchemy:
   potion-particles: 16
 general:
   enabled: true
-  player-level-up-particles: 55
   skill-level-up-particles: 24
   achievement-particles: 45
   enchantment-discovered-particles: 32

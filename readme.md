@@ -1,5 +1,13 @@
 ![Legends of the North](https://github.com/lokahst/lotn/raw/main/showcase/background.png)
 
+
+---
+
+Aug 8: After ~200 hours (that's like 8 days without pause) of coding, I'm giving myself some free time to do some changes and enjoy life. Comeback maybe on Aug 10.
+
+---
+
+
 # Legends of the North
 
 > *Hey, you. You're finally awake.*
